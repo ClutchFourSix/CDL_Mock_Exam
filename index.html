@@ -3,67 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Ultimate | Mobile Optimized | Timer OFF by default</title>
+    <title>IL CDL Practice | Clean & Simple | Timer OFF by default</title>
     <style>
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #0a0f1a;
             margin: 0;
             padding: 12px;
             color: #eef2ff;
         }
-        .exam-container {
-            max-width: 700px;
+        .container {
+            max-width: 650px;
             margin: 0 auto;
             background: #11161f;
             border-radius: 28px;
-            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
             overflow: hidden;
-            padding: 18px 16px 32px;
+            padding: 20px 18px 32px;
             border: 1px solid #2a3440;
         }
         h1 {
-            font-size: 1.4rem;
-            margin: 0 0 0.2rem 0;
+            font-size: 1.5rem;
+            margin: 0 0 5px 0;
             color: #ffb347;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .badge {
-            background: #1e2a3a;
-            color: #ffb347;
-            font-size: 0.6rem;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 40px;
-            border: 1px solid #ffb34730;
         }
         .sub {
             color: #9aaebf;
-            margin-bottom: 1.2rem;
-            border-bottom: 1px solid #2a3440;
-            padding-bottom: 10px;
             font-size: 0.75rem;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a3440;
         }
-        .settings-bar {
-            background: #0f151f;
-            padding: 10px 14px;
-            border-radius: 24px;
-            margin-bottom: 16px;
+        .top-bar {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 12px;
             justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+            background: #0f151f;
+            padding: 10px 14px;
+            border-radius: 24px;
             border: 1px solid #2a3440;
         }
-        .clock-display {
+        .clock {
             font-family: monospace;
             font-size: 1.3rem;
             font-weight: bold;
@@ -71,16 +57,15 @@
             padding: 5px 14px;
             border-radius: 40px;
             color: #ffb347;
-            letter-spacing: 1px;
         }
-        .toggle-switch {
+        .toggle-label {
             display: flex;
             align-items: center;
             gap: 8px;
-            cursor: pointer;
             font-size: 0.8rem;
+            cursor: pointer;
         }
-        .toggle-switch input {
+        .toggle-label input {
             width: 44px;
             height: 24px;
             appearance: none;
@@ -89,10 +74,10 @@
             position: relative;
             cursor: pointer;
         }
-        .toggle-switch input:checked {
+        .toggle-label input:checked {
             background: #ffb347;
         }
-        .toggle-switch input::before {
+        .toggle-label input::before {
             content: '';
             width: 18px;
             height: 18px;
@@ -103,75 +88,73 @@
             left: 4px;
             transition: 0.2s;
         }
-        .toggle-switch input:checked::before {
+        .toggle-label input:checked::before {
             left: 22px;
         }
-        .live-score {
+        .score-badge {
             background: #0a1019;
-            padding: 6px 12px;
+            padding: 5px 12px;
             border-radius: 40px;
             font-size: 0.75rem;
-            font-weight: bold;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            font-weight: 600;
         }
-        .test-selector {
-            background: #0f151f;
-            padding: 12px 16px;
-            border-radius: 24px;
-            margin-bottom: 16px;
+        .test-bar {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 12px;
             justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+            background: #0f151f;
+            padding: 12px 14px;
+            border-radius: 24px;
             border: 1px solid #2a3440;
-        }
-        .selector-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            flex: 1;
         }
         select {
             background: #1e293b;
             color: #f0f4fa;
             font-size: 0.85rem;
-            padding: 8px 12px;
+            padding: 8px 14px;
             border-radius: 60px;
             border: 1px solid #3a4a5f;
-            cursor: pointer;
             font-weight: 500;
             flex: 1;
-            min-width: 140px;
         }
-        .mode-indicator {
+        .download-btn {
+            background: #4a2a2a;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+        .review-mode {
             background: #2a3a4a;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.7rem;
             display: inline-block;
             margin-bottom: 12px;
         }
-        .question-card {
+        .question-box {
             background: #0f1620;
             border-radius: 24px;
-            padding: 1.2rem;
-            margin-bottom: 1rem;
+            padding: 18px;
+            margin-bottom: 16px;
             border: 1px solid #2a3440;
         }
-        .progress {
-            font-size: 0.7rem;
+        .q-header {
+            font-size: 0.75rem;
             color: #ffb347;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 8px;
         }
-        .priority-badge {
+        .priority {
             background: #c72a2a;
             color: white;
             font-size: 0.6rem;
@@ -179,18 +162,18 @@
             border-radius: 20px;
             margin-left: 8px;
         }
-        .question-text {
-            font-weight: 700;
+        .q-text {
             font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
             line-height: 1.4;
+            color: #ffffff;
         }
         .options {
             display: flex;
             flex-direction: column;
-            gap: 0.7rem;
-            margin-bottom: 1.2rem;
+            gap: 10px;
+            margin-bottom: 16px;
         }
         .option {
             display: flex;
@@ -201,148 +184,113 @@
             border-radius: 20px;
             background: #0a1019;
             border: 1px solid #2a3645;
-            transition: all 0.1s;
-        }
-        .option:hover {
-            background: #1a2535;
-            border-color: #ffb34780;
         }
         .option.selected {
             background: #1f6392;
             border-color: #ffb347;
         }
-        input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            accent-color: #ffb347;
+        .option input {
+            width: 18px;
+            height: 18px;
             margin: 0;
+            accent-color: #ffb347;
             pointer-events: none;
-            flex-shrink: 0;
         }
-        .option-label {
+        .option-text {
             font-size: 0.9rem;
-            line-height: 1.4;
-            cursor: pointer;
             color: #d6e3f0;
             flex: 1;
         }
-        .why-btn {
-            background: none;
-            border: 1px solid #5f7f9e;
-            color: #8ba0bc;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            cursor: pointer;
-            margin-left: 8px;
-            flex-shrink: 0;
+        .difficulty-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #2a3440;
         }
-        .why-explanation {
-            font-size: 0.75rem;
-            color: #8ba0bc;
-            margin-top: 8px;
-            padding-left: 32px;
+        .diff-btn {
+            background: #2a3a4a;
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+        .diff-easy.selected { background: #2c6e2c; }
+        .diff-medium.selected { background: #d4a017; }
+        .diff-hard.selected { background: #c72a2a; }
+        .feedback {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
             display: none;
+        }
+        .feedback-correct {
+            background: #0a1f1a;
+            border-left: 4px solid #2ecc71;
+            color: #b0f0cf;
+        }
+        .feedback-wrong {
+            background: #201010;
+            border-left: 4px solid #e74c3c;
+            color: #f5bcbc;
         }
         .action-buttons {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-            margin: 15px 0 20px;
+            margin: 16px 0 20px;
         }
-        button {
+        .action-buttons button {
+            flex: 1;
             background: #1f6392;
             border: none;
             color: white;
             font-weight: 600;
-            padding: 12px 16px;
+            padding: 12px;
             border-radius: 60px;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.1s linear;
-            flex: 1;
-            min-width: 100px;
         }
-        button:active {
-            transform: scale(0.97);
-        }
-        .secondary {
-            background: #3a4c62;
-        }
-        .review-btn, .flag-btn {
-            background: #6a4e2a;
-        }
-        .difficulty-buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #2a3440;
-            flex-wrap: wrap;
-        }
-        .difficulty-btn {
-            background: #2a3a4a;
-            padding: 5px 12px;
-            font-size: 0.7rem;
-            flex: none;
-        }
-        .difficulty-btn.selected-easy { background: #2c6e2c; }
-        .difficulty-btn.selected-medium { background: #d4a017; }
-        .difficulty-btn.selected-hard { background: #c72a2a; }
-        .feedback-area {
-            margin-top: 16px;
-            padding: 12px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            background: #0a111c;
-            border-left: 4px solid;
-            display: none;
-        }
-        .feedback-correct {
-            border-left-color: #2ecc71;
-            background: #0a1f1a;
-            color: #b0f0cf;
-        }
-        .feedback-wrong {
-            border-left-color: #e74c3c;
-            background: #201010;
-            color: #f5bcbc;
-        }
+        .action-buttons button:active { transform: scale(0.97); }
+        .flag-btn { background: #6a4e2a; }
+        .restart-btn { background: #3a4c62; }
         .score-panel {
             background: #0a111f;
-            padding: 12px 16px;
+            padding: 14px;
             border-radius: 24px;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 16px;
             border: 1px solid #2a3a4a;
         }
         .score-number {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #ffb347;
         }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-top: 12px;
             text-align: left;
+            font-size: 0.7rem;
         }
         .stat-card {
             background: #0a1019;
-            padding: 8px 10px;
+            padding: 8px;
             border-radius: 16px;
-            font-size: 0.75rem;
         }
-        .topic-breakdown {
-            margin-top: 10px;
-            max-height: 160px;
+        .topic-list {
+            max-height: 140px;
             overflow-y: auto;
+            margin-top: 8px;
         }
         .topic-item {
             display: flex;
             justify-content: space-between;
-            padding: 4px 8px;
+            padding: 4px 0;
             border-bottom: 1px solid #2a3440;
             font-size: 0.7rem;
         }
@@ -352,653 +300,552 @@
             margin-top: 20px;
             color: #5f7f9e;
         }
+        button { cursor: pointer; }
         @media (max-width: 500px) {
-            .exam-container { padding: 12px; }
-            .question-text { font-size: 1rem; }
-            .option-label { font-size: 0.85rem; }
-            button { font-size: 0.75rem; padding: 10px 12px; }
-            .live-score { font-size: 0.65rem; gap: 8px; }
-            .clock-display { font-size: 1.1rem; padding: 4px 10px; }
+            .container { padding: 14px; }
+            .q-text { font-size: 1rem; }
+            .option-text { font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
-<div class="exam-container">
-    <h1>🌙 IL CDL Ultimate <span class="badge">Mobile Optimized • Timer OFF</span></h1>
-    <div class="sub">⚠️ High Priority in red — click anywhere on answer to select — timer optional (toggle below)</div>
+<div class="container">
+    <h1>🌙 IL CDL Practice</h1>
+    <div class="sub">High Priority in red • Timer off by default • Click anywhere on answer</div>
 
-    <div class="settings-bar">
-        <div class="clock-display" id="clockDisplay">00:00</div>
-        <label class="toggle-switch">
+    <div class="top-bar">
+        <div class="clock" id="clockDisplay" style="display:none;">00:00</div>
+        <label class="toggle-label">
             <input type="checkbox" id="timerToggle">
-            <span>⏱️ Show Timer</span>
+            <span>Show Timer</span>
         </label>
-        <div id="liveScoreDisplay" class="live-score">✅ 0 | ❌ 0 | 📊 0% | ⏳ 50 left</div>
+        <div class="score-badge" id="liveScore">✅ 0 | ❌ 0 | 0% | 50 left</div>
     </div>
 
-    <div class="test-selector">
-        <div class="selector-group">
-            <strong>📋 Test:</strong>
-            <select id="testTypeSelect">
-                <option value="general">🚚 General Knowledge (50 Q)</option>
-                <option value="air">🛑 Air Brakes (25 Q)</option>
-                <option value="combo">🔗 Combination Vehicles (20 Q)</option>
-                <option value="pretrip">🔧 Pre-Trip Inspection (20 Q)</option>
-            </select>
-        </div>
-        <button id="downloadMissedBtn" class="secondary" style="background:#4a2a2a; padding:8px 12px;">📥 Download</button>
+    <div class="test-bar">
+        <select id="testSelect">
+            <option value="general">🚚 General Knowledge (50 Q)</option>
+            <option value="air">🛑 Air Brakes (25 Q)</option>
+            <option value="combo">🔗 Combination Vehicles (20 Q)</option>
+            <option value="pretrip">🔧 Pre-Trip Inspection (20 Q)</option>
+        </select>
+        <button class="download-btn" id="downloadBtn">📥 Download Missed</button>
     </div>
 
-    <div id="modeIndicator" class="mode-indicator" style="display: none;"></div>
+    <div id="reviewModeBadge" class="review-mode" style="display:none;"></div>
 
-    <div id="questionArea" class="question-card">
-        <div class="progress">
-            <span id="progressIndicator">Question 1 / 50</span>
-            <span id="bookmarkIndicator" style="color:#ffb347;">⭐</span>
+    <div class="question-box">
+        <div class="q-header">
+            <span id="qCounter">Question 1 / 50</span>
+            <span id="bookmarkIcon" style="color:#ffb347;">☆</span>
         </div>
-        <div class="question-text" id="questionText">Loading questions...</div>
+        <div class="q-text" id="qText">Loading questions...</div>
         <div class="options" id="optionsContainer"></div>
-        <div class="difficulty-buttons" id="difficultyButtons" style="display: none;">
-            <span style="color:#8ba0bc;">Rate this:</span>
-            <button class="difficulty-btn" data-diff="easy">🟢 Easy</button>
-            <button class="difficulty-btn" data-diff="medium">🟡 Medium</button>
-            <button class="difficulty-btn" data-diff="hard">🔴 Hard</button>
+        <div class="difficulty-row" id="difficultyRow" style="display:none;">
+            <button class="diff-btn diff-easy" data-diff="easy">🟢 Easy</button>
+            <button class="diff-btn diff-medium" data-diff="medium">🟡 Medium</button>
+            <button class="diff-btn diff-hard" data-diff="hard">🔴 Hard</button>
         </div>
-        <div class="feedback-area" id="feedbackArea"></div>
+        <div class="feedback" id="feedback"></div>
     </div>
 
     <div class="action-buttons">
-        <button id="nextBtn" style="background:#2c6e2c;">➡ Next</button>
+        <button id="nextBtn">➡ Next</button>
         <button id="flagBtn" class="flag-btn">⭐ Flag</button>
-        <button id="resetTestBtn" class="secondary">🔄 Restart</button>
+        <button id="restartBtn" class="restart-btn">🔄 Restart</button>
     </div>
 
-    <div id="scorePanel" class="score-panel" style="display: none;">
+    <div id="scorePanel" class="score-panel" style="display:none;">
         <div>🏆 Test Completed</div>
         <div class="score-number" id="finalScore">0 / 0</div>
-        <div id="passMessage"></div>
-        <div id="statsPanel"></div>
-        <div style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
-            <button id="reviewMissedBtn" class="review-btn" style="display: none;">📝 Review Missed</button>
-            <button id="reviewFlaggedBtn" class="review-btn" style="background:#4a3a2a; display: none;">⭐ Review Flagged</button>
-            <button id="resetAfterCompleteBtn" class="reset-session">⟳ New Test</button>
+        <div id="passMsg"></div>
+        <div class="stats-grid" id="statsPanel"></div>
+        <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+            <button id="reviewMissedBtn" style="background:#6a4e2a; display:none;">📝 Review Missed</button>
+            <button id="reviewFlaggedBtn" style="background:#4a3a2a; display:none;">⭐ Review Flagged</button>
+            <button id="newTestBtn" style="background:#3a4c62;">⟳ New Test</button>
         </div>
     </div>
-    <footer>✅ Timer is OFF by default (like the real test). Toggle ON if you want to track your pace.</footer>
+    <footer>Timer is OFF by default (like the real test). Toggle ON to track your pace.</footer>
 </div>
 
 <script>
     // ==============================================================
-    // COMPLETE QUESTION BANK - No duplicates, correct categories
+    // QUESTION BANKS - All unique, correctly categorized
     // ==============================================================
     
-    function createQuestion(text, options, correct, explanation, topic, priority = false) {
+    function Q(text, options, correct, explanation, topic, priority = false) {
         return { text, options, correct, explanation, topic, priority };
     }
 
-    // ----- GENERAL KNOWLEDGE BANK -----
-    const generalFullBank = [
-        createQuestion("What is the correct following distance formula for a commercial vehicle?", ["A) 1 second for every 20 feet of length", "B) 1 second for every 10 feet of length + 1 second over 40 mph", "C) 2 seconds regardless of length", "D) 1 car length per 10 mph"], "B", "1 second per 10 feet of vehicle length, plus 1 additional second for speeds over 40 mph.", "Following Distance", true),
-        createQuestion("What is the total stopping distance formula for a non-air brake vehicle?", ["A) Reaction + Braking", "B) Perception + Reaction + Braking", "C) Speed + Weight + Road", "D) Brake lag + Reaction"], "B", "Perception distance + reaction distance + braking distance = total stopping distance.", "Stopping Distance", true),
-        createQuestion("How do you recover from a rear-wheel braking skid?", ["A) Steer away from skid and accelerate", "B) Stop braking, push in clutch, steer in direction of skid", "C) Apply more brake pressure", "D) Use trailer hand brake"], "B", "Release brakes, push in clutch, and countersteer in direction of skid.", "Skid Control", true),
-        createQuestion("What action stops hydroplaning?", ["A) Brake firmly", "B) Release accelerator and push in clutch", "C) Turn sharply", "D) Speed up"], "B", "Release accelerator and push in clutch to let wheels turn freely.", "Hydroplaning", true),
-        createQuestion("What BAC triggers a 24-hour out-of-service order for a CDL holder?", ["A) 0.04%", "B) 0.08%", "C) Any detectable amount", "D) 0.02%"], "C", "Any detectable alcohol while operating a CMV results in 24-hour out-of-service.", "Alcohol Rules", true),
-        createQuestion("What must a driver do at a passive railroad crossing?", ["A) Stop only if gates are down", "B) Slow down, look, listen, be prepared to stop", "C) Speed up to clear quickly", "D) Stop at all crossings"], "B", "Slow down, look and listen for trains. Be prepared to stop.", "Railroad Crossings", true),
-        createQuestion("First action if your vehicle stalls on railroad tracks?", ["A) Call 911", "B) Try to restart", "C) Get everyone out and away from tracks", "D) Wave arms at train"], "C", "Get everyone out and move away from tracks at a 45° angle toward the approaching train.", "Railroad Crossings", true),
-        createQuestion("What is off-tracking?", ["A) Losing GPS signal", "B) Rear wheels following shorter path than front wheels in a turn", "C) Trailer sway", "D) Brake fade"], "B", "Off-tracking is when rear wheels cut the corner, following a shorter path than front wheels.", "Turning", true),
-        createQuestion("Maximum air pressure drop for a single vehicle with foot brake applied for 1 minute?", ["A) 2 psi", "B) 3 psi", "C) 4 psi", "D) 5 psi"], "B", "Single vehicle: air pressure should not drop more than 3 psi in one minute.", "Air Brake Checks", true),
-        createQuestion("Maximum air pressure drop for a combination vehicle with foot brake applied for 1 minute?", ["A) 2 psi", "B) 3 psi", "C) 4 psi", "D) 5 psi"], "C", "Combination vehicle: air pressure should not drop more than 4 psi in one minute.", "Air Brake Checks", true),
-        createQuestion("Define reaction distance.", ["A) Distance while braking", "B) Distance from seeing hazard to hitting brakes", "C) Total stop distance", "D) Following distance"], "B", "Reaction distance is the distance traveled from seeing a hazard until you physically hit the brakes.", "Stopping Distance", true),
-        createQuestion("What most affects stopping distance?", ["A) Vehicle color", "B) Road conditions", "C) Driver age", "D) Time of day"], "B", "Road conditions (wet, icy, dry) are the primary factor. Wet roads can double stopping distance.", "Stopping Distance", true),
-        createQuestion("First-offense DUI while operating a CMV results in CDL disqualification of:", ["A) 90 days", "B) One year", "C) Three years", "D) Lifetime"], "B", "First offense DUI or BAC over .04% results in minimum one-year CDL disqualification.", "Alcohol Rules", true),
-        createQuestion("What happens when drive wheels lock while towing a trailer?", ["A) Trailer pushes towing vehicle sideways (jackknife)", "B) Trailer stops faster", "C) Tractor straightens", "D) Nothing unusual"], "A", "When drive wheels lock, the trailer can push the towing vehicle sideways, causing jackknife.", "Skid Control", true),
-        createQuestion("Which driving ability is impaired first by alcohol?", ["A) Vision", "B) Judgment and self-control", "C) Coordination", "D) Reaction time"], "B", "The first part of brain affected controls judgment and self-control.", "Alcohol Rules", true),
-        createQuestion("What does 'implied consent' mean for CDL holders?", ["A) Must submit to alcohol testing", "B) Can refuse testing without penalty", "C) Only applies to car drivers", "D) No testing required"], "A", "By driving a CMV, you have implied consent to submit to chemical tests for alcohol.", "Alcohol Rules", true),
-        createQuestion("Why do trucks need more following distance than cars?", ["A) Trucks take much longer to stop", "B) To avoid tickets", "C) To save fuel", "D) Legal requirement"], "A", "Commercial vehicles weigh up to 80,000 lbs and need much longer stopping distance than cars.", "Following Distance", true),
-        createQuestion("First step when vehicle starts to skid?", ["A) Brake hard", "B) Take foot off accelerator", "C) Turn sharply", "D) Steer away"], "B", "First, take your foot off the accelerator. Then steer in direction of skid.", "Skid Control", true),
-        createQuestion("How to stop a trailer jackknife during hard braking?", ["A) Apply trailer hand brake", "B) Release brakes and steer in direction of travel", "C) Accelerate", "D) Brake harder"], "B", "Release brakes to let wheels regain traction. Steer gently in direction you want to go.", "Skid Control", true),
-        createQuestion("Primary reason for pre-trip inspection?", ["A) Save fuel", "B) Safety", "C) Avoid logs", "D) Reduce insurance"], "B", "Safety is the most important reason. Finding defects prevents crashes and breakdowns.", "Vehicle Inspection", false),
-        createQuestion("Proper steering wheel grip for maximum control?", ["A) One hand at 12 o'clock", "B) Both hands on opposite sides", "C) With knees", "D) One hand at 6 o'clock"], "B", "Hold steering wheel firmly with both hands on opposite sides for maximum control.", "Steering", false),
-        createQuestion("When to downshift to save brakes on a grade?", ["A) While going uphill", "B) Before starting downhill", "C) On flat roads", "D) In city traffic"], "B", "Downshift before starting down a hill to use engine braking and prevent brake fade.", "Mountain Driving", false),
-        createQuestion("Front tire minimum tread depth?", ["A) 2/32 inch", "B) 4/32 inch", "C) 6/32 inch", "D) 8/32 inch"], "B", "Front tires require at least 4/32 inch tread depth in every major groove.", "Tires", false),
-        createQuestion("Rear tire minimum tread depth?", ["A) 2/32 inch", "B) 4/32 inch", "C) 6/32 inch", "D) 8/32 inch"], "A", "Non-front tires require at least 2/32 inch tread depth.", "Tires", false),
-        createQuestion("What are retarders used for?", ["A) Increase speed", "B) Help slow the vehicle", "C) Improve fuel economy", "D) Reduce engine noise"], "B", "Retarders help slow the vehicle and reduce brake wear. Do not use on slippery roads.", "Braking Systems", false),
-        createQuestion("What is black ice?", ["A) Dirty ice", "B) Thin clear ice that makes road look wet", "C) Ice only on bridges", "D) Salt-mixed ice"], "B", "Black ice is a thin, clear layer of ice that makes road look wet. Very dangerous.", "Winter Driving", false),
-        createQuestion("Safe speed reduction on wet roads?", ["A) No change", "B) Reduce by 1/3", "C) Reduce by 10 mph", "D) Reduce by half"], "B", "Reduce speed by about 1/3 on wet roads (e.g., 55 to 35 mph).", "Speed Management", false),
-        createQuestion("First response to a tire blowout?", ["A) Brake hard", "B) Hold steering wheel firmly, stay off brake, slow gradually", "C) Turn to shoulder", "D) Accelerate"], "B", "Hold steering wheel firmly, stay off brake, let vehicle slow naturally, then brake gently.", "Emergencies", false),
-        createQuestion("Parking on a downhill slope, wheels should be turned:", ["A) Away from curb", "B) Toward curb", "C) Straight ahead", "D) Left"], "B", "Turn wheels toward curb so vehicle rolls into curb if brakes fail.", "Parking", false),
-        createQuestion("Most important safety rule when backing?", ["A) Back quickly", "B) Use a helper when possible", "C) Use only mirrors", "D) Back toward passenger side"], "B", "A helper can see blind spots you cannot see from driver's seat.", "Backing Safely", false),
-        createQuestion("What is an escape ramp for?", ["A) Rest area", "B) Stop runaway vehicles with brake failure", "C) Emergency lane", "D) Truck inspection"], "B", "Escape ramps use soft gravel or uphill grade to stop vehicles with brake failure.", "Mountain Driving", false),
-        createQuestion("Can federal inspectors inspect your truck?", ["A) No", "B) Yes, and can place out of service", "C) Only at weigh stations", "D) Only with warrant"], "B", "Federal and state inspectors can inspect your vehicle and place it out of service if unsafe.", "Inspections", false),
-        createQuestion("Two ways to know when to shift gears?", ["A) Time and distance", "B) Engine RPM and road speed (MPH)", "C) Fuel and temperature", "D) Weight and grade"], "B", "Use tachometer (RPM) or speedometer (MPH) to know when to shift.", "Shifting Gears", false),
-        createQuestion("How often to inspect cargo while driving?", ["A) Every 2 hours", "B) Within 50 miles, then every 150 miles or 3 hours", "C) Every 4 hours", "D) Every 250 miles"], "B", "Inspect cargo within first 50 miles, then every 150 miles or three hours.", "Cargo", false),
-        createQuestion("How does tire pressure change with temperature?", ["A) Decreases as temperature rises", "B) Increases as temperature rises", "C) No change", "D) Depends on tire"], "B", "Air pressure in tires increases as temperature rises. Do not let air out of hot tires.", "Tires", false),
-        createQuestion("Yellow dashboard warning light indicates?", ["A) Low oil", "B) ABS malfunction", "C) Low air pressure", "D) High coolant"], "B", "Yellow ABS lamp indicates antilock brake system malfunction. Regular brakes still work.", "ABS", false),
-        createQuestion("Hazards of transporting liquid cargo in tankers?", ["A) Leaks only", "B) Fires only", "C) Liquid surge", "D) All of the above"], "D", "Tanker hazards include leaks, fires, and liquid surge which affects vehicle handling.", "Tank Vehicles", false),
-        createQuestion("Battery fluid hazard class?", ["A) Class 3", "B) Class 6", "C) Class 8", "D) Class 9"], "C", "Battery fluid (sulfuric acid) is a corrosive material, Class 8.", "Hazardous Materials", false),
-        createQuestion("What does GCW stand for?", ["A) Gross Cargo Weight", "B) Gross Combination Weight (power unit + trailer + cargo)", "C) Gross Car Weight", "D) General Cargo Weight"], "B", "GCW is the total weight of powered unit plus trailer(s) plus cargo.", "Weight Limits", false),
-        createQuestion("Definition of a road hazard?", ["A) Only other vehicles", "B) Any road condition or user that is a possible danger", "C) Only bad weather", "D) Only construction"], "B", "A hazard is any road condition or other road user that is a possible danger.", "Hazard Awareness", false),
-        createQuestion("What to watch for in construction zones?", ["A) Speed up", "B) Sharp pavement drop offs", "C) Ignore workers", "D) Use high beams"], "B", "Work zones may have narrow lanes, sharp turns, uneven surfaces, and pavement drop offs.", "Work Zones", false),
-        createQuestion("Night driving speed rule?", ["A) Use high beams always", "B) Adjust speed so stopping distance is within sight distance", "C) Same as daytime", "D) Never use low beams"], "B", "Adjust speed so you can stop within the distance you can see with your headlights.", "Night Driving", false),
-        createQuestion("Purpose of bridge formula?", ["A) Increase speed limits", "B) Reduce axle weight for axles closer together", "C) Allow heavier trucks", "D) Reduce tolls"], "B", "Bridge formula permits less maximum axle weight for axles that are closer together to protect bridges.", "Weight Limits", false),
-        createQuestion("Primary cause of most serious skids?", ["A) Bad tires", "B) Driving too fast for conditions", "C) Poor brakes", "D) Overloading"], "B", "Most serious skids result from driving too fast for road conditions.", "Skid Control", true),
-        createQuestion("What is countersteering?", ["A) Turning wheel back after steering to avoid obstacle", "B) Steering with one hand", "C) Using power steering", "D) Steering away from hazard"], "A", "Countersteering is turning the wheel back after passing an obstacle to straighten the vehicle.", "Steering", false),
-        createQuestion("Aggressive driving definition?", ["A) Selfish, bold, pushy driving without regard for safety", "B) Slow driving", "C) Using signals", "D) Following distance"], "A", "Aggressive driving includes tailgating, speeding, erratic lane changes, and ignoring traffic laws.", "Aggressive Drivers", false),
-        createQuestion("Move over law requires?", ["A) Move to left lane", "B) Slow down or change lanes for stopped emergency vehicles", "C) Speed up", "D) Stop"], "B", "Move over laws protect emergency workers by requiring drivers to slow or change lanes away from stopped vehicles.", "Laws", false),
-        createQuestion("Why avoid engine brake on slippery roads?", ["A) Illegal", "B) Can cause drive wheel skid", "C) Wears engine", "D) Noisy"], "B", "Engine brake can cause drive wheel skid on ice or wet roads. Do not use on slippery surfaces.", "Slippery Roads", false),
-        createQuestion("Minimum age for interstate CMV driving?", ["A) 18", "B) 19", "C) 21", "D) 25"], "C", "Minimum age 21 to drive a commercial motor vehicle in interstate commerce or transport passengers.", "Age Requirements", false),
-        createQuestion("Maximum fine for bribing a CDL examiner?", ["A) $5,000", "B) $10,000", "C) $25,000 + Class 2 felony", "D) $50,000"], "C", "The offense is a Class 2 felony with fines up to $25,000.", "CDL Rules", false),
-        createQuestion("What is air brake lag distance at 55 mph?", ["A) 10 ft", "B) 32 ft", "C) 50 ft", "D) 100 ft"], "B", "Air brake lag distance at 55 mph on dry pavement adds about 32 feet.", "Stopping Distance", true),
-        createQuestion("Total stopping distance at 55 mph for air brake vehicle?", ["A) 250 ft", "B) 350 ft", "C) Over 450 ft", "D) 600 ft"], "C", "At 55 mph total stopping distance is over 450 feet including brake lag.", "Stopping Distance", true),
-        createQuestion("Required emergency equipment in cab?", ["A) Triangles/flares only", "B) Spare fuses only", "C) Fire extinguisher only", "D) All of the above"], "D", "Three reflective triangles (or 6 fuses/3 flares), spare electrical fuses, and a fire extinguisher.", "Emergency Equipment", false),
-        createQuestion("Why drain air tanks regularly?", ["A) Increase pressure", "B) Remove water and oil that can freeze or damage system", "C) Test governor", "D) Check slack"], "B", "Water can freeze and cause brake failure. Oil can damage the system.", "Maintenance", false),
-        createQuestion("What is a 'wig wag' in air brakes?", ["A) Slack adjuster type", "B) Low air pressure warning device", "C) Brake drum design", "D) Compressor type"], "B", "Wig wag drops a mechanical arm into view when pressure drops below 60 psi.", "Warning Devices", false),
-        createQuestion("What to do if ABS warning light stays on?", ["A) Stop immediately", "B) Drive normally; regular brakes still work; get serviced soon", "C) Only use parking brake", "D) Disconnect ABS"], "B", "ABS malfunction lamp indicates ABS not working, but regular brakes still function. Get serviced soon.", "ABS", false),
-        createQuestion("Why is texting while driving most dangerous?", ["A) Takes eyes off road", "B) Takes hands off wheel", "C) Takes mind off driving", "D) All of the above"], "D", "Texting requires visual, manual, and cognitive attention - the most dangerous distraction.", "Distracted Driving", false),
-        createQuestion("Where to park if vehicle catches fire?", ["A) Gas station", "B) Open area away from buildings and vehicles", "C) Residential street", "D) Tunnel"], "B", "Park in open area away from anything that might catch fire. Never pull into service station.", "Fire Safety", false),
-        createQuestion("Red trailer air supply knob when pushed in does what?", ["A) Applies trailer brakes", "B) Supplies air and releases spring brakes", "C) Activates ABS", "D) Raises landing gear"], "B", "Push in to supply air to trailer and release spring brakes.", "Air Systems", false),
-        createQuestion("When should you avoid using your horn?", ["A) To warn others", "B) To avoid accident", "C) To express frustration", "D) When passing"], "C", "Never use horn to express frustration. Use only when necessary to avoid accidents.", "Communication", false),
-        createQuestion("Signs of overheated brakes?", ["A) Burning smell only", "B) Soft pedal only", "C) Smoke only", "D) All of the above"], "D", "Signs include burning smell, smoke, spongy pedal feel, and reduced braking power.", "Braking", false),
-        createQuestion("When is it appropriate to use your horn?", ["A) Express anger", "B) Alert others who don't see you", "C) Greet friends", "D) Warn of police"], "B", "Use horn when necessary to avoid accidents by calling attention to your presence.", "Communication", false),
-        createQuestion("Purpose of hazard flashers on steep grade?", ["A) Save battery", "B) Warn others you're moving slower than traffic", "C) Illegal", "D) Improve traction"], "B", "Use four-way flashers when driving significantly slower than traffic to warn others.", "Communication", false),
-        createQuestion("Why avoid tailgating in a truck?", ["A) Saves fuel", "B) Trucks need much more stopping distance", "C) Legal requirement", "D) Reduces wear"], "B", "Commercial vehicles weigh up to 80,000 lbs and need much longer stopping distance than cars.", "Following Distance", true),
-        createQuestion("What is the purpose of safe stopping distance?", ["A) Save fuel", "B) Allow time to react and brake smoothly", "C) Reduce wear", "D) Increase speed"], "B", "Safe stopping distance gives you time to react and brake without emergency measures.", "Stopping Distance", true),
-        createQuestion("Why avoid using trailer hand valve while driving?", ["A) Wastes air", "B) Can lock trailer wheels and cause skid", "C) Illegal", "D) Slows vehicle too much"], "B", "Trailer hand valve can lock trailer wheels, causing skid and jackknife. Use only for testing.", "Combination Vehicles", false),
-        createQuestion("What to do if headlights fail at night?", ["A) Continue driving", "B) Use emergency flashers and pull off road", "C) Use high beams", "D) Use parking lights"], "B", "Activate hazard lights, slow down, and pull off road safely as soon as possible.", "Night Driving", false),
-        createQuestion("Why avoid cruise control on slippery roads?", ["A) Uses more fuel", "B) Can cause wheel spin and loss of traction", "C) Illegal", "D) Wears brakes"], "B", "Cruise control can cause wheel spin on ice or wet roads, leading to loss of control.", "Slippery Roads", false),
-        createQuestion("Why check tire tread depth?", ["A) Save fuel", "B) Ensure traction and prevent hydroplaning", "C) Reduce noise", "D) Look professional"], "B", "Adequate tread depth channels water away and provides traction on wet roads.", "Tires", false),
-        createQuestion("What to do if brakes get wet?", ["A) Ignore", "B) Lightly apply brakes while driving slowly to dry them", "C) Brake hard", "D) Use parking brake"], "B", "Lightly apply brakes while driving slowly to heat and dry them. Test brakes when safe.", "Braking", false),
-        createQuestion("Why is rolling backward on a hill dangerous?", ["A) Wears clutch", "B) Can hit vehicle behind you", "C) Illegal", "D) Wastes fuel"], "B", "Rolling back can cause you to hit the vehicle behind you. Use parking brake or trailer hand valve.", "Starting on Hills", false),
-        createQuestion("Purpose of convex spot mirrors?", ["A) See behind vehicle", "B) Check blind spots and expand field of view", "C) Check cargo", "D) See dashboard"], "B", "Convex mirrors show blind spots but objects appear smaller and farther away.", "Mirrors", false),
-        createQuestion("Why avoid driving alongside another vehicle?", ["A) Wastes fuel", "B) Traps you in their blind spot, limits escape options", "C) Illegal", "D) Distracting"], "B", "Driving alongside another vehicle removes your escape route and puts you in their blind spot.", "Space Management", false),
-        createQuestion("What to do when being tailgated?", ["A) Speed up", "B) Increase following distance in front of you", "C) Brake check them", "D) Move to left lane"], "B", "Increase following distance in front of you so you can slow gradually without braking hard.", "Space Management", false),
-        createQuestion("How to handle strong crosswinds?", ["A) Speed up", "B) Steer gently, maintain firm grip, slow down", "C) Pull over immediately", "D) Use cruise control"], "B", "Keep firm grip on steering wheel and steer gently. Slow down to lessen wind effect.", "Adverse Conditions", false),
-        createQuestion("What to do if vehicle drifts onto shoulder?", ["A) Jerk wheel back", "B) Slow gradually, then gently steer back", "C) Brake hard", "D) Accelerate"], "B", "Slow down gradually, then gently steer back onto road. Avoid sudden movements.", "Emergencies", false),
-        createQuestion("Why check cargo within first 50 miles?", ["A) Save time", "B) Cargo can settle and loosen tie-downs", "C) Legal only once", "D) Check fuel"], "B", "Cargo can settle or shift after starting, loosening tie-downs. Recheck within first 50 miles.", "Cargo", false),
-        createQuestion("Safest right turn technique for large vehicle?", ["A) Swing wide before turn", "B) Swing wide only after beginning turn", "C) Turn from left lane", "D) Sharp turn"], "B", "Swing wide as you complete the turn, not before starting, to prevent others from passing on right.", "Turning", false),
-        createQuestion("Why is speeding in curves dangerous?", ["A) Wears tires", "B) Increases rollover risk from centrifugal force", "C) Uses more fuel", "D) Hard on suspension"], "B", "Excessive speed in curves can cause rollover due to high center of gravity and centrifugal force.", "Turning", true),
-        createQuestion("Main danger of unsecured cargo?", ["A) Noise", "B) Can shift and affect handling, causing rollover", "C) Fuel waste", "D) Floor wear"], "B", "Shifting cargo can cause rollover, jackknife, and loss of control.", "Cargo", false),
-        createQuestion("How to test a parking brake?", ["A) Push brake pedal", "B) Set parking brake, place in low gear, gently pull forward", "C) Listen for air", "D) Check dash light"], "B", "Set parking brake, place in low gear, and gently pull forward. If vehicle moves, brakes need service.", "Parking Brake", false),
-        createQuestion("Proper mirror adjustment shows:", ["A) Only road", "B) Part of your vehicle for reference", "C) Only other vehicles", "D) Blind spots only"], "B", "Mirrors should show a part of your vehicle to give you a reference point.", "Mirrors", false)
+    const generalBank = [
+        Q("What is the correct following distance formula for a commercial vehicle?", ["A) 1 second for every 20 feet", "B) 1 second for every 10 feet + 1 sec over 40 mph", "C) 2 seconds regardless", "D) 1 car length per 10 mph"], "B", "1 second per 10 feet of vehicle length, plus 1 additional second for speeds over 40 mph.", "Following Distance", true),
+        Q("What three factors add up to total stopping distance?", ["A) Perception + Reaction + Braking", "B) Speed + Weight + Road", "C) Brake lag + Reaction", "D) Reaction + Skid"], "A", "Perception distance + reaction distance + braking distance = total stopping distance.", "Stopping Distance", true),
+        Q("How do you recover from a rear-wheel braking skid?", ["A) Steer away and accelerate", "B) Stop braking, push clutch, steer into skid", "C) Apply more brake", "D) Use trailer hand brake"], "B", "Release brakes, push clutch, and countersteer in direction of skid.", "Skid Control", true),
+        Q("What action stops hydroplaning?", ["A) Brake firmly", "B) Release accelerator, push clutch", "C) Turn sharply", "D) Speed up"], "B", "Release accelerator and push clutch to let wheels turn freely.", "Hydroplaning", true),
+        Q("What BAC triggers 24-hour out-of-service for a CDL holder?", ["A) 0.04%", "B) 0.08%", "C) Any detectable amount", "D) 0.02%"], "C", "Any detectable alcohol while operating a CMV results in 24-hour out-of-service.", "Alcohol Rules", true),
+        Q("What must a driver do at a passive railroad crossing?", ["A) Stop only if gates down", "B) Slow, look, listen, be prepared to stop", "C) Speed up", "D) Stop at all crossings"], "B", "Slow down, look and listen for trains. Be prepared to stop.", "Railroad Crossings", true),
+        Q("First action if your vehicle stalls on railroad tracks?", ["A) Call 911", "B) Try to restart", "C) Get everyone out and away from tracks", "D) Wave at train"], "C", "Get everyone out and move away from tracks at a 45° angle toward the approaching train.", "Railroad Crossings", true),
+        Q("What is off-tracking?", ["A) Losing GPS", "B) Rear wheels follow shorter path than front in turns", "C) Trailer sway", "D) Brake fade"], "B", "Off-tracking is when rear wheels cut the corner, following a shorter path than front wheels.", "Turning", true),
+        Q("Max air pressure drop for single vehicle with foot brake applied 1 minute?", ["A) 2 psi", "B) 3 psi", "C) 4 psi", "D) 5 psi"], "B", "Single vehicle: max 3 psi drop in 1 minute with brakes applied.", "Air Brake Checks", true),
+        Q("Max air pressure drop for combination vehicle with foot brake applied 1 minute?", ["A) 2 psi", "B) 3 psi", "C) 4 psi", "D) 5 psi"], "C", "Combination vehicle: max 4 psi drop in 1 minute with brakes applied.", "Air Brake Checks", true),
+        Q("Define reaction distance.", ["A) Distance while braking", "B) Distance from seeing hazard to hitting brakes", "C) Total stop distance", "D) Following distance"], "B", "Reaction distance is the distance traveled from seeing a hazard until you physically hit the brakes.", "Stopping Distance", true),
+        Q("What most affects stopping distance?", ["A) Vehicle color", "B) Road conditions", "C) Driver age", "D) Time of day"], "B", "Road conditions (wet, icy, dry) are the primary factor. Wet roads can double stopping distance.", "Stopping Distance", true),
+        Q("First-offense DUI while operating a CMV results in CDL disqualification of:", ["A) 90 days", "B) One year", "C) Three years", "D) Lifetime"], "B", "First offense DUI or BAC over .04% results in minimum one-year CDL disqualification.", "Alcohol Rules", true),
+        Q("What happens when drive wheels lock while towing a trailer?", ["A) Trailer pushes towing vehicle sideways (jackknife)", "B) Trailer stops faster", "C) Tractor straightens", "D) Nothing"], "A", "When drive wheels lock, the trailer can push the towing vehicle sideways, causing jackknife.", "Skid Control", true),
+        Q("Which driving ability is impaired first by alcohol?", ["A) Vision", "B) Judgment and self-control", "C) Coordination", "D) Reaction time"], "B", "The first part of brain affected controls judgment and self-control.", "Alcohol Rules", true),
+        Q("What does 'implied consent' mean for CDL holders?", ["A) Must submit to alcohol testing", "B) Can refuse testing", "C) Only applies to cars", "D) No testing"], "A", "By driving a CMV, you have implied consent to submit to chemical tests for alcohol.", "Alcohol Rules", true),
+        Q("Why do trucks need more following distance than cars?", ["A) Trucks take much longer to stop", "B) To avoid tickets", "C) To save fuel", "D) Legal requirement"], "A", "Commercial vehicles weigh up to 80,000 lbs and need much longer stopping distance than cars.", "Following Distance", true),
+        Q("First step when vehicle starts to skid?", ["A) Brake hard", "B) Take foot off accelerator", "C) Turn sharply", "D) Steer away"], "B", "First, take your foot off the accelerator. Then steer in direction of skid.", "Skid Control", true),
+        Q("How to stop a trailer jackknife during hard braking?", ["A) Apply trailer hand brake", "B) Release brakes, steer in direction of travel", "C) Accelerate", "D) Brake harder"], "B", "Release brakes to let wheels regain traction. Steer gently in direction you want to go.", "Skid Control", true),
+        Q("Primary reason for pre-trip inspection?", ["A) Save fuel", "B) Safety", "C) Avoid logs", "D) Reduce insurance"], "B", "Safety is the most important reason. Finding defects prevents crashes and breakdowns.", "Vehicle Inspection", false),
+        Q("Proper steering wheel grip for maximum control?", ["A) One hand at 12 o'clock", "B) Both hands on opposite sides", "C) With knees", "D) One hand at 6 o'clock"], "B", "Hold steering wheel firmly with both hands on opposite sides for maximum control.", "Steering", false),
+        Q("When to downshift to save brakes on a grade?", ["A) Going uphill", "B) Before starting downhill", "C) On flat roads", "D) City traffic"], "B", "Downshift before starting down a hill to use engine braking and prevent brake fade.", "Mountain Driving", false),
+        Q("Front tire minimum tread depth?", ["A) 2/32 inch", "B) 4/32 inch", "C) 6/32 inch", "D) 8/32 inch"], "B", "Front tires require at least 4/32 inch tread depth in every major groove.", "Tires", false),
+        Q("Rear tire minimum tread depth?", ["A) 2/32 inch", "B) 4/32 inch", "C) 6/32 inch", "D) 8/32 inch"], "A", "Non-front tires require at least 2/32 inch tread depth.", "Tires", false),
+        Q("What are retarders used for?", ["A) Increase speed", "B) Help slow the vehicle", "C) Improve fuel economy", "D) Reduce engine noise"], "B", "Retarders help slow the vehicle and reduce brake wear. Do not use on slippery roads.", "Braking Systems", false),
+        Q("What is black ice?", ["A) Dirty ice", "B) Thin clear ice that makes road look wet", "C) Ice only on bridges", "D) Salt-mixed ice"], "B", "Black ice is a thin, clear layer of ice that makes road look wet. Very dangerous.", "Winter Driving", false),
+        Q("Safe speed reduction on wet roads?", ["A) No change", "B) Reduce by 1/3", "C) Reduce by 10 mph", "D) Reduce by half"], "B", "Reduce speed by about 1/3 on wet roads (e.g., 55 to 35 mph).", "Speed Management", false),
+        Q("First response to a tire blowout?", ["A) Brake hard", "B) Hold wheel firmly, stay off brake, slow gradually", "C) Turn to shoulder", "D) Accelerate"], "B", "Hold steering wheel firmly, stay off brake, let vehicle slow naturally, then brake gently.", "Emergencies", false),
+        Q("Parking on a downhill slope, wheels should be turned:", ["A) Away from curb", "B) Toward curb", "C) Straight", "D) Left"], "B", "Turn wheels toward curb so vehicle rolls into curb if brakes fail.", "Parking", false),
+        Q("Most important safety rule when backing?", ["A) Back quickly", "B) Use a helper when possible", "C) Use only mirrors", "D) Back toward passenger side"], "B", "A helper can see blind spots you cannot see from driver's seat.", "Backing Safely", false),
+        Q("What is an escape ramp for?", ["A) Rest area", "B) Stop runaway vehicles with brake failure", "C) Emergency lane", "D) Truck inspection"], "B", "Escape ramps use soft gravel or uphill grade to stop vehicles with brake failure.", "Mountain Driving", false),
+        Q("Can federal inspectors inspect your truck?", ["A) No", "B) Yes, and can place out of service", "C) Only at weigh stations", "D) Only with warrant"], "B", "Federal and state inspectors can inspect your vehicle and place it out of service if unsafe.", "Inspections", false),
+        Q("Two ways to know when to shift gears?", ["A) Time and distance", "B) Engine RPM and road speed (MPH)", "C) Fuel and temperature", "D) Weight and grade"], "B", "Use tachometer (RPM) or speedometer (MPH) to know when to shift.", "Shifting Gears", false),
+        Q("How often to inspect cargo while driving?", ["A) Every 2 hours", "B) Within 50 miles, then every 150 miles or 3 hours", "C) Every 4 hours", "D) Every 250 miles"], "B", "Inspect cargo within first 50 miles, then every 150 miles or three hours.", "Cargo", false),
+        Q("How does tire pressure change with temperature?", ["A) Decreases as temp rises", "B) Increases as temp rises", "C) No change", "D) Depends on tire"], "B", "Air pressure in tires increases as temperature rises. Do not let air out of hot tires.", "Tires", false),
+        Q("Yellow dashboard warning light indicates?", ["A) Low oil", "B) ABS malfunction", "C) Low air pressure", "D) High coolant"], "B", "Yellow ABS lamp indicates antilock brake system malfunction. Regular brakes still work.", "ABS", false),
+        Q("Hazards of transporting liquid cargo in tankers?", ["A) Leaks only", "B) Fires only", "C) Liquid surge", "D) All of the above"], "D", "Tanker hazards include leaks, fires, and liquid surge which affects vehicle handling.", "Tank Vehicles", false),
+        Q("Battery fluid hazard class?", ["A) Class 3", "B) Class 6", "C) Class 8", "D) Class 9"], "C", "Battery fluid (sulfuric acid) is a corrosive material, Class 8.", "Hazardous Materials", false),
+        Q("What does GCW stand for?", ["A) Gross Cargo Weight", "B) Gross Combination Weight (power + trailer + cargo)", "C) Gross Car Weight", "D) General Cargo Weight"], "B", "GCW is the total weight of powered unit plus trailer(s) plus cargo.", "Weight Limits", false),
+        Q("Definition of a road hazard?", ["A) Only other vehicles", "B) Any road condition or user that is a possible danger", "C) Only bad weather", "D) Only construction"], "B", "A hazard is any road condition or other road user that is a possible danger.", "Hazard Awareness", false),
+        Q("What to watch for in construction zones?", ["A) Speed up", "B) Sharp pavement drop offs", "C) Ignore workers", "D) Use high beams"], "B", "Work zones may have narrow lanes, sharp turns, uneven surfaces, and pavement drop offs.", "Work Zones", false),
+        Q("Night driving speed rule?", ["A) Use high beams always", "B) Adjust speed so stopping distance is within sight distance", "C) Same as daytime", "D) Never use low beams"], "B", "Adjust speed so you can stop within the distance you can see with your headlights.", "Night Driving", false),
+        Q("Purpose of bridge formula?", ["A) Increase speed limits", "B) Reduce axle weight for axles closer together", "C) Allow heavier trucks", "D) Reduce tolls"], "B", "Bridge formula permits less maximum axle weight for axles that are closer together to protect bridges.", "Weight Limits", false),
+        Q("Primary cause of most serious skids?", ["A) Bad tires", "B) Driving too fast for conditions", "C) Poor brakes", "D) Overloading"], "B", "Most serious skids result from driving too fast for road conditions.", "Skid Control", true),
+        Q("What is countersteering?", ["A) Turning wheel back after steering to avoid obstacle", "B) Steering with one hand", "C) Using power steering", "D) Steering away"], "A", "Countersteering is turning the wheel back after passing an obstacle to straighten the vehicle.", "Steering", false),
+        Q("Aggressive driving definition?", ["A) Selfish, bold, pushy driving without regard for safety", "B) Slow driving", "C) Using signals", "D) Following distance"], "A", "Aggressive driving includes tailgating, speeding, erratic lane changes, and ignoring traffic laws.", "Aggressive Drivers", false),
+        Q("Move over law requires?", ["A) Move to left lane", "B) Slow down or change lanes for stopped emergency vehicles", "C) Speed up", "D) Stop"], "B", "Move over laws protect emergency workers by requiring drivers to slow or change lanes away from stopped vehicles.", "Laws", false),
+        Q("Why avoid engine brake on slippery roads?", ["A) Illegal", "B) Can cause drive wheel skid", "C) Wears engine", "D) Noisy"], "B", "Engine brake can cause drive wheel skid on ice or wet roads. Do not use on slippery surfaces.", "Slippery Roads", false),
+        Q("Minimum age for interstate CMV driving?", ["A) 18", "B) 19", "C) 21", "D) 25"], "C", "Minimum age 21 to drive a commercial motor vehicle in interstate commerce or transport passengers.", "Age Requirements", false),
+        Q("Maximum fine for bribing a CDL examiner?", ["A) $5,000", "B) $10,000", "C) $25,000 + Class 2 felony", "D) $50,000"], "C", "The offense is a Class 2 felony with fines up to $25,000.", "CDL Rules", false),
+        Q("What is air brake lag distance at 55 mph?", ["A) 10 ft", "B) 32 ft", "C) 50 ft", "D) 100 ft"], "B", "Air brake lag distance at 55 mph on dry pavement adds about 32 feet.", "Stopping Distance", true),
+        Q("Total stopping distance at 55 mph for air brake vehicle?", ["A) 250 ft", "B) 350 ft", "C) Over 450 ft", "D) 600 ft"], "C", "At 55 mph total stopping distance is over 450 feet including brake lag.", "Stopping Distance", true),
+        Q("Required emergency equipment in cab?", ["A) Triangles only", "B) Spare fuses only", "C) Fire extinguisher only", "D) All of the above"], "D", "Three reflective triangles (or 6 fuses/3 flares), spare electrical fuses, and a fire extinguisher.", "Emergency Equipment", false),
+        Q("Why drain air tanks regularly?", ["A) Increase pressure", "B) Remove water and oil that can freeze or damage system", "C) Test governor", "D) Check slack"], "B", "Water can freeze and cause brake failure. Oil can damage the system.", "Maintenance", false),
+        Q("What is a 'wig wag' in air brakes?", ["A) Slack adjuster", "B) Low air pressure warning device", "C) Brake drum", "D) Compressor"], "B", "Wig wag drops a mechanical arm into view when pressure drops below 60 psi.", "Warning Devices", false),
+        Q("What to do if ABS warning light stays on?", ["A) Stop immediately", "B) Drive normally; regular brakes work; get serviced soon", "C) Only use parking brake", "D) Disconnect ABS"], "B", "ABS malfunction lamp indicates ABS not working, but regular brakes still function. Get serviced soon.", "ABS", false),
+        Q("Why is texting while driving most dangerous?", ["A) Takes eyes off road", "B) Takes hands off wheel", "C) Takes mind off driving", "D) All of the above"], "D", "Texting requires visual, manual, and cognitive attention - the most dangerous distraction.", "Distracted Driving", false),
+        Q("Where to park if vehicle catches fire?", ["A) Gas station", "B) Open area away from buildings and vehicles", "C) Residential street", "D) Tunnel"], "B", "Park in open area away from anything that might catch fire. Never pull into service station.", "Fire Safety", false),
+        Q("Red trailer air supply knob when pushed in does what?", ["A) Applies trailer brakes", "B) Supplies air and releases spring brakes", "C) Activates ABS", "D) Raises landing gear"], "B", "Push in to supply air to trailer and release spring brakes.", "Air Systems", false),
+        Q("When should you avoid using your horn?", ["A) To warn others", "B) To avoid accident", "C) To express frustration", "D) When passing"], "C", "Never use horn to express frustration. Use only when necessary to avoid accidents.", "Communication", false),
+        Q("Signs of overheated brakes?", ["A) Burning smell", "B) Soft pedal", "C) Smoke", "D) All of the above"], "D", "Signs include burning smell, smoke, spongy pedal feel, and reduced braking power.", "Braking", false),
+        Q("When is it appropriate to use your horn?", ["A) Express anger", "B) Alert others who don't see you", "C) Greet friends", "D) Warn of police"], "B", "Use horn when necessary to avoid accidents by calling attention to your presence.", "Communication", false),
+        Q("Purpose of hazard flashers on steep grade?", ["A) Save battery", "B) Warn others you're moving slower than traffic", "C) Illegal", "D) Improve traction"], "B", "Use four-way flashers when driving significantly slower than traffic to warn others.", "Communication", false),
+        Q("Why avoid tailgating in a truck?", ["A) Saves fuel", "B) Trucks need much more stopping distance", "C) Legal requirement", "D) Reduces wear"], "B", "Commercial vehicles weigh up to 80,000 lbs and need much longer stopping distance than cars.", "Following Distance", true),
+        Q("What is the purpose of safe stopping distance?", ["A) Save fuel", "B) Allow time to react and brake smoothly", "C) Reduce wear", "D) Increase speed"], "B", "Safe stopping distance gives you time to react and brake without emergency measures.", "Stopping Distance", true),
+        Q("Why avoid using trailer hand valve while driving?", ["A) Wastes air", "B) Can lock trailer wheels and cause skid", "C) Illegal", "D) Slows vehicle too much"], "B", "Trailer hand valve can lock trailer wheels, causing skid and jackknife. Use only for testing.", "Combination Vehicles", false),
+        Q("What to do if headlights fail at night?", ["A) Continue driving", "B) Use emergency flashers and pull off road", "C) Use high beams", "D) Use parking lights"], "B", "Activate hazard lights, slow down, and pull off road safely as soon as possible.", "Night Driving", false),
+        Q("Why avoid cruise control on slippery roads?", ["A) Uses more fuel", "B) Can cause wheel spin and loss of traction", "C) Illegal", "D) Wears brakes"], "B", "Cruise control can cause wheel spin on ice or wet roads, leading to loss of control.", "Slippery Roads", false),
+        Q("Why check tire tread depth?", ["A) Save fuel", "B) Ensure traction and prevent hydroplaning", "C) Reduce noise", "D) Look professional"], "B", "Adequate tread depth channels water away and provides traction on wet roads.", "Tires", false),
+        Q("What to do if brakes get wet?", ["A) Ignore", "B) Lightly apply brakes while driving slowly to dry them", "C) Brake hard", "D) Use parking brake"], "B", "Lightly apply brakes while driving slowly to heat and dry them. Test brakes when safe.", "Braking", false),
+        Q("Why is rolling backward on a hill dangerous?", ["A) Wears clutch", "B) Can hit vehicle behind you", "C) Illegal", "D) Wastes fuel"], "B", "Rolling back can cause you to hit the vehicle behind you. Use parking brake or trailer hand valve.", "Starting on Hills", false),
+        Q("Purpose of convex spot mirrors?", ["A) See behind vehicle", "B) Check blind spots and expand field of view", "C) Check cargo", "D) See dashboard"], "B", "Convex mirrors show blind spots but objects appear smaller and farther away.", "Mirrors", false),
+        Q("Why avoid driving alongside another vehicle?", ["A) Wastes fuel", "B) Traps you in their blind spot, limits escape options", "C) Illegal", "D) Distracting"], "B", "Driving alongside another vehicle removes your escape route and puts you in their blind spot.", "Space Management", false),
+        Q("What to do when being tailgated?", ["A) Speed up", "B) Increase following distance in front of you", "C) Brake check them", "D) Move to left lane"], "B", "Increase following distance in front of you so you can slow gradually without braking hard.", "Space Management", false),
+        Q("How to handle strong crosswinds?", ["A) Speed up", "B) Steer gently, maintain firm grip, slow down", "C) Pull over immediately", "D) Use cruise control"], "B", "Keep firm grip on steering wheel and steer gently. Slow down to lessen wind effect.", "Adverse Conditions", false),
+        Q("What to do if vehicle drifts onto shoulder?", ["A) Jerk wheel back", "B) Slow gradually, then gently steer back", "C) Brake hard", "D) Accelerate"], "B", "Slow down gradually, then gently steer back onto road. Avoid sudden movements.", "Emergencies", false),
+        Q("Why check cargo within first 50 miles?", ["A) Save time", "B) Cargo can settle and loosen tie-downs", "C) Legal only once", "D) Check fuel"], "B", "Cargo can settle or shift after starting, loosening tie-downs. Recheck within first 50 miles.", "Cargo", false),
+        Q("Safest right turn technique for large vehicle?", ["A) Swing wide before turn", "B) Swing wide only after beginning turn", "C) Turn from left lane", "D) Sharp turn"], "B", "Swing wide as you complete the turn, not before starting, to prevent others from passing on right.", "Turning", false),
+        Q("Why is speeding in curves dangerous?", ["A) Wears tires", "B) Increases rollover risk from centrifugal force", "C) Uses more fuel", "D) Hard on suspension"], "B", "Excessive speed in curves can cause rollover due to high center of gravity and centrifugal force.", "Turning", true),
+        Q("Main danger of unsecured cargo?", ["A) Noise", "B) Can shift and affect handling, causing rollover", "C) Fuel waste", "D) Floor wear"], "B", "Shifting cargo can cause rollover, jackknife, and loss of control.", "Cargo", false),
+        Q("How to test a parking brake?", ["A) Push brake pedal", "B) Set parking brake, place in low gear, gently pull forward", "C) Listen for air", "D) Check dash light"], "B", "Set parking brake, place in low gear, and gently pull forward. If vehicle moves, brakes need service.", "Parking Brake", false),
+        Q("Proper mirror adjustment shows:", ["A) Only road", "B) Part of your vehicle for reference", "C) Only other vehicles", "D) Blind spots only"], "B", "Mirrors should show a part of your vehicle to give you a reference point.", "Mirrors", false)
     ];
-    while(generalFullBank.length > 75) generalFullBank.pop();
-    while(generalFullBank.length < 75) generalFullBank.push(generalFullBank[0]);
+    while(generalBank.length < 75) generalBank.push(generalBank[0]);
+    if(generalBank.length > 75) generalBank.length = 75;
 
-    // ----- AIR BRAKES BANK -----
-    const airFullBank = [
-        createQuestion("What does the air compressor governor control?", ["A) Oil pressure", "B) When compressor pumps air (cut-in/cut-out)", "C) Brake pedal pressure", "D) Trailer brake timing"], "B", "Governor controls cut-out (~125 psi) and cut-in (~100 psi).", "Air System Components", true),
-        createQuestion("At what pressure must the low air warning activate?", ["A) 80 psi", "B) 60 psi", "C) 50 psi", "D) 40 psi"], "B", "Warning must come on before air pressure falls below 60 psi.", "Air System Components", true),
-        createQuestion("At what pressure do spring brakes automatically apply?", ["A) 20-45 psi", "B) 50-60 psi", "C) 70 psi", "D) 90 psi"], "A", "Spring brakes come fully on at 20-45 psi.", "Spring Brakes", true),
-        createQuestion("How to check slack adjusters on S-cam brakes?", ["A) Listen for leaks", "B) Pull slack adjuster; if moves >1 inch, needs adjustment", "C) Check ABS light", "D) Measure lining thickness"], "B", "If slack adjuster moves more than 1 inch at push rod, needs adjustment.", "Brake Adjustment", true),
-        createQuestion("Time to build air from 85 to 100 psi in dual system?", ["A) 30 seconds", "B) 45 seconds", "C) 60 seconds", "D) 90 seconds"], "B", "Pressure should build from 85 to 100 psi within 45 seconds.", "Air Brake Checks", true),
-        createQuestion("Safety relief valve in first air tank opens at:", ["A) 100 psi", "B) 150 psi", "C) 200 psi", "D) 250 psi"], "B", "Safety valve opens at 150 psi.", "Air System Components", false),
-        createQuestion("Color of ABS malfunction lamps on trailers?", ["A) Red", "B) Amber", "C) Yellow", "D) Blue"], "C", "Trailers have yellow ABS lamps on left side.", "ABS", false),
-        createQuestion("Proper air brake technique on long downgrade?", ["A) Constant light pressure", "B) Apply firmly to reduce 5 mph below safe speed, release, repeat", "C) Pump rapidly", "D) Use only trailer brake"], "B", "Snubbing method: apply, reduce 5 mph below safe speed, release, repeat.", "Mountain Driving", true),
-        createQuestion("Parking brake control knob color/shape on new vehicles?", ["A) Red round", "B) Yellow diamond-shaped", "C) Blue square", "D) Green octagonal"], "B", "Newer vehicles use a diamond-shaped, yellow, push-pull control knob.", "Parking Brake", false),
-        createQuestion("What is a 'wig wag'?", ["A) Slack adjuster", "B) Low air pressure warning device", "C) Brake drum", "D) Compressor type"], "B", "Wig wag drops a mechanical arm into view when pressure drops below 60 psi.", "Warning Devices", false),
-        createQuestion("Can you use parking brake when brakes are very hot?", ["A) Yes", "B) No - can damage brakes", "C) Only on hills", "D) Only in emergency"], "B", "Hot brakes can be damaged if parking brake is applied. Let them cool first.", "Parking Brake", false),
-        createQuestion("What activates brake lights in an air brake system?", ["A) Timer", "B) Air pressure switch", "C) Brake pedal position", "D) Spring tension"], "B", "Electric switch works by air pressure to turn on brake lights when brakes applied.", "Lighting", false),
-        createQuestion("Air brake lag distance at 55 mph?", ["A) 10 ft", "B) 32 ft", "C) 50 ft", "D) 100 ft"], "B", "Air brake lag distance at 55 mph adds about 32 feet.", "Stopping Distance", true),
-        createQuestion("What does the air compressor do?", ["A) Filters cab air", "B) Pumps air into storage tanks", "C) Controls pedal pressure", "D) Activates ABS"], "B", "The air compressor pumps air into the air storage tanks to supply the brake system.", "Air System Components", false),
-        createQuestion("Emergency air line purpose?", ["A) Controls service brakes", "B) Supplies air and controls emergency brakes", "C) Powers ABS", "D) Operates landing gear"], "B", "The emergency line supplies air to trailer tanks and controls emergency brakes.", "Air Lines", true),
-        createQuestion("Loss of emergency line pressure causes:", ["A) Service brakes to apply", "B) Trailer emergency brakes to come on", "C) ABS to activate", "D) Nothing"], "B", "Loss of pressure in emergency line causes trailer emergency brakes to come on.", "Air Brakes", true),
-        createQuestion("Purpose of separate air tank on some vehicles?", ["A) Fill tires", "B) Release spring brakes in emergency", "C) Power horn", "D) Clean filters"], "B", "Separate air tank can release spring brakes so you can move vehicle in emergency.", "Air Brakes", false),
-        createQuestion("In air disc brakes, pressure acts on brake chamber and:", ["A) Tie rod", "B) Slack adjuster", "C) Cam roller", "D) Power screw"], "B", "Air pressure acts on brake chamber and slack adjuster, which turns a power screw.", "Air Brakes", false),
-        createQuestion("How to test spring brake automatic application?", ["A) Apply foot brake", "B) Fan off air until parking brake valve pops out (20-45 psi)", "C) Release parking brake", "D) Start engine"], "B", "Fan off air pressure until parking brake valve pops out (20-45 psi).", "Air Brake Checks", true),
-        createQuestion("What happens if you cross air lines (red to blue)?", ["A) Brakes work normally", "B) Trailer brakes won't release", "C) ABS deactivates", "D) Only tractor works"], "B", "Supply air goes to service line, spring brakes stay on.", "Air Lines", true),
-        createQuestion("What does the tractor protection valve do?", ["A) Increases pressure", "B) Closes if pressure low (20-45 psi) to stop air leaving tractor", "C) Releases parking brake", "D) Controls ABS"], "B", "Tractor protection valve closes when pressure is low, stopping air from leaving tractor.", "Air Systems", false),
-        createQuestion("When should you use the trailer hand valve?", ["A) While driving", "B) Only to test trailer brakes", "C) For parking", "D) To release springs"], "B", "Using while driving can cause trailer skid. Use only for testing.", "Braking", true),
-        createQuestion("What is the maximum air leakage rate for a single vehicle with foot brake applied for 1 minute?", ["A) 2 psi/min", "B) 3 psi/min", "C) 4 psi/min", "D) 5 psi/min"], "B", "Single vehicle: max 3 psi drop in 1 minute with brakes applied.", "Air Brake Checks", true),
-        createQuestion("What is the maximum air leakage rate for a combination vehicle with foot brake applied for 1 minute?", ["A) 2 psi/min", "B) 3 psi/min", "C) 4 psi/min", "D) 5 psi/min"], "C", "Combination vehicle: max 4 psi drop in 1 minute with brakes applied.", "Air Brake Checks", true),
-        createQuestion("What is the first step of the air brake check on the CDL skills test?", ["A) Air leakage test", "B) Air gauge and governor cutoff check", "C) Low pressure warning test", "D) Emergency brake test"], "B", "First check that air pressure builds to governor cut-out (120-140 psi).", "Air Brake Checks", true)
+    const airBank = [
+        Q("What does the air compressor governor control?", ["A) Oil pressure", "B) When compressor pumps air (cut-in/cut-out)", "C) Brake pedal pressure", "D) Trailer timing"], "B", "Governor controls cut-out (~125 psi) and cut-in (~100 psi).", "Air System", true),
+        Q("At what pressure must low air warning activate?", ["A) 80 psi", "B) 60 psi", "C) 50 psi", "D) 40 psi"], "B", "Warning must come on before pressure falls below 60 psi.", "Air System", true),
+        Q("At what pressure do spring brakes automatically apply?", ["A) 20-45 psi", "B) 50-60 psi", "C) 70 psi", "D) 90 psi"], "A", "Spring brakes come fully on at 20-45 psi.", "Spring Brakes", true),
+        Q("How to check slack adjusters on S-cam brakes?", ["A) Listen for leaks", "B) Pull slack adjuster; if moves >1 inch, needs adjustment", "C) Check ABS light", "D) Measure lining"], "B", "If slack adjuster moves more than 1 inch at push rod, needs adjustment.", "Brake Adjustment", true),
+        Q("Time to build air from 85 to 100 psi in dual system?", ["A) 30 sec", "B) 45 sec", "C) 60 sec", "D) 90 sec"], "B", "Pressure should build from 85 to 100 psi within 45 seconds.", "Air Brake Checks", true),
+        Q("Safety relief valve in first air tank opens at:", ["A) 100 psi", "B) 150 psi", "C) 200 psi", "D) 250 psi"], "B", "Safety valve opens at 150 psi.", "Air System", false),
+        Q("Color of ABS malfunction lamps on trailers?", ["A) Red", "B) Amber", "C) Yellow", "D) Blue"], "C", "Trailers have yellow ABS lamps on left side.", "ABS", false),
+        Q("Proper air brake technique on long downgrade?", ["A) Constant light pressure", "B) Apply firmly to reduce 5 mph below safe speed, release, repeat", "C) Pump rapidly", "D) Use only trailer brake"], "B", "Snubbing method: apply, reduce 5 mph below safe speed, release, repeat.", "Mountain Driving", true),
+        Q("Parking brake knob on new vehicles?", ["A) Red round", "B) Yellow diamond", "C) Blue square", "D) Green octagonal"], "B", "Newer vehicles use a diamond-shaped, yellow, push-pull control knob.", "Parking Brake", false),
+        Q("What is a 'wig wag'?", ["A) Slack adjuster", "B) Low air pressure warning device", "C) Brake drum", "D) Compressor"], "B", "Wig wag drops a mechanical arm into view when pressure drops below 60 psi.", "Warning Devices", false),
+        Q("Can you use parking brake when brakes are very hot?", ["A) Yes", "B) No - can damage brakes", "C) Only on hills", "D) Only in emergency"], "B", "Hot brakes can be damaged if parking brake is applied. Let them cool first.", "Parking Brake", false),
+        Q("What activates brake lights in air brake system?", ["A) Timer", "B) Air pressure switch", "C) Brake pedal position", "D) Spring tension"], "B", "Electric switch works by air pressure to turn on brake lights when brakes applied.", "Lighting", false),
+        Q("Air brake lag distance at 55 mph?", ["A) 10 ft", "B) 32 ft", "C) 50 ft", "D) 100 ft"], "B", "Air brake lag distance at 55 mph adds about 32 feet.", "Stopping Distance", true),
+        Q("What does the air compressor do?", ["A) Filters cab air", "B) Pumps air into storage tanks", "C) Controls pedal pressure", "D) Activates ABS"], "B", "The air compressor pumps air into the air storage tanks to supply the brake system.", "Air System", false),
+        Q("Emergency air line purpose?", ["A) Controls service brakes", "B) Supplies air and controls emergency brakes", "C) Powers ABS", "D) Operates landing gear"], "B", "The emergency line supplies air to trailer tanks and controls emergency brakes.", "Air Lines", true),
+        Q("Loss of emergency line pressure causes?", ["A) Service brakes apply", "B) Trailer emergency brakes come on", "C) ABS activates", "D) Nothing"], "B", "Loss of pressure in emergency line causes trailer emergency brakes to come on.", "Air Brakes", true),
+        Q("Purpose of separate air tank on some vehicles?", ["A) Fill tires", "B) Release spring brakes in emergency", "C) Power horn", "D) Clean filters"], "B", "Separate air tank can release spring brakes so you can move vehicle in emergency.", "Air Brakes", false),
+        Q("In air disc brakes, pressure acts on brake chamber and:", ["A) Tie rod", "B) Slack adjuster", "C) Cam roller", "D) Power screw"], "B", "Air pressure acts on brake chamber and slack adjuster, which turns a power screw.", "Air Brakes", false),
+        Q("How to test spring brake automatic application?", ["A) Apply foot brake", "B) Fan off air until parking brake valve pops out (20-45 psi)", "C) Release parking brake", "D) Start engine"], "B", "Fan off air pressure until parking brake valve pops out (20-45 psi).", "Air Brake Checks", true),
+        Q("What happens if you cross air lines (red to blue)?", ["A) Brakes work normally", "B) Trailer brakes won't release", "C) ABS deactivates", "D) Only tractor works"], "B", "Supply air goes to service line, spring brakes stay on.", "Air Lines", true),
+        Q("What does the tractor protection valve do?", ["A) Increases pressure", "B) Closes if pressure low (20-45 psi) to stop air leaving tractor", "C) Releases parking brake", "D) Controls ABS"], "B", "Tractor protection valve closes when pressure is low, stopping air from leaving tractor.", "Air Systems", false),
+        Q("When should you use the trailer hand valve?", ["A) While driving", "B) Only to test trailer brakes", "C) For parking", "D) To release springs"], "B", "Using while driving can cause trailer skid. Use only for testing.", "Braking", true),
+        Q("Max air leakage for single vehicle with foot brake applied 1 min?", ["A) 2 psi", "B) 3 psi", "C) 4 psi", "D) 5 psi"], "B", "Single vehicle: max 3 psi drop in 1 minute.", "Air Brake Checks", true),
+        Q("Max air leakage for combination vehicle with foot brake applied 1 min?", ["A) 2 psi", "B) 3 psi", "C) 4 psi", "D) 5 psi"], "C", "Combination vehicle: max 4 psi drop in 1 minute.", "Air Brake Checks", true),
+        Q("First step of air brake check on CDL skills test?", ["A) Air leakage test", "B) Air gauge and governor cutoff check", "C) Low pressure warning", "D) Emergency brake test"], "B", "First check that air pressure builds to governor cut-out (120-140 psi).", "Air Brake Checks", true)
     ];
-    while(airFullBank.length < 25) airFullBank.push(airFullBank[0]);
-    if(airFullBank.length > 25) airFullBank.length = 25;
+    while(airBank.length < 25) airBank.push(airBank[0]);
+    if(airBank.length > 25) airBank.length = 25;
 
-    // ----- COMBINATION VEHICLES BANK -----
-    const comboFullBank = [
-        createQuestion("What is off-tracking?", ["A) Losing GPS", "B) Rear wheels follow different path than front in turns", "C) ABS malfunction", "D) Air leak"], "B", "Rear wheels cut corners more than front wheels during turns.", "Turning", true),
-        createQuestion("Which vehicle has highest rearward amplification?", ["A) Straight truck", "B) Tractor-semitrailer", "C) Doubles", "D) Triples"], "D", "Triples have 3.5x rearward amplification, making last trailer most likely to roll over.", "Rollover Risk", true),
-        createQuestion("How to steer when backing a trailer?", ["A) Same direction as trailer", "B) Opposite direction", "C) Left only", "D) Right only"], "B", "Turn opposite direction you want the trailer to go.", "Backing", false),
-        createQuestion("When should the trailer hand valve be used?", ["A) While driving", "B) Only to test trailer brakes", "C) For parking only", "D) To release springs"], "B", "Using while driving can cause trailer skid.", "Braking", true),
-        createQuestion("Purpose of emergency air line?", ["A) Controls service brakes", "B) Supplies air and controls emergency brakes", "C) Powers ABS", "D) Operates landing gear"], "B", "Emergency line supplies air to trailer tanks and controls emergency brakes.", "Air Lines", true),
-        createQuestion("Color of emergency air line?", ["A) Blue", "B) Red", "C) Green", "D) Yellow"], "B", "Emergency line is red, service line is blue.", "Air Lines", false),
-        createQuestion("Color of service air line?", ["A) Blue", "B) Red", "C) Green", "D) Yellow"], "A", "Service line is blue, emergency line is red.", "Air Lines", false),
-        createQuestion("What happens if you cross air lines?", ["A) Brakes work normally", "B) Trailer brakes won't release", "C) ABS deactivates", "D) Only tractor works"], "B", "Supply air goes to service line, spring brakes stay on.", "Air Lines", true),
-        createQuestion("How to test trailer emergency brakes?", ["A) Push air supply knob", "B) Pull knob and gently pull forward", "C) Apply foot brake", "D) Listen for leaks"], "B", "Pull trailer air supply and gently pull forward to check if brakes hold.", "Brake Testing", true),
-        createQuestion("What is a converter dolly used for?", ["A) Increase brake power", "B) Attach second/third trailer", "C) Convert air to hydraulic", "D) Lift landing gear"], "B", "Converter dolly couples additional trailers for doubles/triples.", "Doubles/Triples", false),
-        createQuestion("After coupling, what indicates proper connection?", ["A) No space between tractor and trailer tires", "B) No space between upper and lower fifth wheel", "C) Landing gear on ground", "D) Kingpin visible"], "B", "No gap between upper and lower fifth wheel indicates proper coupling.", "Coupling", true),
-        createQuestion("Main cause of trailer jackknife?", ["A) Over acceleration", "B) Trailer wheels locking up", "C) Low tire pressure", "D) Overloading"], "B", "Locked trailer wheels cause the trailer to swing around (jackknife).", "Jackknife Prevention", true),
-        createQuestion("Should you use trailer hand brake to fix a jackknife?", ["A) Yes immediately", "B) Never - it caused the skid", "C) Only if ABS fails", "D) In emergency only"], "B", "The hand brake caused the skid. Release brakes to regain traction.", "Jackknife Prevention", true),
-        createQuestion("What does the tractor protection valve do?", ["A) Increases pressure", "B) Closes if pressure low (20-45 psi) to stop air leaving tractor", "C) Releases parking brake", "D) Controls ABS"], "B", "Tractor protection valve closes when pressure is low, stopping air from leaving tractor.", "Air Systems", false),
-        createQuestion("Fifth wheel position before coupling?", ["A) Up toward cab", "B) Down toward rear of tractor", "C) Level", "D) Any direction"], "B", "Fifth wheel should tilt down toward rear for proper coupling.", "Coupling", false),
-        createQuestion("What is rearward amplification?", ["A) Increased braking distance", "B) Rear trailers amplify steering inputs, increasing rollover risk", "C) Improved fuel efficiency", "D) Reduced turning radius"], "B", "Rearward amplification causes the last trailer to be more likely to roll over than the tractor.", "Rollover Risk", true),
-        createQuestion("What does red 8-sided trailer air supply knob do when pushed in?", ["A) Applies trailer brakes", "B) Supplies air and releases spring brakes", "C) Activates ABS", "D) Raises landing gear"], "B", "Push in to supply air to trailer and release spring brakes.", "Air Systems", false),
-        createQuestion("How to secure a trailer without spring brakes when parked?", ["A) Leave attached", "B) Use wheel chocks", "C) Deflate tires", "D) Lower landing gear fully"], "B", "Trailers without spring brakes need wheel chocks to prevent movement.", "Parking", false),
-        createQuestion("Minimum following distance rule for combos over 40 mph?", ["A) 1 sec per 10 ft + 1 sec", "B) 4 seconds", "C) 10 seconds", "D) 2 seconds"], "A", "One second per 10 feet plus one additional second for speeds over 40 mph.", "Following Distance", true),
-        createQuestion("Why steer gently when pulling doubles/triples?", ["A) Crack-the-whip effect - rear trailer may roll over", "B) Poor fuel economy", "C) Reduced braking", "D) Increased noise"], "A", "Doubles/triples are more likely to roll over due to crack-the-whip effect.", "Rollover Risk", true)
+    const comboBank = [
+        Q("What is off-tracking?", ["A) Losing GPS", "B) Rear wheels follow different path than front in turns", "C) ABS malfunction", "D) Air leak"], "B", "Rear wheels cut corners more than front wheels during turns.", "Turning", true),
+        Q("Which vehicle has highest rearward amplification?", ["A) Straight truck", "B) Tractor-semitrailer", "C) Doubles", "D) Triples"], "D", "Triples have 3.5x rearward amplification, making last trailer most likely to roll over.", "Rollover Risk", true),
+        Q("How to steer when backing a trailer?", ["A) Same direction as trailer", "B) Opposite direction", "C) Left only", "D) Right only"], "B", "Turn opposite direction you want the trailer to go.", "Backing", false),
+        Q("When should the trailer hand valve be used?", ["A) While driving", "B) Only to test trailer brakes", "C) For parking only", "D) To release springs"], "B", "Using while driving can cause trailer skid.", "Braking", true),
+        Q("Purpose of emergency air line?", ["A) Controls service brakes", "B) Supplies air and controls emergency brakes", "C) Powers ABS", "D) Operates landing gear"], "B", "Emergency line supplies air to trailer tanks and controls emergency brakes.", "Air Lines", true),
+        Q("Color of emergency air line?", ["A) Blue", "B) Red", "C) Green", "D) Yellow"], "B", "Emergency line is red, service line is blue.", "Air Lines", false),
+        Q("Color of service air line?", ["A) Blue", "B) Red", "C) Green", "D) Yellow"], "A", "Service line is blue, emergency line is red.", "Air Lines", false),
+        Q("What happens if you cross air lines?", ["A) Brakes work normally", "B) Trailer brakes won't release", "C) ABS deactivates", "D) Only tractor works"], "B", "Supply air goes to service line, spring brakes stay on.", "Air Lines", true),
+        Q("How to test trailer emergency brakes?", ["A) Push air supply knob", "B) Pull knob and gently pull forward", "C) Apply foot brake", "D) Listen for leaks"], "B", "Pull trailer air supply and gently pull forward to check if brakes hold.", "Brake Testing", true),
+        Q("What is a converter dolly used for?", ["A) Increase brake power", "B) Attach second/third trailer", "C) Convert air to hydraulic", "D) Lift landing gear"], "B", "Converter dolly couples additional trailers for doubles/triples.", "Doubles/Triples", false),
+        Q("After coupling, what indicates proper connection?", ["A) No space between tractor and trailer tires", "B) No space between upper and lower fifth wheel", "C) Landing gear on ground", "D) Kingpin visible"], "B", "No gap between upper and lower fifth wheel indicates proper coupling.", "Coupling", true),
+        Q("Main cause of trailer jackknife?", ["A) Over acceleration", "B) Trailer wheels locking up", "C) Low tire pressure", "D) Overloading"], "B", "Locked trailer wheels cause the trailer to swing around (jackknife).", "Jackknife Prevention", true),
+        Q("Should you use trailer hand brake to fix a jackknife?", ["A) Yes immediately", "B) Never - it caused the skid", "C) Only if ABS fails", "D) In emergency only"], "B", "The hand brake caused the skid. Release brakes to regain traction.", "Jackknife Prevention", true),
+        Q("What does the tractor protection valve do?", ["A) Increases pressure", "B) Closes if pressure low (20-45 psi) to stop air leaving tractor", "C) Releases parking brake", "D) Controls ABS"], "B", "Tractor protection valve closes when pressure is low, stopping air from leaving tractor.", "Air Systems", false),
+        Q("Fifth wheel position before coupling?", ["A) Up toward cab", "B) Down toward rear of tractor", "C) Level", "D) Any direction"], "B", "Fifth wheel should tilt down toward rear for proper coupling.", "Coupling", false),
+        Q("What is rearward amplification?", ["A) Increased braking distance", "B) Rear trailers amplify steering inputs, increasing rollover risk", "C) Improved fuel efficiency", "D) Reduced turning radius"], "B", "Rearward amplification causes the last trailer to be more likely to roll over than the tractor.", "Rollover Risk", true),
+        Q("What does red 8-sided trailer air supply knob do when pushed in?", ["A) Applies trailer brakes", "B) Supplies air and releases spring brakes", "C) Activates ABS", "D) Raises landing gear"], "B", "Push in to supply air to trailer and release spring brakes.", "Air Systems", false),
+        Q("How to secure a trailer without spring brakes when parked?", ["A) Leave attached", "B) Use wheel chocks", "C) Deflate tires", "D) Lower landing gear fully"], "B", "Trailers without spring brakes need wheel chocks to prevent movement.", "Parking", false),
+        Q("Minimum following distance rule for combos over 40 mph?", ["A) 1 sec per 10 ft + 1 sec", "B) 4 seconds", "C) 10 seconds", "D) 2 seconds"], "A", "One second per 10 feet plus one additional second for speeds over 40 mph.", "Following Distance", true),
+        Q("Why steer gently when pulling doubles/triples?", ["A) Crack-the-whip effect - rear trailer may roll over", "B) Poor fuel economy", "C) Reduced braking", "D) Increased noise"], "A", "Doubles/triples are more likely to roll over due to crack-the-whip effect.", "Rollover Risk", true)
     ];
-    while(comboFullBank.length < 20) comboFullBank.push(comboFullBank[0]);
-    if(comboFullBank.length > 20) comboFullBank.length = 20;
+    while(comboBank.length < 20) comboBank.push(comboBank[0]);
+    if(comboBank.length > 20) comboBank.length = 20;
 
-    // ----- PRE-TRIP INSPECTION BANK -----
-    const pretripFullBank = [
-        createQuestion("Maximum allowable steering wheel play on 20-inch wheel?", ["A) 5 degrees", "B) 10 degrees (~2 inches)", "C) 20 degrees", "D) 30 degrees"], "B", "More than 10 degrees makes steering hard.", "Steering", true),
-        createQuestion("What to check on tires during pre-trip?", ["A) Inflation", "B) Tread depth", "C) Cuts/bulges", "D) All of the above"], "D", "Check inflation, tread depth, cuts, bulges, valve stems.", "Tires", false),
-        createQuestion("What to check in exhaust system?", ["A) Loose pipes", "B) Missing brackets", "C) Leaks", "D) All of the above"], "D", "Leaks can let carbon monoxide into cab.", "Exhaust", false),
-        createQuestion("Fire extinguisher requirements?", ["A) Charged", "B) Secured", "C) Rated 10 B:C for placarded", "D) All of the above"], "D", "Must be charged, secured, and properly rated.", "Emergency Equipment", false),
-        createQuestion("Three required emergency warning devices?", ["A) 3 red triangles (or 6 fuses/3 flares)", "B) 2 red flags", "C) 1 flare and 2 triangles", "D) Reflective vest"], "A", "Three triangles, six fuses, or three flares required.", "Emergency Equipment", false),
-        createQuestion("What to check on brake drums?", ["A) Cracks", "B) Oil/grease on linings", "C) Worn linings", "D) All of the above"], "D", "Check for cracks, contamination, and wear.", "Brakes", false),
-        createQuestion("What to check on leaf springs?", ["A) Missing/broken leaves", "B) Cracked hangers", "C) Tight U-bolts", "D) All of the above"], "D", "Check for damage and secure mounting.", "Suspension", false),
-        createQuestion("What to check on wheels and rims?", ["A) Cracks/bends", "B) Rust trails", "C) Missing lug nuts", "D) All of the above"], "D", "Check for damage, looseness, missing nuts.", "Wheels", false),
-        createQuestion("What to check on coupling system?", ["A) Fifth wheel mount", "B) No gap", "C) Locking jaws", "D) All of the above"], "D", "Inspect all coupling components.", "Coupling", true),
-        createQuestion("Landing gear condition for travel?", ["A) Fully raised", "B) Not damaged", "C) Crank secured", "D) All of the above"], "D", "Landing gear must be fully raised and undamaged.", "Landing Gear", false),
-        createQuestion("Engine compartment fluid checks?", ["A) Oil level", "B) Coolant level", "C) Belts and hoses", "D) All of the above"], "D", "Check all fluid levels, belts, hoses, and for leaks.", "Engine", false),
-        createQuestion("Mirror inspection points?", ["A) Clean and not cracked", "B) Securely mounted", "C) Properly adjusted", "D) All of the above"], "D", "Mirrors must be clean, undamaged, secure, and properly adjusted.", "Mirrors", false),
-        createQuestion("Battery inspection items?", ["A) Securely mounted", "B) No corrosion", "C) Proper fluid level", "D) All of the above"], "D", "Check battery mounting, corrosion, and fluid level.", "Electrical", false),
-        createQuestion("Glad hand inspection?", ["A) Rubber seals", "B) Proper connection", "C) No air leaks", "D) All of the above"], "D", "Check seals, correct connection, and for leaks.", "Air Lines", false),
-        createQuestion("In-cab ABS light behavior?", ["A) Stay on", "B) Come on then turn off (bulb check)", "C) Never come on", "D) Flash red"], "B", "ABS light should do bulb check then turn off. If it stays on, ABS has problem.", "ABS", false),
-        createQuestion("Windshield inspection?", ["A) Cracks", "B) Clean", "C) No illegal stickers", "D) All of the above"], "D", "Check for damage, cleanliness, and obstructions.", "Visibility", false),
-        createQuestion("Where should ignition key be during pre-trip?", ["A) In your pocket", "B) In ignition", "C) On seat", "D) In glove box"], "A", "Place key in pocket so no one moves the vehicle while you inspect.", "Vehicle Inspection", false),
-        createQuestion("Rust around wheel nuts indicates?", ["A) Nuts are loose", "B) Nuts are too tight", "C) Normal", "D) New wheels"], "A", "Rust trails or streaks from lug nuts indicate they may be loose.", "Vehicle Inspection", false),
-        createQuestion("Wiper/washer inspection?", ["A) Wipers work", "B) Washers work", "C) Blades not worn", "D) All of the above"], "D", "Wipers and washers must work for visibility in rain/snow.", "Visibility", false),
-        createQuestion("Fuel tank inspection?", ["A) Securely mounted", "B) Caps tight", "C) No leaks", "D) All of the above"], "D", "Fuel tanks must be secure, capped, and leak-free.", "Fuel System", false)
+    const pretripBank = [
+        Q("Max steering wheel play on 20-inch wheel?", ["A) 5 degrees", "B) 10 degrees (~2 inches)", "C) 20 degrees", "D) 30 degrees"], "B", "More than 10 degrees makes steering hard.", "Steering", true),
+        Q("What to check on tires during pre-trip?", ["A) Inflation", "B) Tread depth", "C) Cuts/bulges", "D) All of the above"], "D", "Check inflation, tread depth, cuts, bulges, valve stems.", "Tires", false),
+        Q("What to check in exhaust system?", ["A) Loose pipes", "B) Missing brackets", "C) Leaks", "D) All of the above"], "D", "Leaks can let carbon monoxide into cab.", "Exhaust", false),
+        Q("Fire extinguisher requirements?", ["A) Charged", "B) Secured", "C) Rated 10 B:C for placarded", "D) All of the above"], "D", "Must be charged, secured, and properly rated.", "Emergency Equipment", false),
+        Q("Three required emergency warning devices?", ["A) 3 red triangles (or 6 fuses/3 flares)", "B) 2 red flags", "C) 1 flare and 2 triangles", "D) Reflective vest"], "A", "Three triangles, six fuses, or three flares required.", "Emergency Equipment", false),
+        Q("What to check on brake drums?", ["A) Cracks", "B) Oil/grease on linings", "C) Worn linings", "D) All of the above"], "D", "Check for cracks, contamination, and wear.", "Brakes", false),
+        Q("What to check on leaf springs?", ["A) Missing/broken leaves", "B) Cracked hangers", "C) Tight U-bolts", "D) All of the above"], "D", "Check for damage and secure mounting.", "Suspension", false),
+        Q("What to check on wheels and rims?", ["A) Cracks/bends", "B) Rust trails", "C) Missing lug nuts", "D) All of the above"], "D", "Check for damage, looseness, missing nuts.", "Wheels", false),
+        Q("What to check on coupling system?", ["A) Fifth wheel mount", "B) No gap", "C) Locking jaws", "D) All of the above"], "D", "Inspect all coupling components.", "Coupling", true),
+        Q("Landing gear condition for travel?", ["A) Fully raised", "B) Not damaged", "C) Crank secured", "D) All of the above"], "D", "Landing gear must be fully raised and undamaged.", "Landing Gear", false),
+        Q("Engine compartment fluid checks?", ["A) Oil level", "B) Coolant level", "C) Belts and hoses", "D) All of the above"], "D", "Check all fluid levels, belts, hoses, and for leaks.", "Engine", false),
+        Q("Mirror inspection points?", ["A) Clean and not cracked", "B) Securely mounted", "C) Properly adjusted", "D) All of the above"], "D", "Mirrors must be clean, undamaged, secure, and properly adjusted.", "Mirrors", false),
+        Q("Battery inspection items?", ["A) Securely mounted", "B) No corrosion", "C) Proper fluid level", "D) All of the above"], "D", "Check battery mounting, corrosion, and fluid level.", "Electrical", false),
+        Q("Glad hand inspection?", ["A) Rubber seals", "B) Proper connection", "C) No air leaks", "D) All of the above"], "D", "Check seals, correct connection, and for leaks.", "Air Lines", false),
+        Q("In-cab ABS light behavior?", ["A) Stay on", "B) Come on then turn off (bulb check)", "C) Never come on", "D) Flash red"], "B", "ABS light should do bulb check then turn off. If it stays on, ABS has problem.", "ABS", false),
+        Q("Windshield inspection?", ["A) Cracks", "B) Clean", "C) No illegal stickers", "D) All of the above"], "D", "Check for damage, cleanliness, and obstructions.", "Visibility", false),
+        Q("Where should ignition key be during pre-trip?", ["A) In your pocket", "B) In ignition", "C) On seat", "D) In glove box"], "A", "Place key in pocket so no one moves the vehicle while you inspect.", "Vehicle Inspection", false),
+        Q("Rust around wheel nuts indicates?", ["A) Nuts are loose", "B) Nuts are too tight", "C) Normal", "D) New wheels"], "A", "Rust trails or streaks from lug nuts indicate they may be loose.", "Vehicle Inspection", false),
+        Q("Wiper/washer inspection?", ["A) Wipers work", "B) Washers work", "C) Blades not worn", "D) All of the above"], "D", "Wipers and washers must work for visibility in rain/snow.", "Visibility", false),
+        Q("Fuel tank inspection?", ["A) Securely mounted", "B) Caps tight", "C) No leaks", "D) All of the above"], "D", "Fuel tanks must be secure, capped, and leak-free.", "Fuel System", false)
     ];
-    while(pretripFullBank.length < 20) pretripFullBank.push(pretripFullBank[0]);
-    if(pretripFullBank.length > 20) pretripFullBank.length = 20;
+    while(pretripBank.length < 20) pretripBank.push(pretripBank[0]);
+    if(pretripBank.length > 20) pretripBank.length = 20;
 
-    const testConfigs = {
-        general: { bank: generalFullBank, count: 50, name: "General Knowledge" },
-        air: { bank: airFullBank, count: 25, name: "Air Brakes" },
-        combo: { bank: comboFullBank, count: 20, name: "Combination Vehicles" },
-        pretrip: { bank: pretripFullBank, count: 20, name: "Pre-Trip Inspection" }
+    const configs = {
+        general: { bank: generalBank, count: 50, name: "General Knowledge" },
+        air: { bank: airBank, count: 25, name: "Air Brakes" },
+        combo: { bank: comboBank, count: 20, name: "Combination Vehicles" },
+        pretrip: { bank: pretripBank, count: 20, name: "Pre-Trip Inspection" }
     };
 
-    function getRandomQuestions(bank, count) {
-        const shuffled = [...bank];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    function shuffleSelect(bank, n) {
+        let arr = [...bank];
+        for (let i = arr.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-        return shuffled.slice(0, count);
+        return arr.slice(0, n);
     }
 
-    // Global state
-    let currentQuestions = [];
-    let currentIndex = 0;
-    let userAnswers = [];
-    let questionDifficulties = [];
-    let flaggedIndices = new Set();
-    let testCompleted = false;
-    let currentTestType = "general";
-    let isReviewMode = false;
-    let originalQuestions = [];
-    let originalAnswers = [];
-    let timerInterval = null;
-    let elapsedSeconds = 0;
-    let timerVisible = false;
-    let scoreHistory = [];
-    let topicStats = {};
+    let questions = [], answers = [], difficulties = [], flagged = new Set();
+    let idx = 0, completed = false, reviewMode = false, origQuestions = [], origAnswers = [];
+    let timerInterval = null, elapsed = 0, timerOn = false, testType = "general";
+    let scoreHistory = [], topicStats = {};
 
-    // DOM elements
-    const testSelect = document.getElementById('testTypeSelect');
-    const clockDisplay = document.getElementById('clockDisplay');
+    const testSelect = document.getElementById('testSelect');
     const timerToggle = document.getElementById('timerToggle');
-    const liveScoreDisplay = document.getElementById('liveScoreDisplay');
+    const clockSpan = document.getElementById('clockDisplay');
+    const liveScoreSpan = document.getElementById('liveScore');
+    const qCounterSpan = document.getElementById('qCounter');
+    const bookmarkSpan = document.getElementById('bookmarkIcon');
+    const qTextSpan = document.getElementById('qText');
+    const optionsDiv = document.getElementById('optionsContainer');
+    const diffRow = document.getElementById('difficultyRow');
+    const feedbackDiv = document.getElementById('feedback');
     const nextBtn = document.getElementById('nextBtn');
-    const resetBtn = document.getElementById('resetTestBtn');
     const flagBtn = document.getElementById('flagBtn');
-    const resetCompleteBtn = document.getElementById('resetAfterCompleteBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const scorePanel = document.getElementById('scorePanel');
+    const finalScoreSpan = document.getElementById('finalScore');
+    const passMsgSpan = document.getElementById('passMsg');
+    const statsPanelDiv = document.getElementById('statsPanel');
     const reviewMissedBtn = document.getElementById('reviewMissedBtn');
     const reviewFlaggedBtn = document.getElementById('reviewFlaggedBtn');
-    const downloadMissedBtn = document.getElementById('downloadMissedBtn');
-    const scorePanel = document.getElementById('scorePanel');
-    const modeIndicator = document.getElementById('modeIndicator');
-    const progressSpan = document.getElementById('progressIndicator');
-    const bookmarkIndicator = document.getElementById('bookmarkIndicator');
-    const questionTextDiv = document.getElementById('questionText');
-    const optionsContainer = document.getElementById('optionsContainer');
-    const feedbackDiv = document.getElementById('feedbackArea');
-    const difficultyButtons = document.getElementById('difficultyButtons');
+    const newTestBtn = document.getElementById('newTestBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const reviewBadge = document.getElementById('reviewModeBadge');
 
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }
+    function formatTime(s) { return `${Math.floor(s/60)}:${(s%60).toString().padStart(2,'0')}`; }
+    function updateClock() { if (timerOn && !completed) clockSpan.textContent = formatTime(elapsed); }
+    function startTimer() { if (timerInterval) clearInterval(timerInterval); timerInterval = setInterval(() => { if (timerOn && !completed) { elapsed++; updateClock(); } }, 1000); }
+    function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
+    function resetTimer() { stopTimer(); elapsed = 0; updateClock(); if (timerOn && !completed) startTimer(); }
 
-    function updateTimerDisplay() {
-        clockDisplay.textContent = formatTime(elapsedSeconds);
-    }
-
-    function startClock() {
-        if (timerInterval) clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            if (!testCompleted && timerVisible) {
-                elapsedSeconds++;
-                updateTimerDisplay();
-            }
-        }, 1000);
-    }
-
-    function stopClock() {
-        if (timerInterval) {
-            clearInterval(timerInterval);
-            timerInterval = null;
+    function updateScore() {
+        if (completed || reviewMode) return;
+        let correct = 0, answered = 0;
+        for (let i = 0; i <= idx; i++) {
+            if (answers[i] !== null) { answered++; if (answers[i] === questions[i].correct) correct++; }
         }
+        let pct = answered ? Math.round(correct/answered*100) : 0;
+        let remaining = questions.length - answered;
+        liveScoreSpan.innerHTML = `✅ ${correct} | ❌ ${answered-correct} | ${pct}% | ${remaining} left`;
     }
 
-    function resetClock() {
-        stopClock();
-        elapsedSeconds = 0;
-        updateTimerDisplay();
-        if (timerVisible && !testCompleted) startClock();
+    function render() {
+        if (completed || idx >= questions.length) { endTest(); return; }
+        let q = questions[idx];
+        let total = questions.length;
+        let cfg = configs[testType];
+        let priorityHtml = q.priority ? '<span class="priority">⚠️ High Priority</span>' : '';
+        qCounterSpan.innerHTML = `${idx+1}/${total} | ${cfg.name} ${priorityHtml}`;
+        bookmarkSpan.innerHTML = flagged.has(idx) ? "⭐ Flagged" : "☆";
+        qTextSpan.innerHTML = q.text;
+        optionsDiv.innerHTML = '';
+        q.options.forEach(opt => {
+            let letter = opt[0];
+            let div = document.createElement('div');
+            div.className = 'option';
+            if (answers[idx] === letter) div.classList.add('selected');
+            let radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'q';
+            radio.value = letter;
+            if (answers[idx] === letter) radio.checked = true;
+            let span = document.createElement('span');
+            span.className = 'option-text';
+            span.innerText = opt;
+            div.appendChild(radio);
+            div.appendChild(span);
+            div.onclick = (e) => { if (e.target.tagName !== 'INPUT' && !completed && answers[idx] === null) selectAnswer(letter); };
+            optionsDiv.appendChild(div);
+        });
+        if (answers[idx] !== null) {
+            diffRow.style.display = 'flex';
+            let diff = difficulties[idx];
+            document.querySelectorAll('.diff-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if ((diff === 'easy' && btn.dataset.diff === 'easy') ||
+                    (diff === 'medium' && btn.dataset.diff === 'medium') ||
+                    (diff === 'hard' && btn.dataset.diff === 'hard')) btn.classList.add('selected');
+            });
+        } else { diffRow.style.display = 'none'; feedbackDiv.style.display = 'none'; }
     }
 
-    function updateLiveScore() {
-        if (testCompleted || isReviewMode) return;
-        let correct = 0, incorrect = 0, answered = 0;
-        for (let i = 0; i <= currentIndex; i++) {
-            if (userAnswers[i] !== null) {
-                answered++;
-                if (userAnswers[i] === currentQuestions[i].correct) correct++;
-                else incorrect++;
-            }
-        }
-        const percent = answered > 0 ? Math.round((correct / answered) * 100) : 0;
-        const remaining = currentQuestions.length - answered;
-        liveScoreDisplay.innerHTML = `✅ ${correct} | ❌ ${incorrect} | 📊 ${percent}% | ⏳ ${remaining} left`;
-    }
-
-    function loadTest() {
-        stopClock();
-        const selected = testSelect.value;
-        currentTestType = selected;
-        isReviewMode = false;
-        modeIndicator.style.display = 'none';
-        const config = testConfigs[selected];
-        currentQuestions = getRandomQuestions(config.bank, config.count);
-        originalQuestions = [...currentQuestions];
-        currentIndex = 0;
-        userAnswers = new Array(currentQuestions.length).fill(null);
-        originalAnswers = [...userAnswers];
-        questionDifficulties = new Array(currentQuestions.length).fill(null);
-        flaggedIndices.clear();
-        testCompleted = false;
-        scorePanel.style.display = 'none';
-        reviewMissedBtn.style.display = 'none';
-        elapsedSeconds = 0;
-        updateTimerDisplay();
-        if (timerVisible) startClock();
-        updateLiveScore();
-        renderCurrentQuestion();
-    }
-
-    function updateTopicStats() {
-        topicStats = {};
-        for (let i = 0; i < originalQuestions.length; i++) {
-            const topic = originalQuestions[i].topic;
-            if (!topicStats[topic]) topicStats[topic] = { total: 0, correct: 0 };
-            topicStats[topic].total++;
-            if (originalAnswers[i] === originalQuestions[i].correct) topicStats[topic].correct++;
-        }
-    }
-
-    function handleAnswer(selectedLetter) {
-        if (testCompleted) return;
-        if (userAnswers[currentIndex] !== null) return;
-        const q = currentQuestions[currentIndex];
-        userAnswers[currentIndex] = selectedLetter;
-        if (!isReviewMode) originalAnswers[currentIndex] = selectedLetter;
-        const isCorrect = (selectedLetter === q.correct);
+    function selectAnswer(letter) {
+        if (completed) return;
+        let q = questions[idx];
+        answers[idx] = letter;
+        if (!reviewMode) origAnswers[idx] = letter;
+        let isCorrect = (letter === q.correct);
         feedbackDiv.style.display = 'block';
         if (isCorrect) {
-            feedbackDiv.className = 'feedback-area feedback-correct';
+            feedbackDiv.className = 'feedback feedback-correct';
             feedbackDiv.innerHTML = `✅ CORRECT! ${q.explanation}`;
         } else {
-            feedbackDiv.className = 'feedback-area feedback-wrong';
-            const correctLetter = q.correct;
-            const correctText = q.options.find(opt => opt.startsWith(correctLetter)).substring(3);
+            feedbackDiv.className = 'feedback feedback-wrong';
+            let correctLetter = q.correct;
+            let correctText = q.options.find(o => o[0] === correctLetter).substring(3);
             feedbackDiv.innerHTML = `❌ WRONG. Correct: ${correctLetter} — ${correctText}<br>📘 ${q.explanation}`;
         }
-        difficultyButtons.style.display = 'flex';
-        document.querySelectorAll('.option').forEach(opt => {
-            opt.classList.remove('selected');
-            if (opt.dataset.value === selectedLetter) opt.classList.add('selected');
-        });
-        updateLiveScore();
+        diffRow.style.display = 'flex';
+        updateScore();
+        render();
     }
 
-    function renderCurrentQuestion() {
-        if (testCompleted || currentIndex >= currentQuestions.length) { endTest(); return; }
-        const q = currentQuestions[currentIndex];
-        const total = currentQuestions.length;
-        const config = testConfigs[currentTestType];
-        const modeText = isReviewMode ? " [REVIEW MODE]" : "";
-        const priorityHtml = q.priority ? '<span class="priority-badge">⚠️ High Priority</span>' : '';
-        progressSpan.innerHTML = `${currentIndex+1}/${total} | ${config.name}${modeText} ${priorityHtml}`;
-        const isFlagged = flaggedIndices.has(currentIndex);
-        bookmarkIndicator.innerHTML = isFlagged ? "⭐ Flagged" : "☆";
-        questionTextDiv.innerHTML = q.text;
-        optionsContainer.innerHTML = '';
-        q.options.forEach(opt => {
-            const letter = opt.charAt(0);
-            const wrapper = document.createElement('div');
-            wrapper.className = 'option';
-            wrapper.dataset.value = letter;
-            if (userAnswers[currentIndex] === letter) wrapper.classList.add('selected');
-            const radio = document.createElement('input');
-            radio.type = 'radio';
-            radio.name = 'questionOption';
-            radio.value = letter;
-            radio.id = `opt_${letter}`;
-            if (userAnswers[currentIndex] === letter) radio.checked = true;
-            const labelSpan = document.createElement('span');
-            labelSpan.className = 'option-label';
-            labelSpan.innerText = opt;
-            const whyBtn = document.createElement('button');
-            whyBtn.textContent = '❓ Why?';
-            whyBtn.className = 'why-btn';
-            whyBtn.onclick = (e) => {
-                e.stopPropagation();
-                const existingWhy = wrapper.querySelector('.why-explanation');
-                if (existingWhy) { existingWhy.remove(); }
-                else {
-                    const whyDiv = document.createElement('div');
-                    whyDiv.className = 'why-explanation';
-                    const isThisCorrect = opt.startsWith(q.correct);
-                    whyDiv.innerHTML = `📖 ${opt.substring(3)} — ${isThisCorrect ? '✓ This is the correct answer. ' : '✗ This is incorrect because '} ${q.explanation.substring(0, 150)}...`;
-                    wrapper.appendChild(whyDiv);
-                    whyDiv.style.display = 'block';
-                }
-            };
-            wrapper.appendChild(radio);
-            wrapper.appendChild(labelSpan);
-            wrapper.appendChild(whyBtn);
-            wrapper.addEventListener('click', (e) => {
-                if (e.target === whyBtn || whyBtn.contains(e.target)) return;
-                handleAnswer(letter);
-            });
-            optionsContainer.appendChild(wrapper);
-        });
-        if (userAnswers[currentIndex] !== null) {
-            difficultyButtons.style.display = 'flex';
-            const diff = questionDifficulties[currentIndex];
-            document.querySelectorAll('.difficulty-btn').forEach(btn => {
-                btn.classList.remove('selected-easy', 'selected-medium', 'selected-hard');
-                if (diff === 'easy' && btn.dataset.diff === 'easy') btn.classList.add('selected-easy');
-                if (diff === 'medium' && btn.dataset.diff === 'medium') btn.classList.add('selected-medium');
-                if (diff === 'hard' && btn.dataset.diff === 'hard') btn.classList.add('selected-hard');
-            });
-        } else {
-            difficultyButtons.style.display = 'none';
-            feedbackDiv.style.display = 'none';
-        }
-    }
-
-    document.querySelectorAll('.difficulty-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (testCompleted) return;
-            const diff = btn.dataset.diff;
-            questionDifficulties[currentIndex] = diff;
-            document.querySelectorAll('.difficulty-btn').forEach(b => {
-                b.classList.remove('selected-easy', 'selected-medium', 'selected-hard');
-            });
-            btn.classList.add(`selected-${diff}`);
-        });
-    });
-
-    function nextQuestion() {
-        if (testCompleted) return;
-        if (userAnswers[currentIndex] === null && !isReviewMode) { alert("Please answer before continuing."); return; }
-        if (currentIndex + 1 < currentQuestions.length) { currentIndex++; renderCurrentQuestion(); }
+    function next() {
+        if (completed) return;
+        if (answers[idx] === null && !reviewMode) { alert("Please answer before continuing."); return; }
+        if (idx + 1 < questions.length) { idx++; render(); }
         else endTest();
     }
 
-    function flagCurrentQuestion() {
-        if (testCompleted) return;
-        if (flaggedIndices.has(currentIndex)) flaggedIndices.delete(currentIndex);
-        else flaggedIndices.add(currentIndex);
-        bookmarkIndicator.innerHTML = flaggedIndices.has(currentIndex) ? "⭐ Flagged" : "☆";
-    }
+    function flag() { if (completed) return; if (flagged.has(idx)) flagged.delete(idx); else flagged.add(idx); bookmarkSpan.innerHTML = flagged.has(idx) ? "⭐ Flagged" : "☆"; }
 
-    function startReviewMissed() {
-        stopClock();
-        const missedIndices = [];
-        for (let i = 0; i < originalQuestions.length; i++) {
-            if (originalAnswers[i] !== originalQuestions[i].correct) missedIndices.push(i);
-        }
-        if (missedIndices.length === 0) { alert("Perfect! No missed questions."); if (timerVisible) startClock(); return; }
-        currentQuestions = missedIndices.map(i => originalQuestions[i]);
-        currentIndex = 0;
-        userAnswers = new Array(currentQuestions.length).fill(null);
-        testCompleted = false;
-        isReviewMode = true;
-        modeIndicator.style.display = 'inline-block';
-        modeIndicator.innerHTML = `📝 REVIEW: ${currentQuestions.length} missed questions`;
+    function loadTest() {
+        stopTimer();
+        let selected = testSelect.value;
+        testType = selected;
+        reviewMode = false;
+        reviewBadge.style.display = 'none';
+        let cfg = configs[selected];
+        questions = shuffleSelect(cfg.bank, cfg.count);
+        origQuestions = [...questions];
+        idx = 0;
+        answers = new Array(questions.length).fill(null);
+        origAnswers = [...answers];
+        difficulties = new Array(questions.length).fill(null);
+        flagged.clear();
+        completed = false;
         scorePanel.style.display = 'none';
-        elapsedSeconds = 0;
-        updateTimerDisplay();
-        if (timerVisible) startClock();
-        updateLiveScore();
-        renderCurrentQuestion();
-    }
-
-    function startReviewFlagged() {
-        stopClock();
-        if (flaggedIndices.size === 0) { alert("No flagged questions."); if (timerVisible) startClock(); return; }
-        const flaggedList = Array.from(flaggedIndices).sort((a,b) => a-b);
-        currentQuestions = flaggedList.map(i => originalQuestions[i]);
-        currentIndex = 0;
-        userAnswers = new Array(currentQuestions.length).fill(null);
-        testCompleted = false;
-        isReviewMode = true;
-        modeIndicator.style.display = 'inline-block';
-        modeIndicator.innerHTML = `⭐ REVIEW: ${currentQuestions.length} flagged questions`;
-        scorePanel.style.display = 'none';
-        elapsedSeconds = 0;
-        updateTimerDisplay();
-        if (timerVisible) startClock();
-        updateLiveScore();
-        renderCurrentQuestion();
-    }
-
-    function downloadMissed() {
-        const missed = [];
-        for (let i = 0; i < originalQuestions.length; i++) {
-            if (originalAnswers[i] !== originalQuestions[i].correct) {
-                missed.push({
-                    number: i+1,
-                    question: originalQuestions[i].text,
-                    correct: originalQuestions[i].options.find(o => o.startsWith(originalQuestions[i].correct)).substring(3),
-                    explanation: originalQuestions[i].explanation,
-                    topic: originalQuestions[i].topic,
-                    priority: originalQuestions[i].priority
-                });
-            }
-        }
-        if (missed.length === 0) { alert("No missed questions to download!"); return; }
-        let content = `IL CDL Missed Questions - ${new Date().toLocaleString()}\n`;
-        content += `Total Missed: ${missed.length}/${originalQuestions.length}\n`;
-        content += `Score: ${originalQuestions.length - missed.length}/${originalQuestions.length}\n`;
-        content += `${'='.repeat(60)}\n\n`;
-        missed.forEach(m => {
-            content += `Q${m.number} [${m.topic}]${m.priority ? ' ⚠️ HIGH PRIORITY' : ''}\n`;
-            content += `Question: ${m.question}\n`;
-            content += `Correct Answer: ${m.correct}\n`;
-            content += `Explanation: ${m.explanation}\n`;
-            content += `${'-'.repeat(40)}\n\n`;
-        });
-        const blob = new Blob([content], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `cdl_missed_${new Date().toISOString().slice(0,19)}.txt`;
-        a.click();
-        URL.revokeObjectURL(url);
+        elapsed = 0;
+        updateClock();
+        if (timerOn) startTimer();
+        updateScore();
+        render();
     }
 
     function endTest() {
-        stopClock();
-        testCompleted = true;
-        const total = currentQuestions.length;
+        stopTimer();
+        completed = true;
+        let total = questions.length;
         let score = 0;
-        for (let i = 0; i < total; i++) { if (userAnswers[i] === currentQuestions[i].correct) score++; }
-        const percent = Math.round((score/total)*100);
-        if (!isReviewMode) {
-            scoreHistory.unshift({ date: new Date(), score: score, total: total, percent: percent });
+        for (let i = 0; i < total; i++) if (answers[i] === questions[i].correct) score++;
+        let pct = Math.round(score/total*100);
+        if (!reviewMode) {
+            scoreHistory.unshift({ date: new Date(), score, total, pct });
             if (scoreHistory.length > 5) scoreHistory.pop();
-            updateTopicStats();
+            topicStats = {};
+            for (let i = 0; i < origQuestions.length; i++) {
+                let t = origQuestions[i].topic;
+                if (!topicStats[t]) topicStats[t] = { total: 0, correct: 0 };
+                topicStats[t].total++;
+                if (origAnswers[i] === origQuestions[i].correct) topicStats[t].correct++;
+            }
         }
-        document.getElementById('finalScore').innerText = `${score} / ${total} (${percent}%)`;
-        let statsHtml = `<div class="stats-grid"><div class="stat-card"><strong>📊 Last 5 Tests</strong><br>`;
-        scoreHistory.slice(0,5).forEach(s => { statsHtml += `${s.score}/${s.total} (${s.percent}%)<br>`; });
-        statsHtml += `</div><div class="stat-card"><strong>📚 Topic Accuracy</strong><div class="topic-breakdown">`;
-        const sortedTopics = Object.entries(topicStats).sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total));
-        sortedTopics.forEach(([topic, stats]) => {
-            const pct = Math.round((stats.correct/stats.total)*100);
-            statsHtml += `<div class="topic-item"><span>${topic}</span><span style="color:${pct>=80?'#2ecc71':pct>=60?'#d4a017':'#e74c3c'}">${stats.correct}/${stats.total} (${pct}%)</span></div>`;
+        finalScoreSpan.innerText = `${score} / ${total} (${pct}%)`;
+        passMsgSpan.innerHTML = pct >= 80 ? '✅ PASSING! Ready for the official exam.' : '❌ Below 80%. Keep practicing!';
+        let statsHtml = `<div class="stat-card"><strong>📊 Last 5</strong><br>`;
+        scoreHistory.slice(0,5).forEach(s => statsHtml += `${s.score}/${s.total} (${s.pct}%)<br>`);
+        statsHtml += `</div><div class="stat-card"><strong>📚 Topics</strong><div class="topic-list">`;
+        let sorted = Object.entries(topicStats).sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total));
+        sorted.forEach(([t, st]) => {
+            let tpct = Math.round(st.correct/st.total*100);
+            statsHtml += `<div class="topic-item"><span>${t}</span><span style="color:${tpct>=80?'#2ecc71':tpct>=60?'#d4a017':'#e74c3c'}">${st.correct}/${st.total} (${tpct}%)</span></div>`;
         });
-        statsHtml += `</div></div></div>`;
-        document.getElementById('statsPanel').innerHTML = statsHtml;
-        document.getElementById('passMessage').innerHTML = percent >= 80 ? '✅ PASSING! Ready for the official exam.' : '❌ Below 80%. Keep practicing!';
-        if (!isReviewMode) {
-            const missedCount = total - score;
-            if (missedCount > 0) { reviewMissedBtn.style.display = 'inline-block'; reviewMissedBtn.innerText = `📝 Review Missed (${missedCount})`; }
-            else { reviewMissedBtn.style.display = 'inline-block'; reviewMissedBtn.innerText = `🎉 Perfect Score!`; }
-            reviewFlaggedBtn.style.display = flaggedIndices.size > 0 ? 'inline-block' : 'none';
-            if (flaggedIndices.size > 0) reviewFlaggedBtn.innerText = `⭐ Review Flagged (${flaggedIndices.size})`;
+        statsHtml += `</div></div>`;
+        statsPanelDiv.innerHTML = statsHtml;
+        let missed = total - score;
+        if (!reviewMode) {
+            reviewMissedBtn.style.display = missed ? 'inline-block' : 'inline-block';
+            reviewMissedBtn.innerText = missed ? `📝 Review Missed (${missed})` : '🎉 Perfect Score!';
+            reviewFlaggedBtn.style.display = flagged.size ? 'inline-block' : 'none';
+            if (flagged.size) reviewFlaggedBtn.innerText = `⭐ Review Flagged (${flagged.size})`;
         }
         scorePanel.style.display = 'block';
-        optionsContainer.innerHTML = '<div style="padding:20px;text-align:center;">🏁 Test completed. Choose an option below.</div>';
-        progressSpan.innerHTML = `Finished | Score: ${score}/${total}`;
+        optionsDiv.innerHTML = '<div style="padding:20px;text-align:center;">🏁 Test completed. Choose an option below.</div>';
+        qCounterSpan.innerHTML = `Finished | Score: ${score}/${total}`;
         feedbackDiv.style.display = 'none';
-        difficultyButtons.style.display = 'none';
-        liveScoreDisplay.innerHTML = `✅ ${score} | ❌ ${total - score} | 📊 ${percent}% | 🏁 Complete`;
+        diffRow.style.display = 'none';
+        liveScoreSpan.innerHTML = `✅ ${score} | ❌ ${total-score} | ${pct}% | Complete`;
     }
 
-    function resetFullTest() { stopClock(); flaggedIndices.clear(); loadTest(); }
+    function restart() { stopTimer(); flagged.clear(); loadTest(); }
+    function newTest() { restart(); }
+
+    function reviewMissed() {
+        stopTimer();
+        let missed = [];
+        for (let i = 0; i < origQuestions.length; i++) if (origAnswers[i] !== origQuestions[i].correct) missed.push(origQuestions[i]);
+        if (!missed.length) { alert("No missed questions!"); if (timerOn) startTimer(); return; }
+        questions = missed;
+        idx = 0;
+        answers = new Array(questions.length).fill(null);
+        difficulties = new Array(questions.length).fill(null);
+        flagged.clear();
+        completed = false;
+        reviewMode = true;
+        reviewBadge.style.display = 'inline-block';
+        reviewBadge.innerHTML = `📝 REVIEW MODE: ${questions.length} missed questions`;
+        scorePanel.style.display = 'none';
+        elapsed = 0;
+        updateClock();
+        if (timerOn) startTimer();
+        updateScore();
+        render();
+    }
+
+    function reviewFlagged() {
+        stopTimer();
+        if (!flagged.size) { alert("No flagged questions!"); if (timerOn) startTimer(); return; }
+        let flaggedList = [];
+        for (let i = 0; i < origQuestions.length; i++) if (flagged.has(i)) flaggedList.push(origQuestions[i]);
+        questions = flaggedList;
+        idx = 0;
+        answers = new Array(questions.length).fill(null);
+        difficulties = new Array(questions.length).fill(null);
+        flagged.clear();
+        completed = false;
+        reviewMode = true;
+        reviewBadge.style.display = 'inline-block';
+        reviewBadge.innerHTML = `⭐ REVIEW MODE: ${questions.length} flagged questions`;
+        scorePanel.style.display = 'none';
+        elapsed = 0;
+        updateClock();
+        if (timerOn) startTimer();
+        updateScore();
+        render();
+    }
+
+    function downloadMissed() {
+        let missed = [];
+        for (let i = 0; i < origQuestions.length; i++) {
+            if (origAnswers[i] !== origQuestions[i].correct) {
+                missed.push({
+                    q: origQuestions[i].text,
+                    correct: origQuestions[i].options.find(o => o[0] === origQuestions[i].correct).substring(3),
+                    explanation: origQuestions[i].explanation,
+                    topic: origQuestions[i].topic,
+                    priority: origQuestions[i].priority
+                });
+            }
+        }
+        if (!missed.length) { alert("No missed questions!"); return; }
+        let content = `IL CDL Missed Questions - ${new Date().toLocaleString()}\n${'='.repeat(50)}\n\n`;
+        missed.forEach((m, i) => {
+            content += `Q${i+1} [${m.topic}]${m.priority ? ' ⚠️ HIGH PRIORITY' : ''}\n`;
+            content += `Question: ${m.q}\n`;
+            content += `Correct Answer: ${m.correct}\n`;
+            content += `Explanation: ${m.explanation}\n${'-'.repeat(40)}\n\n`;
+        });
+        let blob = new Blob([content], { type: 'text/plain' });
+        let a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `cdl_missed_${Date.now()}.txt`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+    }
+
+    document.querySelectorAll('.diff-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (completed) return;
+            let diff = btn.dataset.diff;
+            difficulties[idx] = diff;
+            document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        });
+    });
 
     timerToggle.addEventListener('change', (e) => {
-        timerVisible = e.target.checked;
-        clockDisplay.style.display = timerVisible ? 'inline-block' : 'none';
-        if (timerVisible && !testCompleted) {
-            startClock();
-        } else if (!timerVisible) {
-            stopClock();
-        }
+        timerOn = e.target.checked;
+        clockSpan.style.display = timerOn ? 'inline-block' : 'none';
+        if (timerOn && !completed) { resetTimer(); startTimer(); }
+        else if (!timerOn) stopTimer();
     });
-    clockDisplay.style.display = 'none';
-    timerVisible = false;
+    clockSpan.style.display = 'none';
 
-    testSelect.addEventListener('change', resetFullTest);
-    nextBtn.addEventListener('click', nextQuestion);
-    flagBtn.addEventListener('click', flagCurrentQuestion);
-    resetBtn.addEventListener('click', resetFullTest);
-    resetCompleteBtn.addEventListener('click', resetFullTest);
-    reviewMissedBtn.addEventListener('click', startReviewMissed);
-    reviewFlaggedBtn.addEventListener('click', startReviewFlagged);
-    downloadMissedBtn.addEventListener('click', downloadMissed);
+    testSelect.addEventListener('change', restart);
+    nextBtn.addEventListener('click', next);
+    flagBtn.addEventListener('click', flag);
+    restartBtn.addEventListener('click', restart);
+    newTestBtn.addEventListener('click', newTest);
+    reviewMissedBtn.addEventListener('click', reviewMissed);
+    reviewFlaggedBtn.addEventListener('click', reviewFlagged);
+    downloadBtn.addEventListener('click', downloadMissed);
     loadTest();
 </script>
 </body>
