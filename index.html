@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Clean Dark Theme | Fast & Responsive</title>
+    <title>IL CDL Practice | Full Page Background | Clean Dark Theme</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,20 +11,22 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #05080f;
+            background: radial-gradient(circle at 10% 20%, #0a0f1a, #05080f);
             margin: 0;
-            padding: 16px;
+            padding: 20px;
+            min-height: 100vh;
             color: #eef2ff;
         }
         .container {
             max-width: 700px;
             margin: 0 auto;
-            background: linear-gradient(145deg, #0f1620 0%, #0a0f18 100%);
+            background: rgba(15, 22, 32, 0.95);
+            backdrop-filter: blur(0px);
             border-radius: 32px;
             overflow: hidden;
             padding: 20px 18px 32px;
-            border: 1px solid rgba(255, 180, 71, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 180, 71, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
         h1 {
             font-size: 1.6rem;
@@ -51,7 +53,6 @@
             gap: 12px;
             margin-bottom: 20px;
             background: rgba(10, 16, 25, 0.8);
-            backdrop-filter: blur(4px);
             padding: 10px 16px;
             border-radius: 60px;
             border: 1px solid rgba(255, 180, 71, 0.2);
@@ -352,7 +353,7 @@
         }
         button { cursor: pointer; }
         @media (max-width: 550px) {
-            body { padding: 10px; }
+            body { padding: 12px; }
             .container { padding: 14px; }
             .q-text { font-size: 1rem; }
             .option-text { font-size: 0.85rem; }
