@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Theme Toggle | Soft Cream #FFFFE7</title>
+    <title>IL CDL Practice | Theme Toggle | Soft Cream #FFFFE7 | Firefox Fixed</title>
     <style>
         * {
             box-sizing: border-box;
@@ -514,6 +514,68 @@
             .action-buttons button { padding: 12px 6px; font-size: 0.8rem; }
             .top-bar { flex-wrap: wrap; justify-content: center; }
             .theme-toggle-btn { font-size: 0.7rem; padding: 4px 10px; }
+        }
+
+        /* ===== FIREFOX-SPECIFIC FIX ===== */
+        @-moz-document url-prefix() {
+            body.light .container {
+                background: #FFFFE7 !important;
+            }
+            body.light .question-box {
+                background: #FFFFE7 !important;
+            }
+            body.light .top-bar {
+                background: #FFFFE7 !important;
+            }
+            body.light .test-bar {
+                background: #FFFFE7 !important;
+            }
+            body.light .option {
+                background: #FFFFE7 !important;
+            }
+            body.light .score-badge {
+                background: #FFFFE7 !important;
+            }
+            body.light .toggle-label {
+                background: #FFFFE7 !important;
+            }
+            body.light .clock {
+                background: #FFFFE7 !important;
+            }
+            body.light select {
+                background: #FFFFE7 !important;
+            }
+            body.light .score-panel {
+                background: #FFFFE7 !important;
+            }
+            body.light .download-btn {
+                background: #d4c4b0 !important;
+            }
+            body.light .action-buttons button {
+                background: #c4a880 !important;
+            }
+            body.light .flag-btn {
+                background: #a0886a !important;
+            }
+            body.light .restart-btn {
+                background: #b0a090 !important;
+            }
+            body.light .theme-toggle-btn {
+                background: #FFFFE7 !important;
+                border-color: #c4b8a4 !important;
+            }
+            body.light .review-mode {
+                background: #e0d5c5 !important;
+            }
+            body.light .diff-btn {
+                background: #d0c4b0 !important;
+            }
+            body.light .stat-card {
+                background: rgba(240, 235, 225, 0.7) !important;
+            }
+            body.light .option.selected {
+                background: #c4a880 !important;
+            }
         }
     </style>
 </head>
