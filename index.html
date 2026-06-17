@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Light Theme Contrast Fixed</title>
+    <title>IL CDL Practice | Light Theme Fully Fixed | Dark Shadow</title>
     <style>
         * {
             box-sizing: border-box;
@@ -21,7 +21,7 @@
         }
         body.light {
             background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%);
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .container {
             max-width: 700px;
@@ -33,12 +33,12 @@
             padding: 20px 18px 32px;
             border: 1px solid rgba(255, 180, 71, 0.15);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transition: background 0.4s ease, border 0.3s ease;
+            transition: background 0.4s ease, border 0.3s ease, box-shadow 0.4s ease;
         }
         body.light .container {
             background: #FFFFE7;
             border: 1px solid rgba(180, 150, 110, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
         h1 {
             font-size: 1.6rem;
@@ -58,7 +58,7 @@
             transition: color 0.3s, border-color 0.3s;
         }
         body.light .sub {
-            color: #1a1a14;
+            color: #0a0a08;
             border-bottom: 1px solid rgba(180, 150, 110, 0.3);
         }
         /* Top bar */
@@ -112,7 +112,7 @@
         body.light .toggle-label {
             background: #FFFFE7;
             border: 1px solid #c4b8a4;
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .toggle-label input {
             width: 44px;
@@ -154,7 +154,7 @@
         body.light .score-badge {
             background: #FFFFE7;
             border: 1px solid #c4b8a4;
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         /* Test selector bar */
         .test-bar {
@@ -192,7 +192,7 @@
         }
         body.light select {
             background: #FFFFE7;
-            color: #0d0d0a;
+            color: #0a0a08;
             border: 1px solid #c4b8a4;
         }
         .download-btn {
@@ -210,7 +210,7 @@
         body.light .download-btn {
             background: linear-gradient(145deg, #d4c4b0, #c4b4a0);
             border: 1px solid rgba(150, 100, 70, 0.3);
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .review-mode {
             background: linear-gradient(145deg, #2a3a4a, #1a2a3a);
@@ -225,7 +225,7 @@
         }
         body.light .review-mode {
             background: #e0d5c5;
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         /* Question card */
         .question-box {
@@ -235,12 +235,12 @@
             margin-bottom: 20px;
             border: 1px solid rgba(255, 180, 71, 0.2);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: background 0.4s, border 0.3s;
+            transition: background 0.4s, border 0.3s, box-shadow 0.4s;
         }
         body.light .question-box {
             background: #FFFFE7;
             border: 1px solid rgba(180, 150, 110, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
         .q-header {
             font-size: 0.75rem;
@@ -254,7 +254,7 @@
             transition: color 0.3s;
         }
         body.light .q-header {
-            color: #5a3a1a;
+            color: #3a1a0a;
         }
         .priority {
             background: linear-gradient(145deg, #c72a2a, #9a1a1a);
@@ -274,7 +274,7 @@
             transition: color 0.3s;
         }
         body.light .q-text {
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .options {
             display: flex;
@@ -331,7 +331,7 @@
             transition: color 0.3s;
         }
         body.light .option-text {
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .difficulty-row {
             display: flex;
@@ -356,7 +356,7 @@
         }
         body.light .diff-btn {
             background: #d0c4b0;
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .diff-easy.selected { background: #2c6e2c; color: white; }
         .diff-medium.selected { background: #d4a017; color: white; }
@@ -376,7 +376,7 @@
         }
         body.light .feedback-correct {
             background: rgba(46, 204, 113, 0.15);
-            color: #0d3a1a;
+            color: #0a2a0a;
         }
         .feedback-wrong {
             background: rgba(231, 76, 60, 0.12);
@@ -385,7 +385,7 @@
         }
         body.light .feedback-wrong {
             background: rgba(231, 76, 60, 0.15);
-            color: #5a1a0a;
+            color: #3a0a0a;
         }
         .action-buttons {
             display: flex;
@@ -408,13 +408,13 @@
         .action-buttons button:active { transform: scale(0.97); }
         body.light .action-buttons button {
             background: linear-gradient(145deg, #c4a880, #b0906a);
-            color: #0d0d0a;
+            color: #0a0a08;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
         .flag-btn { background: linear-gradient(145deg, #6a4e2a, #4a2e1a) !important; }
-        body.light .flag-btn { background: linear-gradient(145deg, #a0886a, #807050) !important; color: #0d0d0a !important; }
+        body.light .flag-btn { background: linear-gradient(145deg, #a0886a, #807050) !important; color: #0a0a08 !important; }
         .restart-btn { background: linear-gradient(145deg, #3a4c62, #2a3a4a) !important; }
-        body.light .restart-btn { background: linear-gradient(145deg, #b0a090, #9a8a7a) !important; color: #0d0d0a !important; }
+        body.light .restart-btn { background: linear-gradient(145deg, #b0a090, #9a8a7a) !important; color: #0a0a08 !important; }
         .score-panel {
             background: linear-gradient(145deg, #0a111f, #050a14);
             padding: 18px;
@@ -454,7 +454,7 @@
         body.light .stat-card {
             background: rgba(240, 235, 225, 0.7);
             border: 1px solid #c4b8a4;
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         .topic-list {
             max-height: 150px;
@@ -470,7 +470,7 @@
         }
         body.light .topic-item {
             border-bottom: 1px solid #d0c4b0;
-            color: #0d0d0a;
+            color: #0a0a08;
         }
         footer {
             font-size: 0.6rem;
@@ -481,7 +481,7 @@
             transition: color 0.3s;
         }
         body.light footer {
-            color: #1a1a14;
+            color: #0a0a08;
         }
         button { cursor: pointer; }
         /* Theme toggle button in top bar */
@@ -526,9 +526,11 @@
             }
             body.light .container {
                 background: #FFFFE7 !important;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
             }
             body.light .question-box {
                 background: #FFFFE7 !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
             }
             body.light .top-bar {
                 background: #FFFFE7 !important;
@@ -583,39 +585,54 @@
             body.light .stat-card {
                 background: rgba(240, 235, 225, 0.7) !important;
             }
-            /* Text elements - FIXED CONTRAST FOR LIGHT THEME */
+            /* Text elements - MAXIMUM CONTRAST */
             body.light .sub {
-                color: #1a1a14 !important;
+                color: #0a0a08 !important;
             }
             body.light .q-header {
-                color: #5a3a1a !important;
+                color: #3a1a0a !important;
             }
             body.light .q-text {
-                color: #0d0d0a !important;
+                color: #0a0a08 !important;
             }
             body.light .option-text {
-                color: #0d0d0a !important;
+                color: #0a0a08 !important;
             }
             body.light .score-number {
-                color: #0d0d0a !important;
+                color: #0a0a08 !important;
             }
             body.light footer {
-                color: #1a1a14 !important;
+                color: #0a0a08 !important;
             }
             body.light .topic-item {
-                color: #0d0d0a !important;
+                color: #0a0a08 !important;
             }
             body.light .feedback-correct {
-                color: #0d3a1a !important;
+                color: #0a2a0a !important;
             }
             body.light .feedback-wrong {
-                color: #5a1a0a !important;
+                color: #3a0a0a !important;
             }
             body.light h1 {
                 background: linear-gradient(135deg, #ffb347 0%, #ff8c00 100%) !important;
                 -webkit-background-clip: text !important;
                 background-clip: text !important;
                 color: transparent !important;
+            }
+            body.light .score-badge {
+                color: #0a0a08 !important;
+            }
+            body.light .toggle-label {
+                color: #0a0a08 !important;
+            }
+            body.light .review-mode {
+                color: #0a0a08 !important;
+            }
+            body.light .diff-btn {
+                color: #0a0a08 !important;
+            }
+            body.light .stat-card {
+                color: #0a0a08 !important;
             }
         }
     </style>
