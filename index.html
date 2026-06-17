@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Light Theme Fixed | Better Contrast</title>
+    <title>IL CDL Practice | Fully Fixed for Firefox | #FFFFE7 Cream</title>
     <style>
         * {
             box-sizing: border-box;
@@ -470,6 +470,7 @@
         }
         body.light .topic-item {
             border-bottom: 1px solid #d0c4b0;
+            color: #0d0d0a;
         }
         footer {
             font-size: 0.6rem;
@@ -517,8 +518,12 @@
             .theme-toggle-btn { font-size: 0.7rem; padding: 4px 10px; }
         }
 
-        /* ===== FIREFOX-SPECIFIC FIX ===== */
+        /* ===== FIREFOX-SPECIFIC FIX - FULL OVERRIDE ===== */
         @-moz-document url-prefix() {
+            /* Background elements */
+            body.light {
+                background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%) !important;
+            }
             body.light .container {
                 background: #FFFFE7 !important;
             }
@@ -531,8 +536,18 @@
             body.light .test-bar {
                 background: #FFFFE7 !important;
             }
+            body.light .score-panel {
+                background: #FFFFE7 !important;
+            }
+            body.light .review-mode {
+                background: #e0d5c5 !important;
+            }
+            /* Interactive elements */
             body.light .option {
                 background: #FFFFE7 !important;
+            }
+            body.light .option.selected {
+                background: #c4a880 !important;
             }
             body.light .score-badge {
                 background: #FFFFE7 !important;
@@ -544,9 +559,6 @@
                 background: #FFFFE7 !important;
             }
             body.light select {
-                background: #FFFFE7 !important;
-            }
-            body.light .score-panel {
                 background: #FFFFE7 !important;
             }
             body.light .download-btn {
@@ -565,17 +577,45 @@
                 background: #FFFFE7 !important;
                 border-color: #c4b8a4 !important;
             }
-            body.light .review-mode {
-                background: #e0d5c5 !important;
-            }
             body.light .diff-btn {
                 background: #d0c4b0 !important;
             }
             body.light .stat-card {
                 background: rgba(240, 235, 225, 0.7) !important;
             }
-            body.light .option.selected {
-                background: #c4a880 !important;
+            /* Text elements - fixed contrast */
+            body.light .sub {
+                color: #4a3f30 !important;
+            }
+            body.light .q-header {
+                color: #8a6a3a !important;
+            }
+            body.light .q-text {
+                color: #0d0d0a !important;
+            }
+            body.light .option-text {
+                color: #0d0d0a !important;
+            }
+            body.light .score-number {
+                color: #0d0d0a !important;
+            }
+            body.light footer {
+                color: #4a3f30 !important;
+            }
+            body.light .topic-item {
+                color: #0d0d0a !important;
+            }
+            body.light .feedback-correct {
+                color: #0d3a1a !important;
+            }
+            body.light .feedback-wrong {
+                color: #5a1a0a !important;
+            }
+            body.light h1 {
+                background: linear-gradient(135deg, #ffb347 0%, #ff8c00 100%) !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+                color: transparent !important;
             }
         }
     </style>
