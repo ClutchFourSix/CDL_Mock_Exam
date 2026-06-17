@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Fully Fixed for Firefox & Safari</title>
+    <title>IL CDL Practice | Brave Fixed</title>
     <style>
         * {
             box-sizing: border-box;
@@ -185,6 +185,8 @@
             flex: 1;
             cursor: pointer;
             transition: all 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
         }
         select:focus {
             outline: none;
@@ -194,6 +196,11 @@
             background: #FFFFE7;
             color: #0a0a08;
             border: 1px solid #c4b8a4;
+        }
+        /* Brave-specific select fix */
+        body.light select option {
+            background: #FFFFE7;
+            color: #0a0a08;
         }
         .download-btn {
             background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
@@ -208,7 +215,7 @@
         }
         .download-btn:active { transform: scale(0.96); }
         body.light .download-btn {
-            background: linear-gradient(145deg, #d4c4b0, #c4b4a0);
+            background: #d4c4b0;
             border: 1px solid rgba(150, 100, 70, 0.3);
             color: #0a0a08;
         }
@@ -312,7 +319,7 @@
             box-shadow: 0 2px 8px rgba(255, 180, 71, 0.2);
         }
         body.light .option.selected {
-            background: linear-gradient(145deg, #c4a880, #b0906a);
+            background: #c4a880;
             border-color: #8a6a3a;
             box-shadow: 0 2px 8px rgba(180, 150, 110, 0.25);
         }
@@ -407,14 +414,14 @@
         }
         .action-buttons button:active { transform: scale(0.97); }
         body.light .action-buttons button {
-            background: linear-gradient(145deg, #c4a880, #b0906a);
+            background: #c4a880;
             color: #0a0a08;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
         .flag-btn { background: linear-gradient(145deg, #6a4e2a, #4a2e1a) !important; }
-        body.light .flag-btn { background: linear-gradient(145deg, #a0886a, #807050) !important; color: #0a0a08 !important; }
+        body.light .flag-btn { background: #a0886a !important; color: #0a0a08 !important; }
         .restart-btn { background: linear-gradient(145deg, #3a4c62, #2a3a4a) !important; }
-        body.light .restart-btn { background: linear-gradient(145deg, #b0a090, #9a8a7a) !important; color: #0a0a08 !important; }
+        body.light .restart-btn { background: #b0a090 !important; color: #0a0a08 !important; }
         .score-panel {
             background: linear-gradient(145deg, #0a111f, #050a14);
             padding: 18px;
@@ -518,7 +525,7 @@
             .theme-toggle-btn { font-size: 0.7rem; padding: 4px 10px; }
         }
 
-        /* ===== FIREFOX-SPECIFIC FIX - FULL OVERRIDE ===== */
+        /* ===== BRAVE / FIREFOX BROWSER FIX - FULL OVERRIDE ===== */
         @-moz-document url-prefix() {
             /* Background elements */
             body.light {
@@ -562,13 +569,15 @@
             body.light .clock {
                 background: #FFFFE7 !important;
             }
-            /* FIX: Dropdown (select) in Firefox */
             body.light select {
                 background: #FFFFE7 !important;
                 color: #0a0a08 !important;
                 border-color: #c4b8a4 !important;
             }
-            /* FIX: Download Missed button in Firefox */
+            body.light select option {
+                background: #FFFFE7 !important;
+                color: #0a0a08 !important;
+            }
             body.light .download-btn {
                 background: #d4c4b0 !important;
                 color: #0a0a08 !important;
@@ -632,6 +641,70 @@
                 background-clip: text !important;
                 color: transparent !important;
             }
+        }
+
+        /* ===== BRAVE BROWSER FIX (Shields may block some CSS) ===== */
+        /* Using more specific selectors to override Brave's shields */
+        body.light .container,
+        body.light .question-box,
+        body.light .top-bar,
+        body.light .test-bar,
+        body.light .score-panel,
+        body.light .option,
+        body.light .score-badge,
+        body.light .toggle-label,
+        body.light .clock,
+        body.light select,
+        body.light .theme-toggle-btn {
+            background: #FFFFE7 !important;
+        }
+        body.light .option.selected {
+            background: #c4a880 !important;
+        }
+        body.light .download-btn {
+            background: #d4c4b0 !important;
+        }
+        body.light .action-buttons button {
+            background: #c4a880 !important;
+        }
+        body.light .flag-btn {
+            background: #a0886a !important;
+        }
+        body.light .restart-btn {
+            background: #b0a090 !important;
+        }
+        body.light .diff-btn {
+            background: #d0c4b0 !important;
+        }
+        body.light .stat-card {
+            background: rgba(240, 235, 225, 0.7) !important;
+        }
+        /* Brave: force text colors */
+        body.light .sub,
+        body.light .q-text,
+        body.light .option-text,
+        body.light footer,
+        body.light .topic-item,
+        body.light .score-badge,
+        body.light .toggle-label,
+        body.light select,
+        body.light .action-buttons button,
+        body.light .download-btn,
+        body.light .flag-btn,
+        body.light .restart-btn,
+        body.light .diff-btn,
+        body.light .stat-card {
+            color: #0a0a08 !important;
+        }
+        body.light .q-header {
+            color: #3a1a0a !important;
+        }
+        body.light .clock {
+            color: #b87a2a !important;
+        }
+        body.light .theme-toggle-btn {
+            color: #8a6a3a !important;
+            border-color: #c4b8a4 !important;
         }
     </style>
 </head>
