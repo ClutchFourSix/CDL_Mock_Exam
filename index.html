@@ -9,36 +9,30 @@
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
-        /* ===== DARK THEME (default) ===== */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: radial-gradient(circle at 50% 50%, #000000 0%, #0a1628 40%, #0f1f3a 65%, #162a4a 85%, #1a3055 100%);
             margin: 0;
             padding: 20px;
             min-height: 100vh;
-            color: #eef2ff;
             transition: background 0.4s ease, color 0.3s ease;
+        }
+        /* Dark theme via body class */
+        body.dark {
+            background: radial-gradient(circle at 50% 50%, #000000 0%, #0a1628 40%, #0f1f3a 65%, #162a4a 85%, #1a3055 100%);
+            color: #eef2ff;
         }
         body.light {
             background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%);
             color: #0a0a08;
         }
+        /* Container styles - applied via JS for Brave compatibility */
         .container {
             max-width: 700px;
             margin: 0 auto;
-            background: rgba(15, 22, 32, 0.92);
-            backdrop-filter: blur(0px);
             border-radius: 32px;
             overflow: hidden;
             padding: 20px 18px 32px;
-            border: 1px solid rgba(255, 180, 71, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             transition: background 0.4s ease, border 0.3s ease, box-shadow 0.4s ease;
-        }
-        body.light .container {
-            background: #FFFFE7;
-            border: 1px solid rgba(180, 150, 110, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
         h1 {
             font-size: 1.6rem;
@@ -50,12 +44,14 @@
             letter-spacing: -0.3px;
         }
         .sub {
-            color: #8ba0bc;
             font-size: 0.75rem;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 180, 71, 0.15);
             transition: color 0.3s, border-color 0.3s;
+        }
+        body.dark .sub {
+            color: #8ba0bc;
+            border-bottom: 1px solid rgba(255, 180, 71, 0.15);
         }
         body.light .sub {
             color: #0a0a08;
@@ -69,11 +65,13 @@
             justify-content: space-between;
             gap: 12px;
             margin-bottom: 20px;
-            background: rgba(10, 16, 25, 0.8);
             padding: 10px 16px;
             border-radius: 60px;
-            border: 1px solid rgba(255, 180, 71, 0.15);
             transition: background 0.4s, border 0.3s;
+        }
+        body.dark .top-bar {
+            background: rgba(10, 16, 25, 0.8);
+            border: 1px solid rgba(255, 180, 71, 0.15);
         }
         body.light .top-bar {
             background: #FFFFE7;
@@ -83,13 +81,15 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.3rem;
             font-weight: 600;
-            background: #0a1019;
             padding: 6px 16px;
             border-radius: 40px;
-            color: #ffb347;
             letter-spacing: 1px;
-            border: 1px solid #2a3a4a;
             transition: background 0.3s, border 0.3s, color 0.3s;
+        }
+        body.dark .clock {
+            background: #0a1019;
+            border: 1px solid #2a3a4a;
+            color: #ffb347;
         }
         body.light .clock {
             background: #FFFFE7;
@@ -103,11 +103,14 @@
             font-size: 0.8rem;
             font-weight: 500;
             cursor: pointer;
-            background: #0a1019;
             padding: 6px 14px;
             border-radius: 40px;
-            border: 1px solid #2a3a4a;
             transition: background 0.3s, border 0.3s;
+        }
+        body.dark .toggle-label {
+            background: #0a1019;
+            border: 1px solid #2a3a4a;
+            color: #eef2ff;
         }
         body.light .toggle-label {
             background: #FFFFE7;
@@ -142,14 +145,17 @@
             left: 22px;
         }
         .score-badge {
-            background: #0a1019;
             padding: 6px 14px;
             border-radius: 40px;
             font-size: 0.75rem;
             font-weight: 600;
-            border: 1px solid #2a3a4a;
             letter-spacing: 0.3px;
             transition: background 0.3s, border 0.3s;
+        }
+        body.dark .score-badge {
+            background: #0a1019;
+            border: 1px solid #2a3a4a;
+            color: #eef2ff;
         }
         body.light .score-badge {
             background: #FFFFE7;
@@ -164,27 +170,27 @@
             justify-content: space-between;
             gap: 12px;
             margin-bottom: 24px;
-            background: rgba(10, 16, 25, 0.6);
             padding: 8px 12px;
             border-radius: 60px;
-            border: 1px solid rgba(255, 180, 71, 0.15);
             transition: background 0.4s, border 0.3s;
+        }
+        body.dark .test-bar {
+            background: rgba(10, 16, 25, 0.6);
+            border: 1px solid rgba(255, 180, 71, 0.15);
         }
         body.light .test-bar {
             background: #FFFFE7;
             border: 1px solid rgba(180, 150, 110, 0.25);
         }
         select {
-            background: #0a1019;
-            color: #f0f4fa;
             font-size: 0.85rem;
             padding: 10px 16px;
             border-radius: 60px;
-            border: 1px solid #3a4a5f;
             font-weight: 500;
             flex: 1;
             cursor: pointer;
             transition: all 0.2s;
+            border: 1px solid;
             -webkit-appearance: none;
             appearance: none;
         }
@@ -192,35 +198,41 @@
             outline: none;
             border-color: #ffb347;
         }
+        body.dark select {
+            background: #0a1019;
+            color: #f0f4fa;
+            border-color: #3a4a5f;
+        }
         body.light select {
             background: #FFFFE7;
             color: #0a0a08;
-            border: 1px solid #c4b8a4;
+            border-color: #c4b8a4;
         }
-        /* Brave-specific select fix */
         body.light select option {
             background: #FFFFE7;
             color: #0a0a08;
         }
         .download-btn {
-            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
-            border: 1px solid rgba(255, 100, 100, 0.25);
-            color: white;
             font-weight: 600;
             padding: 10px 18px;
             border-radius: 60px;
             font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.2s;
+            border: 1px solid;
         }
-        .download-btn:active { transform: scale(0.96); }
+        body.dark .download-btn {
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
+            border-color: rgba(255, 100, 100, 0.25);
+            color: white;
+        }
         body.light .download-btn {
             background: #d4c4b0;
-            border: 1px solid rgba(150, 100, 70, 0.3);
+            border-color: rgba(150, 100, 70, 0.3);
             color: #0a0a08;
         }
+        .download-btn:active { transform: scale(0.96); }
         .review-mode {
-            background: linear-gradient(145deg, #2a3a4a, #1a2a3a);
             padding: 8px 14px;
             border-radius: 40px;
             font-size: 0.7rem;
@@ -230,19 +242,25 @@
             border-left: 3px solid #ffb347;
             transition: background 0.3s;
         }
+        body.dark .review-mode {
+            background: linear-gradient(145deg, #2a3a4a, #1a2a3a);
+            color: #eef2ff;
+        }
         body.light .review-mode {
             background: #e0d5c5;
             color: #0a0a08;
         }
         /* Question card */
         .question-box {
-            background: linear-gradient(145deg, #0f1620, #0a1019);
             border-radius: 28px;
             padding: 20px;
             margin-bottom: 20px;
+            transition: background 0.4s, border 0.3s, box-shadow 0.4s;
+        }
+        body.dark .question-box {
+            background: linear-gradient(145deg, #0f1620, #0a1019);
             border: 1px solid rgba(255, 180, 71, 0.2);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: background 0.4s, border 0.3s, box-shadow 0.4s;
         }
         body.light .question-box {
             background: #FFFFE7;
@@ -251,7 +269,6 @@
         }
         .q-header {
             font-size: 0.75rem;
-            color: #ffb347;
             margin-bottom: 18px;
             display: flex;
             justify-content: space-between;
@@ -259,6 +276,9 @@
             gap: 8px;
             letter-spacing: 0.3px;
             transition: color 0.3s;
+        }
+        body.dark .q-header {
+            color: #ffb347;
         }
         body.light .q-header {
             color: #3a1a0a;
@@ -277,8 +297,10 @@
             font-weight: 600;
             margin-bottom: 24px;
             line-height: 1.45;
-            color: #ffffff;
             transition: color 0.3s;
+        }
+        body.dark .q-text {
+            color: #ffffff;
         }
         body.light .q-text {
             color: #0a0a08;
@@ -296,27 +318,33 @@
             cursor: pointer;
             padding: 12px 16px;
             border-radius: 24px;
+            transition: all 0.15s;
+        }
+        body.dark .option {
             background: #0a1019;
             border: 1px solid #2a3645;
-            transition: all 0.15s;
         }
         body.light .option {
             background: #FFFFE7;
             border: 1px solid #c4b8a4;
         }
         .option:hover {
+            transform: translateX(2px);
+        }
+        body.dark .option:hover {
             background: #1a2535;
             border-color: #ffb34780;
-            transform: translateX(2px);
         }
         body.light .option:hover {
             background: #e0d5c5;
             border-color: #b87a2a80;
         }
         .option.selected {
-            background: linear-gradient(145deg, #1f6392, #154a6e);
             border-color: #ffb347;
             box-shadow: 0 2px 8px rgba(255, 180, 71, 0.2);
+        }
+        body.dark .option.selected {
+            background: linear-gradient(145deg, #1f6392, #154a6e);
         }
         body.light .option.selected {
             background: #c4a880;
@@ -332,10 +360,12 @@
         }
         .option-text {
             font-size: 0.9rem;
-            color: #d6e3f0;
             flex: 1;
             font-weight: 450;
             transition: color 0.3s;
+        }
+        body.dark .option-text {
+            color: #d6e3f0;
         }
         body.light .option-text {
             color: #0a0a08;
@@ -345,21 +375,25 @@
             gap: 12px;
             margin-top: 8px;
             padding-top: 16px;
+        }
+        body.dark .difficulty-row {
             border-top: 1px solid rgba(255, 180, 71, 0.12);
         }
         body.light .difficulty-row {
             border-top: 1px solid rgba(180, 150, 110, 0.2);
         }
         .diff-btn {
-            background: #1a2535;
             border: none;
-            color: #c0d0e0;
             padding: 6px 14px;
             border-radius: 40px;
             font-size: 0.7rem;
             cursor: pointer;
             transition: all 0.15s;
             font-weight: 500;
+        }
+        body.dark .diff-btn {
+            background: #1a2535;
+            color: #c0d0e0;
         }
         body.light .diff-btn {
             background: #d0c4b0;
@@ -401,9 +435,7 @@
         }
         .action-buttons button {
             flex: 1;
-            background: linear-gradient(145deg, #1f6392, #154a6e);
             border: none;
-            color: white;
             font-weight: 600;
             padding: 14px 8px;
             border-radius: 60px;
@@ -413,6 +445,10 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
         .action-buttons button:active { transform: scale(0.97); }
+        body.dark .action-buttons button {
+            background: linear-gradient(145deg, #1f6392, #154a6e);
+            color: white;
+        }
         body.light .action-buttons button {
             background: #c4a880;
             color: #0a0a08;
@@ -423,13 +459,15 @@
         .restart-btn { background: linear-gradient(145deg, #3a4c62, #2a3a4a) !important; }
         body.light .restart-btn { background: #b0a090 !important; color: #0a0a08 !important; }
         .score-panel {
-            background: linear-gradient(145deg, #0a111f, #050a14);
             padding: 18px;
             border-radius: 28px;
             text-align: center;
             margin-top: 20px;
-            border: 1px solid rgba(255, 180, 71, 0.2);
             transition: background 0.4s, border 0.3s;
+        }
+        body.dark .score-panel {
+            background: linear-gradient(145deg, #0a111f, #050a14);
+            border: 1px solid rgba(255, 180, 71, 0.2);
         }
         body.light .score-panel {
             background: #FFFFE7;
@@ -452,11 +490,14 @@
             font-size: 0.7rem;
         }
         .stat-card {
-            background: rgba(10, 16, 25, 0.7);
             padding: 10px;
             border-radius: 20px;
-            border: 1px solid #2a3a4a;
             transition: background 0.3s, border 0.3s;
+        }
+        body.dark .stat-card {
+            background: rgba(10, 16, 25, 0.7);
+            border: 1px solid #2a3a4a;
+            color: #eef2ff;
         }
         body.light .stat-card {
             background: rgba(240, 235, 225, 0.7);
@@ -472,8 +513,10 @@
             display: flex;
             justify-content: space-between;
             padding: 5px 0;
-            border-bottom: 1px solid #2a3440;
             font-size: 0.7rem;
+        }
+        body.dark .topic-item {
+            border-bottom: 1px solid #2a3440;
         }
         body.light .topic-item {
             border-bottom: 1px solid #d0c4b0;
@@ -483,19 +526,18 @@
             font-size: 0.6rem;
             text-align: center;
             margin-top: 24px;
-            color: #5f7f9e;
             opacity: 0.7;
             transition: color 0.3s;
+        }
+        body.dark footer {
+            color: #5f7f9e;
         }
         body.light footer {
             color: #0a0a08;
         }
         button { cursor: pointer; }
-        /* Theme toggle button in top bar */
         .theme-toggle-btn {
             background: none;
-            border: 1px solid #2a3a4a;
-            color: #ffb347;
             padding: 6px 12px;
             border-radius: 40px;
             font-size: 0.8rem;
@@ -503,13 +545,17 @@
             transition: all 0.2s;
             font-weight: 500;
         }
-        .theme-toggle-btn:hover {
-            background: rgba(255, 180, 71, 0.1);
-            border-color: #ffb347;
+        body.dark .theme-toggle-btn {
+            border: 1px solid #2a3a4a;
+            color: #ffb347;
         }
         body.light .theme-toggle-btn {
             border: 1px solid #c4b8a4;
             color: #8a6a3a;
+        }
+        body.dark .theme-toggle-btn:hover {
+            background: rgba(255, 180, 71, 0.1);
+            border-color: #ffb347;
         }
         body.light .theme-toggle-btn:hover {
             background: rgba(180, 150, 110, 0.15);
@@ -524,191 +570,9 @@
             .top-bar { flex-wrap: wrap; justify-content: center; }
             .theme-toggle-btn { font-size: 0.7rem; padding: 4px 10px; }
         }
-
-        /* ===== BRAVE / FIREFOX BROWSER FIX - FULL OVERRIDE ===== */
-        @-moz-document url-prefix() {
-            /* Background elements */
-            body.light {
-                background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%) !important;
-            }
-            body.light .container {
-                background: #FFFFE7 !important;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
-            }
-            body.light .question-box {
-                background: #FFFFE7 !important;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-            }
-            body.light .top-bar {
-                background: #FFFFE7 !important;
-            }
-            body.light .test-bar {
-                background: #FFFFE7 !important;
-            }
-            body.light .score-panel {
-                background: #FFFFE7 !important;
-            }
-            body.light .review-mode {
-                background: #e0d5c5 !important;
-            }
-            /* Interactive elements */
-            body.light .option {
-                background: #FFFFE7 !important;
-            }
-            body.light .option.selected {
-                background: #c4a880 !important;
-            }
-            body.light .score-badge {
-                background: #FFFFE7 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .toggle-label {
-                background: #FFFFE7 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .clock {
-                background: #FFFFE7 !important;
-            }
-            body.light select {
-                background: #FFFFE7 !important;
-                color: #0a0a08 !important;
-                border-color: #c4b8a4 !important;
-            }
-            body.light select option {
-                background: #FFFFE7 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .download-btn {
-                background: #d4c4b0 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .action-buttons button {
-                background: #c4a880 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .flag-btn {
-                background: #a0886a !important;
-                color: #0a0a08 !important;
-            }
-            body.light .restart-btn {
-                background: #b0a090 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .theme-toggle-btn {
-                background: #FFFFE7 !important;
-                border-color: #c4b8a4 !important;
-                color: #8a6a3a !important;
-            }
-            body.light .diff-btn {
-                background: #d0c4b0 !important;
-                color: #0a0a08 !important;
-            }
-            body.light .stat-card {
-                background: rgba(240, 235, 225, 0.7) !important;
-                color: #0a0a08 !important;
-            }
-            /* Text elements - MAXIMUM CONTRAST */
-            body.light .sub {
-                color: #0a0a08 !important;
-            }
-            body.light .q-header {
-                color: #3a1a0a !important;
-            }
-            body.light .q-text {
-                color: #0a0a08 !important;
-            }
-            body.light .option-text {
-                color: #0a0a08 !important;
-            }
-            body.light .score-number {
-                color: #0a0a08 !important;
-            }
-            body.light footer {
-                color: #0a0a08 !important;
-            }
-            body.light .topic-item {
-                color: #0a0a08 !important;
-            }
-            body.light .feedback-correct {
-                color: #0a2a0a !important;
-            }
-            body.light .feedback-wrong {
-                color: #3a0a0a !important;
-            }
-            body.light h1 {
-                background: linear-gradient(135deg, #ffb347 0%, #ff8c00 100%) !important;
-                -webkit-background-clip: text !important;
-                background-clip: text !important;
-                color: transparent !important;
-            }
-        }
-
-        /* ===== BRAVE BROWSER FIX (Shields may block some CSS) ===== */
-        /* Using more specific selectors to override Brave's shields */
-        body.light .container,
-        body.light .question-box,
-        body.light .top-bar,
-        body.light .test-bar,
-        body.light .score-panel,
-        body.light .option,
-        body.light .score-badge,
-        body.light .toggle-label,
-        body.light .clock,
-        body.light select,
-        body.light .theme-toggle-btn {
-            background: #FFFFE7 !important;
-        }
-        body.light .option.selected {
-            background: #c4a880 !important;
-        }
-        body.light .download-btn {
-            background: #d4c4b0 !important;
-        }
-        body.light .action-buttons button {
-            background: #c4a880 !important;
-        }
-        body.light .flag-btn {
-            background: #a0886a !important;
-        }
-        body.light .restart-btn {
-            background: #b0a090 !important;
-        }
-        body.light .diff-btn {
-            background: #d0c4b0 !important;
-        }
-        body.light .stat-card {
-            background: rgba(240, 235, 225, 0.7) !important;
-        }
-        /* Brave: force text colors */
-        body.light .sub,
-        body.light .q-text,
-        body.light .option-text,
-        body.light footer,
-        body.light .topic-item,
-        body.light .score-badge,
-        body.light .toggle-label,
-        body.light select,
-        body.light .action-buttons button,
-        body.light .download-btn,
-        body.light .flag-btn,
-        body.light .restart-btn,
-        body.light .diff-btn,
-        body.light .stat-card {
-            color: #0a0a08 !important;
-        }
-        body.light .q-header {
-            color: #3a1a0a !important;
-        }
-        body.light .clock {
-            color: #b87a2a !important;
-        }
-        body.light .theme-toggle-btn {
-            color: #8a6a3a !important;
-            border-color: #c4b8a4 !important;
-        }
     </style>
 </head>
-<body>
+<body class="dark">
 <div class="container" id="appContainer">
     <h1>IL CDL Practice</h1>
     <div class="sub">High Priority in red • Timer off by default • Tap anywhere on answer</div>
@@ -772,22 +636,39 @@
 
 <script>
     // ==============================================================
-    // THEME TOGGLE
+    // THEME TOGGLE - Direct class switching with fallback
     // ==============================================================
     const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const body = document.body;
     let isDark = true;
 
-    function toggleTheme() {
-        isDark = !isDark;
-        if (isDark) {
-            document.body.classList.remove('light');
+    function applyTheme(dark) {
+        if (dark) {
+            body.classList.remove('light');
+            body.classList.add('dark');
             themeToggleBtn.textContent = '🌓 Theme';
+            // Apply container background directly via inline style for Brave
+            document.querySelector('.container').style.background = 'rgba(15, 22, 32, 0.92)';
+            document.querySelector('.container').style.border = '1px solid rgba(255, 180, 71, 0.15)';
+            document.querySelector('.container').style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6)';
         } else {
-            document.body.classList.add('light');
+            body.classList.remove('dark');
+            body.classList.add('light');
             themeToggleBtn.textContent = '🌙 Dark';
+            // Apply container background directly via inline style for Brave
+            document.querySelector('.container').style.background = '#FFFFE7';
+            document.querySelector('.container').style.border = '1px solid rgba(180, 150, 110, 0.35)';
+            document.querySelector('.container').style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
         }
+        isDark = dark;
     }
-    themeToggleBtn.addEventListener('click', toggleTheme);
+
+    themeToggleBtn.addEventListener('click', function() {
+        applyTheme(!isDark);
+    });
+
+    // Force initial dark theme
+    applyTheme(true);
 
     // ==============================================================
     // QUESTION BANKS - All unique, correctly categorized
