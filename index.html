@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Theme Toggle | Soft Cream #FFFFE7 | Firefox Fixed</title>
+    <title>IL CDL Practice | Light Theme Fixed | Better Contrast</title>
     <style>
         * {
             box-sizing: border-box;
@@ -20,8 +20,8 @@
             transition: background 0.4s ease, color 0.3s ease;
         }
         body.light {
-            background: radial-gradient(circle at 50% 50%, #FFFFE7 0%, #f5f0d8 40%, #eae5c9 65%, #dfdab8 85%, #d4cfa8 100%);
-            color: #2c2a26;
+            background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%);
+            color: #0d0d0a;
         }
         .container {
             max-width: 700px;
@@ -38,7 +38,7 @@
         body.light .container {
             background: #FFFFE7;
             border: 1px solid rgba(180, 150, 110, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         h1 {
             font-size: 1.6rem;
@@ -58,7 +58,7 @@
             transition: color 0.3s, border-color 0.3s;
         }
         body.light .sub {
-            color: #6a5f50;
+            color: #4a3f30;
             border-bottom: 1px solid rgba(180, 150, 110, 0.3);
         }
         /* Top bar */
@@ -112,7 +112,7 @@
         body.light .toggle-label {
             background: #FFFFE7;
             border: 1px solid #c4b8a4;
-            color: #2c2a26;
+            color: #0d0d0a;
         }
         .toggle-label input {
             width: 44px;
@@ -154,7 +154,7 @@
         body.light .score-badge {
             background: #FFFFE7;
             border: 1px solid #c4b8a4;
-            color: #2c2a26;
+            color: #0d0d0a;
         }
         /* Test selector bar */
         .test-bar {
@@ -192,7 +192,7 @@
         }
         body.light select {
             background: #FFFFE7;
-            color: #2c2a26;
+            color: #0d0d0a;
             border: 1px solid #c4b8a4;
         }
         .download-btn {
@@ -210,7 +210,7 @@
         body.light .download-btn {
             background: linear-gradient(145deg, #d4c4b0, #c4b4a0);
             border: 1px solid rgba(150, 100, 70, 0.3);
-            color: #2c2a26;
+            color: #0d0d0a;
         }
         .review-mode {
             background: linear-gradient(145deg, #2a3a4a, #1a2a3a);
@@ -225,7 +225,7 @@
         }
         body.light .review-mode {
             background: #e0d5c5;
-            color: #2c2a26;
+            color: #0d0d0a;
         }
         /* Question card */
         .question-box {
@@ -254,7 +254,7 @@
             transition: color 0.3s;
         }
         body.light .q-header {
-            color: #b87a2a;
+            color: #8a6a3a;
         }
         .priority {
             background: linear-gradient(145deg, #c72a2a, #9a1a1a);
@@ -274,7 +274,7 @@
             transition: color 0.3s;
         }
         body.light .q-text {
-            color: #1a1a18;
+            color: #0d0d0a;
         }
         .options {
             display: flex;
@@ -331,7 +331,7 @@
             transition: color 0.3s;
         }
         body.light .option-text {
-            color: #2c2a26;
+            color: #0d0d0a;
         }
         .difficulty-row {
             display: flex;
@@ -356,7 +356,7 @@
         }
         body.light .diff-btn {
             background: #d0c4b0;
-            color: #2c2a26;
+            color: #0d0d0a;
         }
         .diff-easy.selected { background: #2c6e2c; color: white; }
         .diff-medium.selected { background: #d4a017; color: white; }
@@ -376,7 +376,7 @@
         }
         body.light .feedback-correct {
             background: rgba(46, 204, 113, 0.15);
-            color: #1a5a3a;
+            color: #0d3a1a;
         }
         .feedback-wrong {
             background: rgba(231, 76, 60, 0.12);
@@ -385,7 +385,7 @@
         }
         body.light .feedback-wrong {
             background: rgba(231, 76, 60, 0.15);
-            color: #8a2a1a;
+            color: #5a1a0a;
         }
         .action-buttons {
             display: flex;
@@ -408,13 +408,13 @@
         .action-buttons button:active { transform: scale(0.97); }
         body.light .action-buttons button {
             background: linear-gradient(145deg, #c4a880, #b0906a);
-            color: #2c2a26;
+            color: #0d0d0a;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
         .flag-btn { background: linear-gradient(145deg, #6a4e2a, #4a2e1a) !important; }
-        body.light .flag-btn { background: linear-gradient(145deg, #a0886a, #807050) !important; color: #2c2a26 !important; }
+        body.light .flag-btn { background: linear-gradient(145deg, #a0886a, #807050) !important; color: #0d0d0a !important; }
         .restart-btn { background: linear-gradient(145deg, #3a4c62, #2a3a4a) !important; }
-        body.light .restart-btn { background: linear-gradient(145deg, #b0a090, #9a8a7a) !important; color: #2c2a26 !important; }
+        body.light .restart-btn { background: linear-gradient(145deg, #b0a090, #9a8a7a) !important; color: #0d0d0a !important; }
         .score-panel {
             background: linear-gradient(145deg, #0a111f, #050a14);
             padding: 18px;
@@ -454,6 +454,7 @@
         body.light .stat-card {
             background: rgba(240, 235, 225, 0.7);
             border: 1px solid #c4b8a4;
+            color: #0d0d0a;
         }
         .topic-list {
             max-height: 150px;
@@ -479,7 +480,7 @@
             transition: color 0.3s;
         }
         body.light footer {
-            color: #8a7a6a;
+            color: #4a3f30;
         }
         button { cursor: pointer; }
         /* Theme toggle button in top bar */
