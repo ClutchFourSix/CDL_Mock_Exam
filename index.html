@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice v2.1 | Brave Fixed</title>
+    <title>IL CDL Practice v2.2 | Brave Fixed + Feedback Restored</title>
     <style>
         /* ==============================================================
-           VERSION 2.1 - Brave Browser Compatible
-           All styles use !important to override Brave Shields
+           VERSION 2.2 - Brave Browser Compatible + Full Feedback
            ============================================================== */
         * {
             box-sizing: border-box !important;
@@ -28,7 +27,7 @@
             color: #eef2ff !important;
         }
 
-        /* ===== LIGHT THEME - with !important for Brave ===== */
+        /* ===== LIGHT THEME ===== */
         body.light {
             background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%) !important;
             color: #0a0a08 !important;
@@ -486,6 +485,7 @@
         .diff-medium.selected { background: #d4a017 !important; color: white !important; }
         .diff-hard.selected { background: #c72a2a !important; color: white !important; }
 
+        /* ===== FEEDBACK AREA ===== */
         .feedback {
             margin-top: 18px !important;
             padding: 14px !important;
@@ -493,11 +493,15 @@
             font-size: 0.8rem !important;
             display: none !important;
             line-height: 1.4 !important;
+            border-left: 4px solid !important;
         }
 
         .feedback-correct {
             background: rgba(46, 204, 113, 0.12) !important;
-            border-left: 4px solid #2ecc71 !important;
+            border-left-color: #2ecc71 !important;
+        }
+
+        body.dark .feedback-correct {
             color: #b0f0cf !important;
         }
 
@@ -508,7 +512,10 @@
 
         .feedback-wrong {
             background: rgba(231, 76, 60, 0.12) !important;
-            border-left: 4px solid #e74c3c !important;
+            border-left-color: #e74c3c !important;
+        }
+
+        body.dark .feedback-wrong {
             color: #f5bcbc !important;
         }
 
@@ -687,8 +694,7 @@
             .theme-toggle-btn { font-size: 0.7rem !important; padding: 4px 10px !important; }
         }
 
-        /* ===== BRAVE BROWSER OVERRIDE - Force !important on everything ===== */
-        /* This targets Brave's Shields which may block some CSS */
+        /* ===== BRAVE BROWSER OVERRIDE ===== */
         body.light .container,
         body.light .question-box,
         body.light .top-bar,
@@ -764,7 +770,7 @@
 </head>
 <body class="dark" id="mainBody">
 <div class="container" id="appContainer">
-    <h1>🚛 IL CDL Practice <span style="font-size:0.7rem;opacity:0.6;">v2.1</span></h1>
+    <h1>🚛 IL CDL Practice <span style="font-size:0.7rem;opacity:0.6;">v2.2</span></h1>
     <div class="sub">High Priority in red • Timer off by default • Tap anywhere on answer</div>
 
     <div class="top-bar">
@@ -826,7 +832,7 @@
 
 <script>
     // ==============================================================
-    // VERSION 2.1 - Brave Browser Compatible
+    // VERSION 2.2 - Brave Browser Compatible + Full Feedback
     // Theme toggle forces inline styles for Brave
     // ==============================================================
 
@@ -844,12 +850,11 @@
             container.style.background = 'rgba(15, 22, 32, 0.92)';
             container.style.border = '1px solid rgba(255, 180, 71, 0.15)';
             container.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6)';
-            // Force all light-themed elements to dark
+            // Reset light theme overrides
             document.querySelectorAll('.question-box, .top-bar, .test-bar, .score-panel, .option, .score-badge, .toggle-label, .clock, select, .theme-toggle-btn').forEach(el => {
                 el.style.background = '';
                 el.style.color = '';
             });
-            // Force option text color
             document.querySelectorAll('.option-text, .q-text, .sub, footer, .topic-item, .q-header, .stat-card').forEach(el => {
                 el.style.color = '';
             });
@@ -866,7 +871,6 @@
                 el.style.background = '#FFFFE7';
                 el.style.color = '#0a0a08';
             });
-            // Force option text color
             document.querySelectorAll('.option-text, .q-text, .sub, footer, .topic-item, .stat-card').forEach(el => {
                 el.style.color = '#0a0a08';
             });
@@ -1198,11 +1202,12 @@
         if (!reviewMode) origAnswers[idx] = letter;
         let isCorrect = (letter === q.correct);
         feedbackDiv.style.display = 'block';
+        feedbackDiv.className = 'feedback';
         if (isCorrect) {
-            feedbackDiv.className = 'feedback feedback-correct';
+            feedbackDiv.classList.add('feedback-correct');
             feedbackDiv.innerHTML = `✅ CORRECT! ${q.explanation}`;
         } else {
-            feedbackDiv.className = 'feedback feedback-wrong';
+            feedbackDiv.classList.add('feedback-wrong');
             let correctLetter = q.correct;
             let correctText = q.options.find(o => o[0] === correctLetter).substring(3);
             feedbackDiv.innerHTML = `❌ WRONG. Correct: ${correctLetter} — ${correctText}<br>📘 ${q.explanation}`;
