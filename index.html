@@ -19,12 +19,10 @@
             transition: background 0.4s ease, color 0.3s ease;
         }
 
-        /* ===== DARK THEME ===== */
         body.dark {
             background: radial-gradient(circle at 50% 50%, #000000 0%, #0a1628 40%, #0f1f3a 65%, #162a4a 85%, #1a3055 100%);
         }
 
-        /* ===== LIGHT THEME ===== */
         body.light {
             background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%);
             color: #0d0d0a;
@@ -90,7 +88,6 @@
             border-bottom: 1px solid rgba(180, 150, 110, 0.3);
         }
 
-        /* Top bar */
         .top-bar {
             display: flex;
             flex-wrap: wrap;
@@ -211,7 +208,6 @@
             color: #0d0d0a;
         }
 
-        /* Test selector bar */
         .test-bar {
             display: flex;
             flex-wrap: wrap;
@@ -309,7 +305,6 @@
             color: #0d0d0a;
         }
 
-        /* Question card */
         .question-box {
             border-radius: 28px;
             padding: 20px;
@@ -474,7 +469,6 @@
         .diff-medium.selected { background: #d4a017; color: white; }
         .diff-hard.selected { background: #c72a2a; color: white; }
 
-        /* ===== FEEDBACK AREA ===== */
         .feedback {
             margin-top: 18px;
             padding: 14px 16px;
@@ -764,8 +758,11 @@
         return { text, options, correct, explanation, topic, priority };
     }
 
+    // ==============================================================
+    // GENERAL KNOWLEDGE BANK - All questions (originals + new)
+    // ==============================================================
     const generalBank = [
-        // === Original Questions (75) ===
+        // === ORIGINAL QUESTIONS (75) ===
         Q("What is the correct following distance formula for a commercial vehicle?", ["A) 1 second for every 20 feet", "B) 1 second for every 10 feet + 1 sec over 40 mph", "C) 2 seconds regardless", "D) 1 car length per 10 mph"], "B", "1 second per 10 feet of vehicle length, plus 1 additional second for speeds over 40 mph.", "Following Distance", true),
         Q("What three factors add up to total stopping distance?", ["A) Perception + Reaction + Braking", "B) Speed + Weight + Road", "C) Brake lag + Reaction", "D) Reaction + Skid"], "A", "Perception distance + reaction distance + braking distance = total stopping distance.", "Stopping Distance", true),
         Q("How do you recover from a rear-wheel braking skid?", ["A) Steer away and accelerate", "B) Stop braking, push clutch, steer into skid", "C) Apply more brake", "D) Use trailer hand brake"], "B", "Release brakes, push clutch, and countersteer in direction of skid.", "Skid Control", true),
@@ -1041,11 +1038,11 @@
         Q("To test your hydraulic brakes for a leak, you should pump the brakes, apply firm pressure, and hold for 5 seconds. The brake pedal:", ["A) Should not move", "B) Should depress slowly and evenly", "C) Should depress easily and quickly", "D) Will push against your foot"], "A", "When you check your hydraulic brakes for a leak, you should pump the brakes 3 times, apply firm pressure to your brake pedal, and wait for 5 seconds. During that time, the pedal shouldn't move. If it does, there may be a leak, and it will need attention before driving the vehicle again.", "Braking", false)
     ];
 
-    // Trim generalBank to exactly 75 questions
-    while(generalBank.length < 75) generalBank.push(generalBank[0]);
-    if(generalBank.length > 75) generalBank.length = 75;
+    // ✅ NO TRIMMING - All questions preserved for random selection
 
-    // Air Brakes Bank
+    // ==============================================================
+    // AIR BRAKES BANK - All questions (originals + new)
+    // ==============================================================
     const airBank = [
         // === Original Air Brakes Questions (25) ===
         Q("What does the air compressor governor control?", ["A) Oil pressure", "B) When compressor pumps air (cut-in/cut-out)", "C) Brake pedal pressure", "D) Trailer timing"], "B", "Governor controls cut-out (~125 psi) and cut-in (~100 psi).", "Air System", true),
@@ -1105,13 +1102,12 @@
         Q("With a fully-charged air system and the foot brake fully applied, what is the maximum air pressure drop allowed in one minute for a combination vehicle?", ["A) 1 psi", "B) 2 psi", "C) 3 psi", "D) 4 psi"], "D", "With the air pressure built up, shut off the engine, release the parking brake, and fully apply the foot brake for one minute. The air pressure should not drop more than 4 psi for a combination vehicle.", "Air Brake Checks", true)
     ];
 
-    // Trim airBank to exactly 25 questions
-    while(airBank.length < 25) airBank.push(airBank[0]);
-    if(airBank.length > 25) airBank.length = 25;
+    // ✅ NO TRIMMING - All questions preserved for random selection
 
-    // Combination Vehicles Bank
+    // ==============================================================
+    // COMBINATION VEHICLES BANK - All questions (originals + new)
+    // ==============================================================
     const comboBank = [
-        // === Original Combination Vehicles Questions (20) ===
         Q("What is off-tracking?", ["A) Losing GPS", "B) Rear wheels follow different path than front in turns", "C) ABS malfunction", "D) Air leak"], "B", "Rear wheels cut corners more than front wheels during turns.", "Turning", true),
         Q("Which vehicle has highest rearward amplification?", ["A) Straight truck", "B) Tractor-semitrailer", "C) Doubles", "D) Triples"], "D", "Triples have 3.5x rearward amplification, making last trailer most likely to roll over.", "Rollover Risk", true),
         Q("How to steer when backing a trailer?", ["A) Same direction as trailer", "B) Opposite direction", "C) Left only", "D) Right only"], "B", "Turn opposite direction you want the trailer to go.", "Backing", false),
@@ -1133,7 +1129,7 @@
         Q("Minimum following distance rule for combos over 40 mph?", ["A) 1 sec per 10 ft + 1 sec", "B) 4 seconds", "C) 10 seconds", "D) 2 seconds"], "A", "One second per 10 feet plus one additional second for speeds over 40 mph.", "Following Distance", true),
         Q("Why steer gently when pulling doubles/triples?", ["A) Crack-the-whip effect - rear trailer may roll over", "B) Poor fuel economy", "C) Reduced braking", "D) Increased noise"], "A", "Doubles/triples are more likely to roll over due to crack-the-whip effect.", "Rollover Risk", true),
 
-        // === NEW COMBINATION VEHICLES QUESTIONS FROM SCREENSHOTS ===
+        // === NEW COMBINATION VEHICLES QUESTIONS ===
         Q("If you have a major leak in the service line of your air brakes, the air pressure will:", ["A) Raise tank pressure quickly", "B) Cause the emergency brakes to engage", "C) Activate the emergency service line", "D) Lower the tank pressure quickly"], "D", "It's likely that you won't notice a leak in the service line until you apply the brakes. When you do, the loss in air pressure from the leak will lower the pressure in the air tank pretty quickly.", "Combination Vehicles", true),
         Q("To prevent rollovers, you should always make sure the cargo is as close to the ground as possible and you should:", ["A) Take turns quickly and sharply", "B) Use the emergency brake before turning", "C) Take turns slowly and carefully", "D) Always fully load your vehicle"], "C", "Rollovers happen when you take a turn too quickly. If cargo is too top-heavy or off-center, this increases your risk. For this reason, keep cargo centered and as close to the ground as possible. Also, take turns slowly and carefully, which is especially important for combination vehicles.", "Combination Vehicles", true),
         Q("To check that the trailer is securely connected to the tractor, you should raise the landing gear slightly off the ground. Then, while the trailer brakes are still locked, you should:", ["A) Allow the tractor to roll backwards", "B) Press heavily on the tractor's accelerator", "C) Gently pull the tractor forward", "D) Engage the parking brake system"], "C", "To check that your trailer and tractor are securely connected, raise the trailer landing gear off the ground slightly. Then, gently pull the tractor forward while the trailer brakes are still locked. The connection should remain secure.", "Combination Vehicles", true),
@@ -1155,11 +1151,11 @@
         Q("You should use the ______ valve only to test your trailer brakes.", ["A) Trailer protection valve", "B) Service line valve", "C) Trailer hand valve", "D) Cut-off valves"], "C", "The trailer hand valve is also called the trolley valve or the Johnson bar. Only use it to test your trailer brakes. To actually use them, use the foot brake, or you'll risk skidding or jackknifing.", "Combination Vehicles", true)
     ];
 
-    // Trim comboBank to exactly 20 questions
-    while(comboBank.length < 20) comboBank.push(comboBank[0]);
-    if(comboBank.length > 20) comboBank.length = 20;
+    // ✅ NO TRIMMING - All questions preserved for random selection
 
-    // Pre-Trip Inspection Bank
+    // ==============================================================
+    // PRE-TRIP INSPECTION BANK - All questions (originals + new)
+    // ==============================================================
     const pretripBank = [
         // === Original Pre-Trip Inspection Questions (20) ===
         Q("Max steering wheel play on 20-inch wheel?", ["A) 5 degrees", "B) 10 degrees (~2 inches)", "C) 20 degrees", "D) 30 degrees"], "B", "More than 10 degrees makes steering hard.", "Steering", true),
@@ -1183,7 +1179,7 @@
         Q("Wiper/washer inspection?", ["A) Wipers work", "B) Washers work", "C) Blades not worn", "D) All of the above"], "D", "Wipers and washers must work for visibility in rain/snow.", "Visibility", false),
         Q("Fuel tank inspection?", ["A) Securely mounted", "B) Caps tight", "C) No leaks", "D) All of the above"], "D", "Fuel tanks must be secure, capped, and leak-free.", "Fuel System", false),
 
-        // === NEW PRE-TRIP INSPECTION QUESTIONS FROM SCREENSHOTS ===
+        // === NEW PRE-TRIP INSPECTION QUESTIONS ===
         Q("Which of the following pieces of emergency equipment is required in every commercial motor vehicle (CMV)?", ["A) Tire chains", "B) A list of emergency phone numbers", "C) An accident reporting kit", "D) A fire extinguisher"], "D", "Each vehicle is required to have spare electrical fuses, 3 reflective triangles, 6 fuses or 3 liquid burning flares, and a charged fire extinguisher.", "Emergency Equipment", false),
         Q("Which of the following pieces of emergency equipment is optional?", ["A) Spare electrical fuses", "B) Reflective triangles", "C) A fire extinguisher", "D) Tire changing equipment"], "D", "Your optional emergency equipment will include tire chains, a list of emergency phone numbers, an accident reporting kit, and tire changing equipment.", "Emergency Equipment", false),
         Q("Your clearance lights should be red in the rear of the vehicle and ______ everywhere else.", ["A) Green", "B) Blue", "C) Amber", "D) White"], "C", "When you inspect your vehicle's lights, make sure they are clean and in working order. Your clearance lights should be red in the rear of the vehicle and amber everywhere else.", "Lighting", false),
@@ -1195,10 +1191,11 @@
         Q("During an engine compartment inspection, you need to start the engine. To do this, be sure the parking brake is set, and depress the clutch. Next, you should:", ["A) Start the engine", "B) Put it into a neutral gear", "C) Pump and hold the brakes", "D) Release the clutch slowly"], "B", "Once you've set the parking brake and depressed the clutch, you should put the gearshift lever in Neutral, or Park if you've got an automatic transmission. Finally, you should start the engine and slowly release the clutch.", "Engine", false)
     ];
 
-    // Trim pretripBank to exactly 20 questions
-    while(pretripBank.length < 20) pretripBank.push(pretripBank[0]);
-    if(pretripBank.length > 20) pretripBank.length = 20;
+    // ✅ NO TRIMMING - All questions preserved for random selection
 
+    // ==============================================================
+    // CONFIGURATIONS
+    // ==============================================================
     const configs = {
         general: { bank: generalBank, count: 50, name: "General Knowledge" },
         air: { bank: airBank, count: 25, name: "Air Brakes" },
@@ -1315,7 +1312,6 @@
         if (!reviewMode) origAnswers[idx] = letter;
         let isCorrect = (letter === q.correct);
         
-        // Show feedback immediately
         feedbackDiv.style.display = 'block';
         feedbackDiv.className = 'feedback';
         if (isCorrect) {
@@ -1329,7 +1325,6 @@
         }
         diffRow.style.display = 'flex';
         updateScore();
-        // Update the selected option visually
         document.querySelectorAll('.option').forEach(opt => {
             opt.classList.remove('selected');
             if (opt.querySelector('input') && opt.querySelector('input').value === letter) {
