@@ -1005,6 +1005,12 @@
         bookmarkSpan.innerHTML = flagged.has(idx) ? "⭐ Flagged" : "☆";
         qTextSpan.innerHTML = q.text;
         optionsDiv.innerHTML = '';
+        
+        // ✅ FIX: Clear feedback when loading a new question
+        feedbackDiv.style.display = 'none';
+        feedbackDiv.className = 'feedback';
+        feedbackDiv.innerHTML = '';
+        
         q.options.forEach(opt => {
             let letter = opt[0];
             let div = document.createElement('div');
