@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice v2.2 | Brave Fixed + Feedback Restored</title>
+    <title>IL CDL Practice v2.3 | Full Feedback Restored</title>
     <style>
         /* ==============================================================
-           VERSION 2.2 - Brave Browser Compatible + Full Feedback
+           VERSION 2.3 - Full Feedback + Brave Compatible
            ============================================================== */
         * {
             box-sizing: border-box !important;
@@ -21,13 +21,11 @@
             transition: background 0.4s ease, color 0.3s ease !important;
         }
 
-        /* ===== DARK THEME ===== */
         body.dark {
             background: radial-gradient(circle at 50% 50%, #000000 0%, #0a1628 40%, #0f1f3a 65%, #162a4a 85%, #1a3055 100%) !important;
             color: #eef2ff !important;
         }
 
-        /* ===== LIGHT THEME ===== */
         body.light {
             background: radial-gradient(circle at 50% 50%, #f5efe6 0%, #f0eadc 25%, #ebe4d2 50%, #e6dfc8 75%, #FFFFE7 100%) !important;
             color: #0a0a08 !important;
@@ -485,42 +483,46 @@
         .diff-medium.selected { background: #d4a017 !important; color: white !important; }
         .diff-hard.selected { background: #c72a2a !important; color: white !important; }
 
-        /* ===== FEEDBACK AREA ===== */
+        /* ===== FEEDBACK AREA - Full feedback restored ===== */
         .feedback {
             margin-top: 18px !important;
-            padding: 14px !important;
+            padding: 14px 16px !important;
             border-radius: 20px !important;
-            font-size: 0.8rem !important;
+            font-size: 0.85rem !important;
             display: none !important;
-            line-height: 1.4 !important;
-            border-left: 4px solid !important;
+            line-height: 1.5 !important;
+            border-left: 5px solid !important;
         }
 
         .feedback-correct {
-            background: rgba(46, 204, 113, 0.12) !important;
-            border-left-color: #2ecc71 !important;
+            display: block !important;
         }
 
         body.dark .feedback-correct {
+            background: rgba(46, 204, 113, 0.12) !important;
+            border-left-color: #2ecc71 !important;
             color: #b0f0cf !important;
         }
 
         body.light .feedback-correct {
             background: rgba(46, 204, 113, 0.15) !important;
+            border-left-color: #2ecc71 !important;
             color: #0a2a0a !important;
         }
 
         .feedback-wrong {
-            background: rgba(231, 76, 60, 0.12) !important;
-            border-left-color: #e74c3c !important;
+            display: block !important;
         }
 
         body.dark .feedback-wrong {
+            background: rgba(231, 76, 60, 0.12) !important;
+            border-left-color: #e74c3c !important;
             color: #f5bcbc !important;
         }
 
         body.light .feedback-wrong {
             background: rgba(231, 76, 60, 0.15) !important;
+            border-left-color: #e74c3c !important;
             color: #3a0a0a !important;
         }
 
@@ -770,7 +772,7 @@
 </head>
 <body class="dark" id="mainBody">
 <div class="container" id="appContainer">
-    <h1>🚛 IL CDL Practice <span style="font-size:0.7rem;opacity:0.6;">v2.2</span></h1>
+    <h1>🚛 IL CDL Practice <span style="font-size:0.7rem;opacity:0.6;">v2.3</span></h1>
     <div class="sub">High Priority in red • Timer off by default • Tap anywhere on answer</div>
 
     <div class="top-bar">
@@ -832,10 +834,10 @@
 
 <script>
     // ==============================================================
-    // VERSION 2.2 - Brave Browser Compatible + Full Feedback
-    // Theme toggle forces inline styles for Brave
+    // VERSION 2.3 - Full Feedback + Brave Compatible
     // ==============================================================
 
+    // ===== THEME TOGGLE =====
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const body = document.body;
     const container = document.querySelector('.container');
@@ -846,11 +848,9 @@
             body.classList.remove('light');
             body.classList.add('dark');
             themeToggleBtn.textContent = '🌓 Theme';
-            // Force inline styles for Brave
             container.style.background = 'rgba(15, 22, 32, 0.92)';
             container.style.border = '1px solid rgba(255, 180, 71, 0.15)';
             container.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6)';
-            // Reset light theme overrides
             document.querySelectorAll('.question-box, .top-bar, .test-bar, .score-panel, .option, .score-badge, .toggle-label, .clock, select, .theme-toggle-btn').forEach(el => {
                 el.style.background = '';
                 el.style.color = '';
@@ -862,11 +862,9 @@
             body.classList.remove('dark');
             body.classList.add('light');
             themeToggleBtn.textContent = '🌙 Dark';
-            // Force inline styles for Brave - LIGHT THEME
             container.style.background = '#FFFFE7';
             container.style.border = '1px solid rgba(180, 150, 110, 0.35)';
             container.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
-            // Force light theme on all elements
             document.querySelectorAll('.question-box, .top-bar, .test-bar, .score-panel, .option, .score-badge, .toggle-label, .clock, select, .theme-toggle-btn').forEach(el => {
                 el.style.background = '#FFFFE7';
                 el.style.color = '#0a0a08';
@@ -915,12 +913,10 @@
     themeToggleBtn.addEventListener('click', function() {
         applyTheme(!isDark);
     });
-
-    // Force initial dark theme
     applyTheme(true);
 
     // ==============================================================
-    // QUESTION BANKS - All unique, correctly categorized
+    // QUESTION BANKS
     // ==============================================================
     
     function Q(text, options, correct, explanation, topic, priority = false) {
@@ -1192,7 +1188,10 @@
                     (diff === 'medium' && btn.dataset.diff === 'medium') ||
                     (diff === 'hard' && btn.dataset.diff === 'hard')) btn.classList.add('selected');
             });
-        } else { diffRow.style.display = 'none'; feedbackDiv.style.display = 'none'; }
+        } else { diffRow.style.display = 'none'; }
+        // Reset feedback display on render
+        feedbackDiv.style.display = 'none';
+        feedbackDiv.className = 'feedback';
     }
 
     function selectAnswer(letter) {
@@ -1201,6 +1200,8 @@
         answers[idx] = letter;
         if (!reviewMode) origAnswers[idx] = letter;
         let isCorrect = (letter === q.correct);
+        
+        // Show feedback with grading and explanation
         feedbackDiv.style.display = 'block';
         feedbackDiv.className = 'feedback';
         if (isCorrect) {
