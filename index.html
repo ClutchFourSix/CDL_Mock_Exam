@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>IL CDL Practice | Light Cream Theme | Full Feedback</title>
+    <title>IL CDL Practice | Full Feedback Restored</title>
     <style>
         * {
             box-sizing: border-box;
@@ -462,12 +462,12 @@
         /* ===== FEEDBACK AREA ===== */
         .feedback {
             margin-top: 18px;
-            padding: 14px;
+            padding: 14px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
-            display: none;
             line-height: 1.5;
             border-left: 5px solid;
+            display: none;
         }
 
         .feedback-correct {
@@ -696,7 +696,7 @@
             <button class="diff-btn diff-medium" data-diff="medium">🟡 Medium</button>
             <button class="diff-btn diff-hard" data-diff="hard">🔴 Hard</button>
         </div>
-        <div class="feedback" id="feedback"></div>
+        <div id="feedback" class="feedback"></div>
     </div>
 
     <div class="action-buttons">
@@ -1019,8 +1019,6 @@
         } else {
             diffRow.style.display = 'none';
         }
-        feedbackDiv.style.display = 'none';
-        feedbackDiv.className = 'feedback';
     }
 
     function selectAnswer(letter) {
@@ -1030,6 +1028,7 @@
         if (!reviewMode) origAnswers[idx] = letter;
         let isCorrect = (letter === q.correct);
         
+        // Show feedback immediately
         feedbackDiv.style.display = 'block';
         feedbackDiv.className = 'feedback';
         if (isCorrect) {
@@ -1043,7 +1042,13 @@
         }
         diffRow.style.display = 'flex';
         updateScore();
-        render();
+        // Update the selected option visually
+        document.querySelectorAll('.option').forEach(opt => {
+            opt.classList.remove('selected');
+            if (opt.querySelector('input') && opt.querySelector('input').value === letter) {
+                opt.classList.add('selected');
+            }
+        });
     }
 
     function next() {
