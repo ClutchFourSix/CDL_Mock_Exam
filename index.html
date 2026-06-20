@@ -675,7 +675,7 @@
 </head>
 <body class="dark">
 <div class="container" id="appContainer">
-    <h1>IL CDL Practice <span class="version-tag">v3.0</span></h1>
+    <h1>IL CDL Practice <span class="version-tag">v3.1</span></h1>
     <div class="sub">High Priority in red • Timer off by default • Tap anywhere on answer</div>
 
     <div class="top-bar">
@@ -765,6 +765,7 @@
     }
 
     const generalBank = [
+        // === Original Questions (75) ===
         Q("What is the correct following distance formula for a commercial vehicle?", ["A) 1 second for every 20 feet", "B) 1 second for every 10 feet + 1 sec over 40 mph", "C) 2 seconds regardless", "D) 1 car length per 10 mph"], "B", "1 second per 10 feet of vehicle length, plus 1 additional second for speeds over 40 mph.", "Following Distance", true),
         Q("What three factors add up to total stopping distance?", ["A) Perception + Reaction + Braking", "B) Speed + Weight + Road", "C) Brake lag + Reaction", "D) Reaction + Skid"], "A", "Perception distance + reaction distance + braking distance = total stopping distance.", "Stopping Distance", true),
         Q("How do you recover from a rear-wheel braking skid?", ["A) Steer away and accelerate", "B) Stop braking, push clutch, steer into skid", "C) Apply more brake", "D) Use trailer hand brake"], "B", "Release brakes, push clutch, and countersteer in direction of skid.", "Skid Control", true),
@@ -846,8 +847,61 @@
         Q("Why is speeding in curves dangerous?", ["A) Wears tires", "B) Increases rollover risk from centrifugal force", "C) Uses more fuel", "D) Hard on suspension"], "B", "Excessive speed in curves can cause rollover due to high center of gravity and centrifugal force.", "Turning", true),
         Q("Main danger of unsecured cargo?", ["A) Noise", "B) Can shift and affect handling, causing rollover", "C) Fuel waste", "D) Floor wear"], "B", "Shifting cargo can cause rollover, jackknife, and loss of control.", "Cargo", false),
         Q("How to test a parking brake?", ["A) Push brake pedal", "B) Set parking brake, place in low gear, gently pull forward", "C) Listen for air", "D) Check dash light"], "B", "Set parking brake, place in low gear, and gently pull forward. If vehicle moves, brakes need service.", "Parking Brake", false),
-        Q("Proper mirror adjustment shows:", ["A) Only road", "B) Part of your vehicle for reference", "C) Only other vehicles", "D) Blind spots only"], "B", "Mirrors should show a part of your vehicle to give you a reference point.", "Mirrors", false)
+        Q("Proper mirror adjustment shows:", ["A) Only road", "B) Part of your vehicle for reference", "C) Only other vehicles", "D) Blind spots only"], "B", "Mirrors should show a part of your vehicle to give you a reference point.", "Mirrors", false),
+
+        // === NEW QUESTIONS (33) ===
+        // Hours of Service (HOS)
+        Q("What is the maximum number of hours a property-carrying driver can drive in a 14-hour on-duty period?", ["A) 8 hours", "B) 10 hours", "C) 11 hours", "D) 14 hours"], "C", "Property-carrying drivers may drive a maximum of 11 hours after 10 consecutive hours off duty, within a 14-hour on-duty window.", "Hours of Service", true),
+        Q("After completing 10 consecutive hours off duty, how many total hours can a driver be on duty before needing another rest period?", ["A) 11 hours", "B) 12 hours", "C) 14 hours", "D) 16 hours"], "C", "The 14-hour rule states that a driver cannot drive beyond the 14th hour after coming on duty, following 10 consecutive hours off duty.", "Hours of Service", true),
+        Q("What is the minimum off-duty period required before a driver can start a new work week?", ["A) 24 consecutive hours", "B) 34 consecutive hours", "C) 48 consecutive hours", "D) 72 consecutive hours"], "B", "The 34-hour restart provision allows drivers to restart their 60/70-hour weekly clock after taking 34 consecutive hours off duty.", "Hours of Service", true),
+        Q("In the split sleeper berth provision, what is the minimum time a driver must spend in the sleeper berth for it to count toward the 10-hour off-duty requirement?", ["A) 1 hour", "B) 2 hours", "C) 7 hours", "D) 8 hours"], "D", "The split sleeper berth rule allows a driver to split their required 10-hour off-duty period into two periods: one of at least 8 hours in the sleeper berth and another of at least 2 hours.", "Hours of Service", true),
+        Q("A property-carrying driver has a 60-hour/7-day on-duty limit. After working 60 hours, how many consecutive off-duty hours are required to reset the clock?", ["A) 24 hours", "B) 34 hours", "C) 48 hours", "D) 72 hours"], "B", "The 34-hour restart resets the 60-hour/7-day or 70-hour/8-day on-duty limit.", "Hours of Service", true),
+
+        // Towing & Trailers (General)
+        Q("When towing a trailer, what is 'off-tracking'?", ["A) Losing GPS signal", "B) Rear wheels following a different path than front wheels in turns", "C) Trailer sway caused by wind", "D) Brake fade on downgrades"], "B", "Off-tracking, also called 'cheating,' occurs when the rear wheels of a vehicle (especially a trailer) take a shorter path than the front wheels during a turn.", "Towing", true),
+        Q("When pulling a trailer, how should you steer when backing up?", ["A) Turn the wheel in the same direction you want the trailer to go", "B) Turn the wheel in the opposite direction you want the trailer to go", "C) Keep the wheel straight and use only mirrors", "D) Turn the wheel sharply and correct immediately"], "B", "When backing a trailer, you must turn the steering wheel in the opposite direction you want the trailer to go. Once the trailer starts turning, you must turn the wheel the other way to follow it.", "Towing", true),
+        Q("What is the 'crack-the-whip' effect in combination vehicles?", ["A) When the trailer brakes lock up", "B) When the last trailer in a combination is more likely to roll over due to sudden steering inputs", "C) When the air lines disconnect", "D) When the trailer hits a pothole"], "B", "The crack-the-whip effect is caused by rearward amplification, where sudden steering inputs cause the last trailer in a combination vehicle to be more likely to roll over.", "Towing", true),
+        Q("What is the minimum following distance rule for combination vehicles traveling over 40 mph?", ["A) 1 second for every 10 feet of vehicle length", "B) 1 second for every 10 feet of vehicle length, plus 1 additional second", "C) 2 seconds regardless of vehicle length", "D) 4 seconds always"], "B", "The rule is one second for every 10 feet of vehicle length, plus one additional second for speeds over 40 mph.", "Following Distance", true),
+
+        // Steering & Control
+        Q("What is the first thing you should do if your vehicle starts to skid?", ["A) Brake hard immediately", "B) Turn the wheel sharply in the direction of the skid", "C) Take your foot off the accelerator", "D) Apply the parking brake"], "C", "The first step in correcting a skid is to take your foot off the accelerator to let the wheels regain traction. Then steer in the direction of the skid.", "Skid Control", true),
+        Q("What is 'countersteering'?", ["A) Turning the wheel back in the opposite direction after passing an obstacle", "B) Steering with one hand", "C) Using power steering to turn", "D) Steering away from the curb"], "A", "Countersteering is the action of turning the wheel back in the other direction once you have passed whatever was in your path, to straighten the vehicle.", "Steering", false),
+        Q("How many inches of movement at the rim of a 20-inch steering wheel indicates excessive play?", ["A) 1 inch", "B) 2 inches", "C) 3 inches", "D) 4 inches"], "B", "Steering wheel play of more than 10 degrees (approximately 2 inches movement at the rim of a 20-inch steering wheel) can make it hard to steer and indicates a problem.", "Steering", true),
+
+        // Driving in Various Situations
+        Q("What should you do if your brakes get wet after driving through deep water?", ["A) Ignore them; they will dry on their own", "B) Apply the parking brake", "C) Lightly apply brakes while driving slowly to dry them", "D) Speed up to create heat"], "C", "After driving through deep water, gently apply the brakes while driving slowly to heat and dry them. Make a test stop when safe to ensure they are working properly.", "Braking", false),
+        Q("What is 'black ice'?", ["A) Ice mixed with dirt and oil", "B) Thin, clear ice that makes the road look wet", "C) Ice that forms only on bridges", "D) Ice that is black in color"], "B", "Black ice is a thin, transparent layer of ice on the road that makes the pavement look wet. It is especially dangerous because it is difficult to see.", "Winter Driving", true),
+        Q("What is the recommended speed reduction on wet roads?", ["A) No reduction", "B) Reduce by 1/3", "C) Reduce by 1/2", "D) Reduce by 10 mph"], "B", "Reduce your speed by about one-third on wet roads. For example, reduce speed from 55 mph to about 35 mph.", "Speed Management", false),
+        Q("What is the proper way to use your headlights in fog?", ["A) Use high beams for maximum visibility", "B) Use low beams and fog lights", "C) Turn off headlights and use only parking lights", "D) Use four-way flashers only"], "B", "In fog, use low-beam headlights and fog lights for best visibility. High beams reflect off the fog and reduce visibility.", "Night Driving", false),
+        Q("When driving in winter, how should you adjust your braking technique?", ["A) Brake normally; ABS will handle it", "B) Brake firmly to break through ice", "C) Brake gently and leave extra following distance", "D) Use engine brake only"], "C", "On slippery winter roads, brake gently and maintain a longer following distance to allow for increased stopping distances. Do not use engine brakes on slippery surfaces.", "Winter Driving", false),
+
+        // Emergency Procedures
+        Q("If a tire blows out, what is the correct response?", ["A) Brake hard to stop quickly", "B) Hold the wheel firmly and stay off the brake", "C) Accelerate to maintain speed", "D) Turn sharply to the shoulder"], "B", "If a tire blows out, hold the steering wheel firmly and stay off the brake until the vehicle has slowed down. Then brake gently and pull off the road.", "Emergencies", true),
+        Q("What should you do if your hydraulic brakes fail?", ["A) Pump the brake pedal", "B) Use the parking brake", "C) Downshift to slow the vehicle", "D) All of the above"], "D", "If hydraulic brakes fail, you should pump the brake pedal, use the parking brake, and downshift to slow the vehicle while looking for an escape route.", "Braking", true),
+        Q("What is the proper placement of emergency warning devices on a two-lane road?", ["A) 10 feet in front, 100 feet behind, and 200 feet behind", "B) 10 feet in front, 100 feet in front, and 100 feet behind", "C) 100 feet in front, 10 feet behind, and 100 feet behind", "D) 200 feet in front, 100 feet behind, and 50 feet behind"], "C", "On a two-lane road, place one warning device 100 feet in front of the vehicle, one device 10 feet behind, and one device 100 feet behind the vehicle.", "Emergency Equipment", true),
+
+        // Hazard Perception
+        Q("What is a 'hazard' in the context of defensive driving?", ["A) Any vehicle that is speeding", "B) Any road condition or other road user that is a possible danger", "C) Only weather-related conditions", "D) Only construction zones"], "B", "A hazard is any road condition or other road user (driver, bicyclist, pedestrian) that is a possible danger.", "Hazard Awareness", false),
+        Q("What is the best way to identify hazards early?", ["A) Look only at the road directly in front of you", "B) Look 12-15 seconds ahead and use your mirrors frequently", "C) Rely on other drivers to warn you", "D) Use your GPS for hazard warnings"], "B", "To identify hazards early, look at least 12-15 seconds ahead and use your mirrors frequently to check what is happening around your vehicle.", "Hazard Awareness", false),
+        Q("What are some signs that a driver may be impaired by alcohol or drugs?", ["A) Weaving across the road", "B) Stopping at the wrong time (e.g., at a green light)", "C) Speeding up or slowing down suddenly", "D) All of the above"], "D", "Signs of impaired driving include weaving across the road, stopping at the wrong time, speeding up or slowing down suddenly, and other erratic behaviors.", "Alcohol Rules", true),
+
+        // Vehicle Components
+        Q("What should you check for in the exhaust system during a pre-trip inspection?", ["A) Loose pipes and missing brackets", "B) Leaks", "C) Parts rubbing against fuel lines or tires", "D) All of the above"], "D", "Check exhaust system for loose, broken, or missing pipes and brackets; leaks; and parts rubbing against fuel lines, tires, or other moving parts.", "Vehicle Inspection", false),
+        Q("What is the minimum tread depth required for front tires?", ["A) 2/32 inch", "B) 4/32 inch", "C) 6/32 inch", "D) 8/32 inch"], "B", "Front tires require at least 4/32 inch tread depth in every major groove. Non-front tires require at least 2/32 inch.", "Tires", false),
+        Q("What is the minimum tread depth required for rear tires?", ["A) 2/32 inch", "B) 4/32 inch", "C) 6/32 inch", "D) 8/32 inch"], "A", "Non-front tires (rear tires) require at least 2/32 inch tread depth.", "Tires", false),
+
+        // Alcohol & Drug Regulations
+        Q("What is the Blood Alcohol Concentration (BAC) limit for CDL holders operating a commercial vehicle?", ["A) 0.02%", "B) 0.04%", "C) 0.08%", "D) 0.10%"], "B", "A CDL holder may not operate a commercial vehicle with a BAC of 0.04% or more.", "Alcohol Rules", true),
+        Q("What is the BAC limit for a school bus driver?", ["A) 0.00%", "B) 0.02%", "C) 0.04%", "D) 0.08%"], "A", "A school bus driver may not operate a school bus with any detectable alcohol (0.00% BAC).", "Alcohol Rules", true),
+        Q("What happens if a CDL holder is found to have any alcohol in their system while operating a CMV?", ["A) They are issued a warning", "B) They are placed out of service for 24 hours", "C) They are disqualified for 1 year", "D) They are arrested immediately"], "B", "Any CDL holder operating a CMV who is found to have any alcohol in their system is placed out of service for a minimum of 24 hours.", "Alcohol Rules", true),
+        Q("What is the minimum disqualification period for a first-offense DUI in a CMV?", ["A) 30 days", "B) 60 days", "C) 1 year", "D) 3 years"], "C", "A first-offense DUI or refusal to submit to chemical testing results in a minimum 1-year CDL disqualification.", "Alcohol Rules", true),
+
+        // Pre-Trip Inspection
+        Q("What should you do with the ignition key during a pre-trip inspection?", ["A) Leave it in the ignition", "B) Put it in your pocket", "C) Place it on the seat", "D) Give it to the examiner"], "B", "The ignition key should be placed in your pocket during the pre-trip inspection so no one can move the vehicle while you are inspecting it.", "Vehicle Inspection", false),
+        Q("How do you test hydraulic brakes for leaks?", ["A) Look under the vehicle for puddles", "B) Pump the brake pedal three times, hold for 5 seconds, and check for pedal movement", "C) Listen for hissing sounds", "D) Check the brake fluid reservoir"], "B", "To test hydraulic brakes for leaks, pump the brake pedal three times, then apply firm pressure and hold for five seconds. The pedal should not move. If it does, there may be a leak.", "Braking", false),
+        Q("What should you check on leaf springs during a pre-trip inspection?", ["A) Missing or broken leaves", "B) Cracked hangers", "C) Tight U-bolts", "D) All of the above"], "D", "Check leaf springs for missing or broken leaves, cracked hangers, and tight U-bolts. If one-fourth or more of the leaves are missing, the vehicle should be placed out of service.", "Vehicle Inspection", false)
     ];
+
     while(generalBank.length < 75) generalBank.push(generalBank[0]);
     if(generalBank.length > 75) generalBank.length = 75;
 
@@ -1006,7 +1060,7 @@
         qTextSpan.innerHTML = q.text;
         optionsDiv.innerHTML = '';
         
-        // ✅ FIX: Clear feedback when loading a new question
+        // Clear feedback when loading a new question
         feedbackDiv.style.display = 'none';
         feedbackDiv.className = 'feedback';
         feedbackDiv.innerHTML = '';
